@@ -498,5 +498,17 @@ details p {
     color: #555;
 }
 
+/* --- UTILITY: RESTORE DEFAULT LINK STYLE --- */
+a.default-link {
+    text-decoration: underline !important;
+    color: blue !important; /* Forces standard blue */
+    font-weight: normal !important;
+}
 
+a.default-link:visited {
+    color: purple !important; /* Forces standard visited purple */
+}
 
+a.default-link:hover {
+    color: darkblue !important;
+}
