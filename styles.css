@@ -341,19 +341,18 @@ footer {
     color: var(--archer-blue);
     font-size: 1.4rem;
     margin-top: 25px;
-    display: inline-block; /* Required for position absolute to work relative to this */
+    display: inline-block;
     position: relative;
-    cursor: help; /* Changes cursor to a question mark to indicate interaction */
-    border-bottom: 1px dotted var(--archer-blue); /* Subtle hint that it's interactive */
+    cursor: default; /* Keeps the cursor normal so it doesn't look like a link */
 }
 
-/* The Tooltip Box */
+/* The Tooltip Box (Appears on Hover) */
 .motto:hover::after {
-    content: "True Arrow"; /* The translation */
+    content: "True Arrow";
     position: absolute;
-    bottom: 100%; /* Places it above the text */
+    bottom: 100%;
     left: 50%;
-    transform: translateX(-50%); /* Centers it */
+    transform: translateX(-50%);
     background-color: var(--archer-yellow);
     color: var(--dark-blue);
     padding: 6px 12px;
@@ -365,7 +364,7 @@ footer {
     white-space: nowrap;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     pointer-events: none;
-    margin-bottom: 8px; /* Spacing from the text */
+    margin-bottom: 8px;
     z-index: 100;
 }
 
@@ -377,8 +376,8 @@ footer {
     left: 50%;
     transform: translateX(-50%);
     border: 6px solid transparent;
-    border-top-color: var(--archer-yellow); /* Matches the box color */
-    margin-bottom: -4px; /* Pulls it down to touch the text */
+    border-top-color: var(--archer-yellow);
+    margin-bottom: -4px;
 }
 
 .footer-copyright {
@@ -497,4 +496,5 @@ details p {
     margin: 0;
     color: #555;
 }
+
 
