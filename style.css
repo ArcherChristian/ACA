@@ -1,0 +1,362 @@
+/* --- BRAND COLORS FROM IDENTITY PDF --- */
+:root {
+    /* Exact hex codes from Brand Identity PDF */
+    --archer-blue: #1D6ECB; 
+    --dark-blue: #002058;   
+    --archer-yellow: #FFDD00; 
+    
+    /* Neutrals */
+    --white: #ffffff;
+    --off-white: #f4f6f8;
+    --text-grey: #333333;
+}
+
+/* --- GLOBAL RESET --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    font-family: 'Libre Baskerville', serif; /* Body text is Serif */
+    color: var(--text-grey);
+    line-height: 1.7;
+    background-color: var(--white);
+    font-size: 16px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Work Sans', sans-serif; /* Headings are Sans */
+    color: var(--dark-blue);
+    line-height: 1.2;
+}
+
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* --- UTILITY CLASSES --- */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 14px 28px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    border-radius: 4px;
+    letter-spacing: 0.5px;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-yellow {
+    background-color: var(--archer-yellow);
+    color: var(--dark-blue);
+    border: 2px solid var(--archer-yellow);
+}
+.btn-yellow:hover {
+    background-color: #e6c700;
+    border-color: #e6c700;
+}
+
+.btn-blue {
+    background-color: var(--archer-blue);
+    color: var(--white);
+    border: 2px solid var(--archer-blue);
+}
+.btn-blue:hover {
+    background-color: var(--dark-blue);
+    border-color: var(--dark-blue);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--white);
+    color: var(--white);
+}
+.btn-outline:hover {
+    background-color: var(--white);
+    color: var(--archer-blue);
+}
+
+/* --- TOP BAR --- */
+.top-bar {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.85rem;
+    padding: 10px 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+}
+
+/* --- HEADER & NAV --- */
+header {
+    background-color: var(--white);
+    box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- LOGO STYLING --- */
+.logo-lockup {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+.logo-badge {
+    height: 60px;
+    width: auto;
+}
+.logo-type {
+    height: 45px;
+    width: auto;
+}
+
+nav ul { display: flex; gap: 35px; }
+nav a { 
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 600; 
+    font-size: 0.9rem; 
+    text-transform: uppercase; 
+    color: var(--dark-blue);
+    letter-spacing: 0.5px;
+}
+nav a:hover { color: var(--archer-blue); }
+
+/* --- HERO SECTION --- */
+.hero {
+    background-color: var(--archer-blue);
+    background-image: linear-gradient(135deg, rgba(29, 110, 203, 0.95), rgba(0, 32, 88, 0.9)), url('https://images.unsplash.com/photo-1509062522246-3755977927d7?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+    background-size: cover;
+    background-position: center;
+    color: var(--white);
+    padding: 140px 0;
+    text-align: center;
+}
+.hero h1 {
+    color: var(--white);
+    font-size: 3.8rem;
+    margin-bottom: 25px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+.hero p {
+    font-size: 1.25rem;
+    max-width: 720px;
+    margin: 0 auto 45px;
+    font-weight: 400;
+    color: rgba(255,255,255,0.9);
+}
+.hero-badge {
+    background-color: var(--archer-yellow);
+    color: var(--dark-blue);
+    display: inline-block;
+    padding: 6px 16px;
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    margin-bottom: 25px;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+/* --- MISSION / INTRO --- */
+.mission {
+    padding: 100px 0;
+    text-align: center;
+    background-color: var(--white);
+}
+.mission h2 { 
+    font-size: 2.2rem; 
+    margin-bottom: 30px; 
+    color: var(--archer-blue);
+}
+.mission p {
+    font-size: 1.25rem;
+    max-width: 800px;
+    margin: 0 auto 40px;
+    color: #444;
+}
+.read-more-link {
+    color: var(--archer-blue); 
+    font-weight: 700; 
+    border-bottom: 2px solid var(--archer-yellow); 
+    font-family: 'Work Sans', sans-serif;
+}
+
+/* --- METAPHOR SECTION --- */
+.metaphor-section {
+    background-color: var(--off-white);
+    padding: 100px 0;
+    border-top: 10px solid var(--archer-yellow);
+}
+.section-header { text-align: center; margin-bottom: 60px; }
+
+.metaphor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+}
+.metaphor-card {
+    background: var(--white);
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+    border-bottom: 4px solid transparent;
+}
+.metaphor-card:hover {
+    transform: translateY(-5px);
+    border-bottom: 4px solid var(--archer-blue);
+}
+.metaphor-card h3 { 
+    font-size: 1.3rem; 
+    margin-bottom: 15px; 
+    color: var(--dark-blue);
+    font-weight: 700;
+}
+.metaphor-card .icon { 
+    font-size: 2.5rem; 
+    margin-bottom: 20px; 
+    display: block; 
+    color: var(--archer-blue);
+}
+
+/* --- ACADEMICS --- */
+.academics-preview {
+    padding: 100px 0;
+}
+.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+}
+.academic-text h2 { margin-bottom: 25px; font-size: 2.2rem; }
+.academic-text ul { margin-bottom: 35px; margin-top: 20px; }
+.academic-text li { 
+    margin-bottom: 15px; 
+    padding-left: 25px; 
+    position: relative; 
+    font-weight: 700;
+    color: var(--dark-blue);
+}
+.academic-text li span {
+    font-weight: 400;
+    color: var(--text-grey);
+    display: block;
+}
+.academic-text li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--archer-yellow);
+    font-weight: 800;
+}
+
+.growth-box {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 50px;
+    border-radius: 2px;
+    position: relative;
+}
+.growth-box::after {
+    content: "";
+    position: absolute;
+    top: 10px; left: 10px; right: 10px; bottom: 10px;
+    border: 1px solid rgba(255,255,255,0.2);
+    pointer-events: none;
+}
+.growth-box h3 { color: var(--archer-yellow); margin-bottom: 20px; font-size: 1.5rem; }
+
+/* --- ADMISSIONS --- */
+.admissions-cta {
+    background-color: var(--archer-blue);
+    color: var(--white);
+    padding: 100px 0;
+    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23145aab' fill-opacity='0.4' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+}
+.admissions-cta h2 { color: var(--white); margin-bottom: 20px; font-size: 2.5rem; }
+
+.price-tag {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 800;
+    color: var(--archer-yellow);
+    display: block;
+    margin: 25px 0;
+    line-height: 1;
+}
+.price-disclaimer {
+    margin-bottom: 40px; 
+    font-style: italic; 
+    color: var(--archer-yellow); 
+    font-family: 'Libre Baskerville', serif;
+}
+
+/* --- FOOTER --- */
+footer {
+    background-color: #111;
+    color: #999;
+    padding: 80px 0 40px;
+    font-size: 0.95rem;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 50px;
+    margin-bottom: 60px;
+}
+.footer-col h4 { 
+    color: var(--white); 
+    margin-bottom: 25px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+}
+.footer-col ul li { margin-bottom: 12px; }
+.footer-col a:hover { color: var(--archer-yellow); }
+
+.motto {
+    font-family: 'Libre Baskerville', serif;
+    font-style: italic;
+    color: var(--archer-blue);
+    font-size: 1.4rem;
+    margin-top: 25px;
+    display: block;
+}
+.footer-copyright {
+    border-top: 1px solid #333; 
+    padding-top: 20px; 
+    text-align: center; 
+    font-size: 0.85rem; 
+    color: #666;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 900px) {
+    .nav-container { flex-direction: column; gap: 20px; }
+    .logo-type { display: none; } /* Hide full name on smaller screens if crowded */
+    .logo-badge { height: 50px; }
+    nav ul { flex-wrap: wrap; justify-content: center; gap: 20px; }
+    .hero h1 { font-size: 2.5rem; }
+    .two-col { grid-template-columns: 1fr; }
+    .growth-box { padding: 30px; }
+}
