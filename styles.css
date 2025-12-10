@@ -498,6 +498,19 @@ details p {
     color: #555;
 }
 
+/* Smart Quotes Settings */
+q {
+    quotes: "“" "”" "‘" "’";
+}
+
+/* Optional: Ensure they look normal (some resets remove quotes) */
+q::before {
+    content: open-quote;
+}
+q::after {
+    content: close-quote;
+}
+
 /* --- UTILITY: RESTORE DEFAULT LINK STYLE --- */
 a.default-link {
     text-decoration: underline !important;
@@ -512,3 +525,4 @@ a.default-link:visited {
 a.default-link:hover {
     color: darkblue !important;
 }
+
