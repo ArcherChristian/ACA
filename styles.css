@@ -334,14 +334,53 @@ footer {
 .footer-col ul li { margin-bottom: 12px; }
 .footer-col a:hover { color: var(--archer-yellow); }
 
+/* --- MOTTO TOOLTIP --- */
 .motto {
     font-family: 'Libre Baskerville', serif;
     font-style: italic;
     color: var(--archer-blue);
     font-size: 1.4rem;
     margin-top: 25px;
-    display: block;
+    display: inline-block; /* Required for position absolute to work relative to this */
+    position: relative;
+    cursor: help; /* Changes cursor to a question mark to indicate interaction */
+    border-bottom: 1px dotted var(--archer-blue); /* Subtle hint that it's interactive */
 }
+
+/* The Tooltip Box */
+.motto:hover::after {
+    content: "True Arrow"; /* The translation */
+    position: absolute;
+    bottom: 100%; /* Places it above the text */
+    left: 50%;
+    transform: translateX(-50%); /* Centers it */
+    background-color: var(--archer-yellow);
+    color: var(--dark-blue);
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    font-family: 'Work Sans', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    white-space: nowrap;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    pointer-events: none;
+    margin-bottom: 8px; /* Spacing from the text */
+    z-index: 100;
+}
+
+/* The Little Triangle Arrow below the box */
+.motto:hover::before {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: var(--archer-yellow); /* Matches the box color */
+    margin-bottom: -4px; /* Pulls it down to touch the text */
+}
+
 .footer-copyright {
     border-top: 1px solid #333; 
     padding-top: 20px; 
@@ -458,3 +497,4 @@ details p {
     margin: 0;
     color: #555;
 }
+
