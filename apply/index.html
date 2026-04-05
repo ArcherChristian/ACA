@@ -10,6 +10,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="https://englewoodfamily.org/archer/archiconbk.svg?v=1.0" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="https://englewoodfamily.org/archer/archiconwt.svg?v=1.0" media="(prefers-color-scheme: dark)">
 </head>
 <body>
 
@@ -31,6 +33,7 @@
                     <li><a href="../admissions/">Admissions</a></li>
                     <li><a href="../support/">Support</a></li>
                     <li><a href="../contact/">Contact</a></li>
+                    <li><a href="https://partner.archerchristian.org" target="_blank" rel="noopener">Give</a></li>
                 </ul>
             </nav>
 
@@ -68,12 +71,12 @@
 
                 <div class="form-box">
                     <h3>Family Information</h3>
-                    <form>
+                    <form action="mailto:info@archerchristian.org" method="POST" enctype="text/plain">
                         <div class="form-group">
                             <label for="parentName">Parent/Guardian Full Name</label>
                             <input type="text" id="parentName" name="parentName" placeholder="First and Last Name">
                         </div>
-                        
+
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group">
                                 <label for="email">Email Address</label>
@@ -93,7 +96,7 @@
                         <hr style="border: 0; border-top: 1px solid #ccc; margin: 30px 0;">
 
                         <h3>Student Information</h3>
-                        
+
                         <div class="form-group">
                             <label for="numStudents">Number of Students Applying</label>
                             <select id="numStudents" name="numStudents">
@@ -120,7 +123,7 @@
                             <textarea id="questions" name="questions" rows="3"></textarea>
                         </div>
 
-                        <button type="button" class="btn btn-yellow" style="width: 100%;">Submit Application</button>
+                        <button type="submit" class="btn btn-yellow" style="width: 100%;">Submit Application</button>
                     </form>
                 </div>
 
@@ -138,7 +141,7 @@
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="mailto:daniel@archerchristian.org">daniel@archerchristian.org</a></p>
                     <p><a href="tel:3125390644">312-539-0644</a></p>
-                    <span class="motto">sagitta vera</span>
+                    <img src="../images/ACA Motto RGB White.svg" alt="sagitta vera" class="motto-img" title="True Arrow">
                 </div>
                 <div class="footer-col">
                     <h4>Our School</h4>
@@ -162,7 +165,7 @@
                     <div class="footer-cta">
                         <h4>Support the Mission</h4>
                         <p>Help us make elite Classical Christian education accessible to Englewood.</p>
-                        <a href="../support/" class="btn btn-yellow" style="padding: 12px 24px;">Donate Today</a>
+                        <a href="https://partner.archerchristian.org" target="_blank" rel="noopener" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
                     </div>
                 </div>
             </div>

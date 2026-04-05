@@ -3,6 +3,8 @@
    Brand: Blue #1D6ECB | Navy #002058 | Gold #FFDD00 | Cream #FFF8E7
    ============================================================ */
 
+/* Favicon is handled in HTML <head> with media queries */
+
 :root {
     --archer-blue: #1D6ECB;
     --dark-blue: #002058;
@@ -1151,10 +1153,311 @@ a.default-link:hover { color: var(--dark-blue) !important; }
 }
 .form-group textarea { resize: vertical; }
 
+/* --- UTILITY CLASSES --- */
+.motto-img {
+    height: 24px;
+    width: auto;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.donate-nav {
+    background: none;
+    border: none;
+    color: var(--archer-blue);
+    font-family: 'Work Sans', sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s;
+}
+.donate-nav:hover {
+    color: var(--archer-yellow);
+}
+
+/* --- PARTNER LOGOS SECTION --- */
+.partner-logos-section {
+    background: var(--cream);
+    padding: 60px 0;
+    text-align: center;
+}
+.partner-logos-section p.section-label {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #888;
+    margin-bottom: 30px;
+    font-weight: 600;
+}
+.partner-logos-grid {
+    display: flex;
+    gap: 60px;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.partner-logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+    text-decoration: none;
+}
+.partner-logo-link:hover {
+    opacity: 1;
+}
+.partner-logo-link img {
+    height: 50px;
+    width: auto;
+    max-width: 180px;
+}
+.partner-logo-placeholder {
+    width: 180px;
+    height: 50px;
+    background: var(--light-grey);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Work Sans', sans-serif;
+    font-size: 0.8rem;
+    color: #999;
+    font-weight: 600;
+}
+
 @media (max-width: 600px) {
     .hero h1 { font-size: 2rem; }
     .price-tag { font-size: 3rem; }
     .footer-grid { grid-template-columns: 1fr; gap: 30px; }
     .stats-row { grid-template-columns: 1fr; }
     .process-grid { grid-template-columns: 1fr; }
+}
+
+/* --- DARK MODE SCHEME --- */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-grey: #e8e8e8;
+        --dark-blue: #0a0e27;
+        --cream: #1a1f3a;
+        --white: #0d1117;
+        --off-white: #161b22;
+        --light-grey: #2d333b;
+    }
+
+    body {
+        background-color: #0d1117;
+        color: #e8e8e8;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        color: #e8e8e8;
+    }
+
+    a {
+        color: #58a6ff;
+    }
+
+    /* Primary sections with dark backgrounds - minimal changes needed */
+    .page-header,
+    .hero,
+    .values-section,
+    .admissions-cta,
+    .graduate-section,
+    .footer {
+        /* Already dark, minimal adjustments */
+    }
+
+    /* Content sections */
+    .metaphor-section,
+    .content-section,
+    .process-section,
+    .spiritual-section,
+    .founding-cta,
+    .network-strip {
+        background-color: #161b22;
+        color: #e8e8e8;
+    }
+
+    /* Cards and boxes */
+    .metaphor-card,
+    .process-card,
+    .hedgehog-card,
+    .stage-card,
+    .spiritual-card {
+        background-color: #1c2128;
+        border-color: #30363d;
+        color: #e8e8e8;
+    }
+
+    .metaphor-card h3,
+    .process-card h3,
+    .hedgehog-card h3,
+    .stage-card h3,
+    .spiritual-card h3 {
+        color: #58a6ff;
+    }
+
+    .metaphor-card p,
+    .process-card p,
+    .hedgehog-card p,
+    .stage-card p,
+    .spiritual-card p,
+    .spiritual-card .description {
+        color: #d0d0d0;
+    }
+
+    .metaphor-card:hover {
+        border-color: #58a6ff;
+        box-shadow: 0 16px 40px rgba(88, 166, 255, 0.15);
+    }
+
+    /* Highlight and form boxes */
+    .highlight-box {
+        background-color: #1c2128;
+        border-color: #30363d;
+        color: #e8e8e8;
+    }
+
+    .form-box {
+        background-color: #161b22;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+        border-top-color: #58a6ff;
+    }
+
+    .form-box h3 {
+        color: #58a6ff;
+    }
+
+    .form-group label {
+        color: #58a6ff;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        background-color: #0d1117;
+        color: #e8e8e8;
+        border-color: #30363d;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: #58a6ff;
+        box-shadow: 0 0 0 3px rgba(88, 166, 255, 0.2);
+    }
+
+    /* Accordion/Details */
+    details {
+        background-color: #1c2128;
+        border-color: #30363d;
+    }
+
+    summary {
+        color: #58a6ff;
+    }
+
+    details > :not(summary) {
+        color: #d0d0d0;
+    }
+
+    /* Tier cards (pricing) */
+    .tier-card {
+        background-color: #1c2128;
+        border-color: #30363d;
+        color: #e8e8e8;
+    }
+
+    .tier-card h3 {
+        color: #58a6ff;
+    }
+
+    .tier-card .price-tag {
+        color: #e8e8e8;
+    }
+
+    .tier-card ul li {
+        color: #d0d0d0;
+    }
+
+    /* Partner logos section */
+    .partner-logos-section {
+        background-color: #161b22;
+    }
+
+    .partner-logos-section p.section-label {
+        color: #8b949e;
+    }
+
+    .partner-logo-placeholder {
+        background-color: #1c2128;
+        color: #6e7681;
+    }
+
+    /* Navigation and buttons */
+    nav {
+        background-color: #0d1117;
+        border-bottom-color: #30363d;
+    }
+
+    nav a {
+        color: #e8e8e8;
+    }
+
+    nav a:hover {
+        color: #58a6ff;
+    }
+
+    .donate-nav {
+        color: #58a6ff;
+    }
+
+    .donate-nav:hover {
+        color: #79c0ff;
+    }
+
+    .btn-primary {
+        background-color: #58a6ff;
+        color: #0d1117;
+    }
+
+    .btn-primary:hover {
+        background-color: #79c0ff;
+    }
+
+    .btn-secondary {
+        background-color: #1c2128;
+        color: #58a6ff;
+        border: 2px solid #58a6ff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #58a6ff;
+        color: #0d1117;
+    }
+
+    /* Icon backgrounds */
+    .metaphor-card .icon {
+        background-color: #58a6ff;
+    }
+
+    /* Text utilities */
+    .text-muted {
+        color: #8b949e;
+    }
+
+    /* Subtle borders and dividers */
+    hr {
+        border-color: #30363d;
+    }
+
+    /* Overlay and backdrop elements */
+    .overlay {
+        background-color: rgba(13, 17, 23, 0.8);
+    }
 }
