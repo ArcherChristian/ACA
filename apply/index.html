@@ -22,8 +22,10 @@
     <header>
         <div class="nav-container">
             <a href="../" class="logo-lockup">
-                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Badge" class="logo-badge">
-                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type">
+                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Badge" class="logo-badge logo-badge-light">
+                <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Badge" class="logo-badge logo-badge-dark">
+                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type logo-type-light">
+                <img src="../images/ACA LogoType RGB Negative.png" alt="Archer Christian Academy" class="logo-type logo-type-dark">
             </a>
 
             <nav>
@@ -95,38 +97,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="mce-STREET">Street Address</label>
-                            <input type="text" id="mce-STREET" name="STREET" placeholder="Street Address">
-                        </div>
-                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px;">
-                            <div class="form-group">
-                                <label for="mce-CITY">City</label>
-                                <input type="text" id="mce-CITY" name="CITY" placeholder="Chicago">
-                            </div>
-                            <div class="form-group">
-                                <label for="mce-STATE">State</label>
-                                <input type="text" id="mce-STATE" name="STATE" placeholder="IL">
-                            </div>
-                            <div class="form-group">
-                                <label for="mce-ZIP">Zip</label>
-                                <input type="text" id="mce-ZIP" name="ZIP" placeholder="60621">
-                            </div>
-                        </div>
-
-                        <hr style="border: 0; border-top: 1px solid #ccc; margin: 30px 0;">
-
-                        <h3>Student Information</h3>
-                        <p style="font-size: 0.85rem; color: #666; margin-bottom: 15px;">Please provide the details below so we can follow up with you about enrollment.</p>
-
-                        <div class="form-group">
-                            <label for="studentDetails">Student Details (Name, Age, &amp; Grade for Fall 2027)</label>
-                            <p style="font-size: 0.8rem; margin-bottom: 5px; color: #666;">Example: Titus (Age 5, Kindergarten), Faith (Age 7, 2nd Grade)</p>
-                            <textarea id="studentDetails" name="MMERGE6" rows="4"></textarea>
-                        </div>
-
-                        <div class="form-group">
-                            <label for="church">Home Church (Optional)</label>
-                            <input type="text" id="church" name="MMERGE7" placeholder="Where do you worship?">
+                            <label for="mce-MMERGE16">Note</label>
+                            <p style="font-size: 0.8rem; margin-bottom: 5px; color: #666;">Include student name(s), age(s), grade(s) for Fall 2027, home church, and any questions. Example: Titus (Age 5, Kindergarten), Faith (Age 7, 2nd Grade). We attend Grace Community Church.</p>
+                            <textarea id="mce-MMERGE16" name="MMERGE16" rows="5" placeholder="Student details, home church, and any questions..."></textarea>
                         </div>
 
                         <!-- Honeypot anti-spam -->

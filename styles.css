@@ -188,8 +188,9 @@ header.scrolled { box-shadow: 0 4px 30px rgba(0,0,0,0.1); }
 }
 
 .logo-lockup { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-badge { height: 55px; width: auto; }
-.logo-type { height: 40px; width: auto; }
+.logo-badge, .logo-badge-light, .logo-badge-dark { height: 55px; width: auto; }
+.logo-type, .logo-type-light, .logo-type-dark { height: 40px; width: auto; }
+.logo-badge-dark, .logo-type-dark { display: none; }
 
 nav ul { display: flex; gap: 32px; }
 nav a {
@@ -1487,5 +1488,312 @@ a.default-link:hover { color: var(--dark-blue) !important; }
     /* Overlay and backdrop elements */
     .overlay {
         background-color: rgba(13, 17, 23, 0.8);
+    }
+
+    /* ---- DARK MODE LEGIBILITY FIXES ---- */
+
+    /* Header background */
+    header {
+        background-color: #0d1117;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+    }
+    header.scrolled {
+        box-shadow: 0 4px 30px rgba(0,0,0,0.5);
+    }
+
+    /* Swap logos: hide light versions, show dark versions */
+    .logo-badge-light,
+    .logo-type-light {
+        display: none !important;
+    }
+    .logo-badge-dark,
+    .logo-type-dark {
+        display: block !important;
+    }
+
+    /* Top bar */
+    .top-bar {
+        background-color: #161b22;
+        color: rgba(255,255,255,0.85);
+    }
+    .top-bar a { color: rgba(255,255,255,0.85) !important; }
+
+    /* Page header / hero text */
+    .page-header {
+        background-color: #0a0e27;
+    }
+    .page-header h1,
+    .hero h1 {
+        color: #ffffff;
+    }
+    .page-header p,
+    .page-header .lead-text,
+    .hero p {
+        color: rgba(255,255,255,0.9);
+    }
+
+    /* Section headers and subtitles */
+    .section-header h2,
+    .section-header p {
+        color: #e8e8e8;
+    }
+    .section-subtitle,
+    .lead-text {
+        color: #d0d0d0;
+    }
+
+    /* Mission section */
+    .mission {
+        background-color: #0d1117;
+    }
+    .mission h2,
+    .mission p {
+        color: #e8e8e8;
+    }
+    .read-more-link {
+        color: #58a6ff;
+    }
+
+    /* Metaphor subtitle spans */
+    .metaphor-card .subtitle {
+        color: #8b949e;
+    }
+
+    /* Academics preview and two-col text */
+    .academics-preview,
+    .academic-text {
+        color: #e8e8e8;
+    }
+    .academics-preview {
+        background-color: #0d1117;
+    }
+    .academic-text h2 {
+        color: #e8e8e8;
+    }
+    .academic-text p,
+    .academic-text li {
+        color: #d0d0d0;
+    }
+    .academic-text li span {
+        color: #aab0b8;
+    }
+
+    /* Growth box */
+    .growth-box {
+        background-color: #1a2744;
+        color: #e8e8e8;
+    }
+    .growth-box h3 {
+        color: #e8e8e8;
+    }
+    .growth-box p {
+        color: #d0d0d0;
+    }
+
+    /* Spiritual section */
+    .spiritual-card h4 {
+        color: #58a6ff;
+    }
+
+    /* Graduate section */
+    .graduate-section {
+        background-color: #0a0e27;
+    }
+    .graduate-section h2,
+    .graduate-section h4 {
+        color: #e8e8e8;
+    }
+    .graduate-section p,
+    .graduate-outcome {
+        color: #d0d0d0;
+    }
+    .arrow-part {
+        color: #e8e8e8;
+    }
+    .part-number {
+        color: #e8e8e8;
+    }
+
+    /* Admissions CTA */
+    .admissions-cta {
+        background-color: #0a0e27;
+    }
+    .admissions-cta h2 {
+        color: #ffffff;
+    }
+    .admissions-cta p {
+        color: rgba(255,255,255,0.9);
+    }
+    .price-tag {
+        color: var(--archer-yellow);
+    }
+    .price-disclaimer {
+        color: rgba(255,255,255,0.7);
+    }
+
+    /* Founding CTA */
+    .founding-cta {
+        background-color: #161b22;
+    }
+    .founding-cta h2,
+    .founding-cta p {
+        color: #e8e8e8;
+    }
+
+    /* Values section */
+    .values-section {
+        background-color: #0a0e27;
+    }
+    .value-card {
+        background-color: #1c2128 !important;
+        border-color: #30363d !important;
+    }
+    .value-card h4 {
+        color: #58a6ff !important;
+    }
+    .value-card p {
+        color: #d0d0d0 !important;
+    }
+    .value-number {
+        color: #58a6ff;
+    }
+
+    /* Highlight box text */
+    .highlight-box h3 {
+        color: #58a6ff !important;
+    }
+    .highlight-box p,
+    .mission-text {
+        color: #d0d0d0;
+    }
+
+    /* Director's letter text on about page */
+    .content-section {
+        color: #e8e8e8;
+    }
+    .content-section p {
+        color: #d0d0d0;
+    }
+    .content-section h2 {
+        color: #e8e8e8;
+    }
+    .default-link {
+        color: #58a6ff;
+    }
+
+    /* Trivium stage cards */
+    .stage-card h3 {
+        color: #e8e8e8;
+    }
+    .stage-badge {
+        color: #0d1117;
+    }
+    .stage-card strong {
+        color: #e8e8e8;
+    }
+    .stage-card li {
+        color: #d0d0d0;
+    }
+    .active-stage {
+        border-color: #58a6ff;
+    }
+    .future-stage {
+        border-color: #30363d;
+        opacity: 0.85;
+    }
+    .subject-grid {
+        color: #d0d0d0;
+    }
+
+    /* Tier cards */
+    .tier-card h4 {
+        color: #58a6ff;
+    }
+    .tier-amount {
+        color: #e8e8e8 !important;
+    }
+    .tier-card p {
+        color: #d0d0d0;
+    }
+    .tier-card.featured {
+        background-color: #1a2744;
+        border-color: #58a6ff;
+    }
+
+    /* Hedgehog cards */
+    .hedgehog-card h3 {
+        color: #58a6ff;
+    }
+    .hedgehog-card p {
+        color: #d0d0d0;
+    }
+
+    /* Network strip */
+    .network-strip h3 {
+        color: #e8e8e8;
+    }
+    .network-strip p,
+    .network-strip a {
+        color: #d0d0d0;
+    }
+
+    /* Process cards */
+    .process-card h3 {
+        color: #58a6ff;
+    }
+
+    /* Footer */
+    footer {
+        background-color: #010409;
+    }
+    footer p,
+    footer a {
+        color: #8b949e;
+    }
+    footer a:hover {
+        color: var(--archer-yellow);
+    }
+    footer h4 {
+        color: #e8e8e8;
+    }
+    .footer-copyright {
+        border-top-color: #30363d;
+        color: #6e7681;
+    }
+    .footer-cta p {
+        color: #8b949e;
+    }
+
+    /* Button text visibility */
+    .btn-blue {
+        background-color: #58a6ff;
+        border-color: #58a6ff;
+        color: #0d1117;
+    }
+    .btn-blue:hover {
+        background-color: #79c0ff;
+        border-color: #79c0ff;
+        color: #0d1117;
+    }
+    .btn-outline-blue {
+        border-color: #58a6ff;
+        color: #58a6ff;
+    }
+    .btn-outline-blue:hover {
+        background-color: #58a6ff;
+        color: #0d1117;
+    }
+    .btn-outline {
+        border-color: rgba(255,255,255,0.6);
+        color: rgba(255,255,255,0.9);
+    }
+
+    /* All paragraphs with inline color styles that might be dark */
+    [style*="color: #555"],
+    [style*="color:#555"] {
+        color: #aab0b8 !important;
+    }
+    [style*="color: var(--dark-blue)"] {
+        color: #58a6ff !important;
     }
 }
