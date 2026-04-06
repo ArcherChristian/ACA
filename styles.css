@@ -212,6 +212,24 @@ nav a::after {
 nav a:hover::after, nav a.active::after { width: 100%; }
 nav a:hover { color: var(--archer-blue); }
 
+/* Give button in nav - prominent yellow CTA */
+nav a.nav-give {
+    background-color: var(--archer-yellow);
+    color: var(--dark-blue);
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-weight: 700;
+    letter-spacing: 0.8px;
+    transition: all 0.3s ease;
+}
+nav a.nav-give::after { display: none; }
+nav a.nav-give:hover {
+    background-color: #e6c700;
+    color: var(--dark-blue);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255,221,0,0.4);
+}
+
 /* --- MOBILE NAV --- */
 .mobile-toggle {
     display: none;
@@ -647,7 +665,7 @@ footer {
 .footer-grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 50px;
+    gap: 30px;
     margin-bottom: 50px;
 }
 .footer-col h4 {
@@ -1419,6 +1437,16 @@ a.default-link:hover { color: var(--dark-blue) !important; }
 
     .donate-nav:hover {
         color: #79c0ff;
+    }
+
+    nav a.nav-give {
+        background-color: var(--archer-yellow);
+        color: #0d1117;
+    }
+
+    nav a.nav-give:hover {
+        background-color: #e6c700;
+        color: #0d1117;
     }
 
     .btn-primary {

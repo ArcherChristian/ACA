@@ -33,7 +33,7 @@
                     <li><a href="../admissions/">Admissions</a></li>
                     <li><a href="../support/">Support</a></li>
                     <li><a href="../contact/" class="active">Contact</a></li>
-                    <li><a href="https://partner.archerchristian.org" target="_blank" rel="noopener">Give</a></li>
+                    <li><a href="https://partner.archerchristian.org" target="_blank" rel="noopener" class="nav-give">Give</a></li>
                 </ul>
             </nav>
 
@@ -82,30 +82,48 @@
 
                 <div class="form-box">
                     <h3>Send a Message</h3>
-                    <form action="mailto:info@archerchristian.org" method="POST" enctype="text/plain">
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Full Name">
+                    <form action="https://englewoodfamily.us10.list-manage.com/subscribe/post?u=fe26618b0f436d02dabd8e956&amp;id=09eba12d0f&amp;f_id=005b3ae2f0" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="mce-FNAME">First Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="mce-FNAME" name="FNAME" required placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="mce-LNAME">Last Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="mce-LNAME" name="LNAME" required placeholder="Last Name">
+                            </div>
                         </div>
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="name@example.com">
+                            <label for="mce-EMAIL">Email <span style="color:#c00;">*</span></label>
+                            <input type="email" id="mce-EMAIL" name="EMAIL" required placeholder="name@example.com">
                         </div>
                         <div class="form-group">
-                            <label for="interest">I am interested in...</label>
-                            <select id="interest" name="interest">
-                                <option value="enrollment">Enrolling a Student (K-2)</option>
-                                <option value="tour">Scheduling a Tour</option>
-                                <option value="partnership">Donating / Partnership</option>
-                                <option value="employment">Employment</option>
-                                <option value="other">Other</option>
-                            </select>
+                            <label for="mce-PHONE">Phone</label>
+                            <input type="tel" id="mce-PHONE" name="PHONE" placeholder="(312) 000-0000">
                         </div>
                         <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="How can we help you?"></textarea>
+                            <label for="mce-STREET">Street Address</label>
+                            <input type="text" id="mce-STREET" name="STREET" placeholder="Street Address">
                         </div>
-                        <button type="submit" class="btn btn-blue" style="width: 100%;">Send Message</button>
+                        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="mce-CITY">City</label>
+                                <input type="text" id="mce-CITY" name="CITY" placeholder="Chicago">
+                            </div>
+                            <div class="form-group">
+                                <label for="mce-STATE">State</label>
+                                <input type="text" id="mce-STATE" name="STATE" placeholder="IL">
+                            </div>
+                            <div class="form-group">
+                                <label for="mce-ZIP">Zip</label>
+                                <input type="text" id="mce-ZIP" name="ZIP" placeholder="60621">
+                            </div>
+                        </div>
+                        <!-- Honeypot anti-spam -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="b_fe26618b0f436d02dabd8e956_09eba12d0f" tabindex="-1" value="">
+                        </div>
+                        <button type="submit" name="subscribe" class="btn btn-blue" style="width: 100%;">Send Message</button>
                     </form>
                 </div>
 
