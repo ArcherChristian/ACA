@@ -84,7 +84,8 @@
 
                 <div class="form-box">
                     <h3>Send a Message</h3>
-                    <form action="https://submit.jotform.com/submit/260955896416068" method="post" id="contact-form" name="contact-form" accept-charset="utf-8" autocomplete="on">
+                    <iframe name="contact-hidden-frame" style="display:none;"></iframe>
+                    <form action="https://submit.jotform.com/submit/260955896416068" method="post" id="contact-form" target="contact-hidden-frame" accept-charset="utf-8" autocomplete="on">
                         <input type="hidden" name="formID" value="260955896416068">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group">
@@ -110,7 +111,7 @@
                         </div>
                         <div class="form-group" style="margin-top: 5px;">
                             <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
-                                <input type="checkbox" name="q7_newsletter" value="Yes" style="width: auto; accent-color: var(--archer-blue);">
+                                <input type="checkbox" name="q7_newsletter" value="Yes" checked style="width: auto; accent-color: var(--archer-blue);">
                                 Sign me up for the ACA newsletter
                             </label>
                         </div>
@@ -120,6 +121,17 @@
                         </div>
                         <button type="submit" class="btn btn-blue" style="width: 100%; margin-top: 10px;">Send Message</button>
                     </form>
+                    <script>
+                    document.getElementById('contact-form').addEventListener('submit', function() {
+                        var form = this;
+                        setTimeout(function() {
+                            alert('Submitted. Thank you.');
+                            form.reset();
+                            // Re-check the newsletter box after reset
+                            form.querySelector('[name="q7_newsletter"]').checked = true;
+                        }, 500);
+                    });
+                    </script>
                 </div>
 
             </div>

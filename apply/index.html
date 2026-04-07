@@ -73,7 +73,8 @@
 
                 <div class="form-box">
                     <h3>Family Information</h3>
-                    <form action="https://submit.jotform.com/submit/260956227280056" method="post" id="apply-form" name="apply-form" accept-charset="utf-8" autocomplete="on">
+                    <iframe name="apply-hidden-frame" style="display:none;"></iframe>
+                    <form action="https://submit.jotform.com/submit/260956227280056" method="post" id="apply-form" target="apply-hidden-frame" accept-charset="utf-8" autocomplete="on">
                         <input type="hidden" name="formID" value="260956227280056">
                         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
                             <div class="form-group">
@@ -116,6 +117,15 @@
                         </div>
                         <button type="submit" class="btn btn-yellow" style="width: 100%; margin-top: 10px;">Submit Application</button>
                     </form>
+                    <script>
+                    document.getElementById('apply-form').addEventListener('submit', function() {
+                        var form = this;
+                        setTimeout(function() {
+                            alert('Submitted. Thank you.');
+                            form.reset();
+                        }, 500);
+                    });
+                    </script>
                 </div>
 
             </div>
