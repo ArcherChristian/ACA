@@ -155,6 +155,16 @@ p + p { margin-top: 1em; }
     color: var(--white);
     transform: translateY(-2px);
 }
+.btn-outline-white {
+    background-color: transparent;
+    border: 2px solid rgba(255,255,255,0.8);
+    color: var(--white);
+}
+.btn-outline-white:hover {
+    background-color: rgba(255,255,255,0.15);
+    color: var(--white);
+    transform: translateY(-2px);
+}
 
 /* --- TOP BAR --- */
 .top-bar {
@@ -458,22 +468,30 @@ nav a.nav-give:hover {
 
 /* Decorative arrow line */
 .arrow-line {
-    display: block;
-    height: 4px;
-    background: linear-gradient(90deg, var(--archer-yellow), var(--archer-blue), var(--archer-yellow));
-    border-radius: 2px;
+    display: flex;
+    align-items: center;
     max-width: 800px;
     margin: 50px auto 30px;
     position: relative;
+    height: 20px;
 }
-.arrow-line::after {
-    content: '';
-    position: absolute;
-    right: -12px; top: -8px;
-    width: 0; height: 0;
-    border-left: 16px solid var(--archer-yellow);
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
+.arrow-line .arrow-fletching {
+    color: var(--archer-yellow);
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1;
+    margin-right: -2px;
+}
+.arrow-line .arrow-shaft {
+    flex: 1;
+    height: 4px;
+    background: linear-gradient(90deg, var(--archer-yellow), var(--archer-blue), var(--archer-yellow));
+    border-radius: 2px;
+}
+.arrow-line .arrow-point {
+    color: var(--archer-yellow);
+    font-size: 1.2rem;
+    margin-left: -2px;
 }
 
 .graduate-outcome {
@@ -665,7 +683,7 @@ footer {
 }
 .footer-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 30px;
     margin-bottom: 50px;
 }
@@ -1245,7 +1263,7 @@ a.default-link:hover { color: var(--dark-blue) !important; }
     justify-content: center;
     font-family: 'Work Sans', sans-serif;
     font-size: 0.8rem;
-    color: #999;
+    color: #555;
     font-weight: 600;
 }
 
@@ -1746,22 +1764,31 @@ a.default-link:hover { color: var(--dark-blue) !important; }
     footer {
         background-color: #010409;
     }
-    footer p,
-    footer a {
-        color: #8b949e;
+    footer p {
+        color: #aab0b8;
     }
-    footer a:hover {
+    footer a {
+        color: #c9d1d9;
+    }
+    .footer-col ul li a {
+        color: #c9d1d9;
+    }
+    footer a:hover,
+    .footer-col ul li a:hover {
         color: var(--archer-yellow);
     }
     footer h4 {
-        color: #e8e8e8;
+        color: #ffffff;
     }
     .footer-copyright {
         border-top-color: #30363d;
-        color: #6e7681;
+        color: #8b949e;
     }
     .footer-cta p {
-        color: #8b949e;
+        color: #aab0b8;
+    }
+    .footer-cta h4 {
+        color: #ffffff;
     }
 
     /* Button text visibility */
