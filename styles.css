@@ -1777,8 +1777,9 @@ a.default-link:hover { color: var(--dark-blue) !important; }
     .footer-col ul li a:hover {
         color: var(--archer-yellow);
     }
-    footer h4 {
-        color: #ffffff;
+    footer h4,
+    .footer-col h4 {
+        color: #ffffff !important;
     }
     .footer-copyright {
         border-top-color: #30363d;

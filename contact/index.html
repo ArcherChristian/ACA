@@ -84,16 +84,42 @@
 
                 <div class="form-box">
                     <h3>Send a Message</h3>
-                    <iframe
-                        id="JotFormIFrame-260955896416068"
-                        title="Contact Form for Archer Christian Academy"
-                        src="https://form.jotform.com/260955896416068"
-                        frameborder="0"
-                        scrolling="no"
-                        style="width: 100%; min-height: 700px; border: none; overflow: hidden;">
-                    </iframe>
-                    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-                    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-260955896416068']", "https://form.jotform.com/")</script>
+                    <form action="https://submit.jotform.com/submit/260955896416068" method="post" id="contact-form" name="contact-form" accept-charset="utf-8" autocomplete="on">
+                        <input type="hidden" name="formID" value="260955896416068">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="cf-fname">First Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="cf-fname" name="q2_firstName" required placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="cf-lname">Last Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="cf-lname" name="q3_lastName" required placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="cf-email">Email <span style="color:#c00;">*</span></label>
+                            <input type="email" id="cf-email" name="q4_emailAddress" required placeholder="name@example.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="cf-phone">Phone</label>
+                            <input type="tel" id="cf-phone" name="q5_phoneNumber[full]" placeholder="(312) 000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="cf-note">Note</label>
+                            <textarea id="cf-note" name="q6_note" rows="4" placeholder="How can we help you? Tell us about your interest in Archer Christian Academy."></textarea>
+                        </div>
+                        <div class="form-group" style="margin-top: 5px;">
+                            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer;">
+                                <input type="checkbox" name="q7_newsletter" value="Yes" style="width: auto; accent-color: var(--archer-blue);">
+                                Sign me up for the ACA newsletter
+                            </label>
+                        </div>
+                        <!-- Honeypot anti-spam -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" value="">
+                        </div>
+                        <button type="submit" class="btn btn-blue" style="width: 100%; margin-top: 10px;">Send Message</button>
+                    </form>
                 </div>
 
             </div>

@@ -73,16 +73,49 @@
 
                 <div class="form-box">
                     <h3>Family Information</h3>
-                    <iframe
-                        id="JotFormIFrame-260956227280056"
-                        title="Family Application Interest Form"
-                        src="https://form.jotform.com/260956227280056"
-                        frameborder="0"
-                        scrolling="no"
-                        style="width: 100%; min-height: 900px; border: none; overflow: hidden;">
-                    </iframe>
-                    <script src="https://cdn.jotfor.ms/s/umd/latest/for-form-embed-handler.js"></script>
-                    <script>window.jotformEmbedHandler("iframe[id='JotFormIFrame-260956227280056']", "https://form.jotform.com/")</script>
+                    <form action="https://submit.jotform.com/submit/260956227280056" method="post" id="apply-form" name="apply-form" accept-charset="utf-8" autocomplete="on">
+                        <input type="hidden" name="formID" value="260956227280056">
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="af-fname">Parent First Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="af-fname" name="q2_parentFirst" required placeholder="First Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="af-lname">Parent Last Name <span style="color:#c00;">*</span></label>
+                                <input type="text" id="af-lname" name="q3_parentLast" required placeholder="Last Name">
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                            <div class="form-group">
+                                <label for="af-email">Email Address <span style="color:#c00;">*</span></label>
+                                <input type="email" id="af-email" name="q4_emailAddress" required placeholder="name@example.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="af-phone">Phone Number</label>
+                                <input type="tel" id="af-phone" name="q5_phoneNumber[full]" placeholder="(312) 000-0000">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="af-students">Number of Students</label>
+                            <select id="af-students" name="q8_numberOfStudents" style="font-family: inherit;">
+                                <option value="">Select...</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4+">4+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="af-details">Names and Ages of Students</label>
+                            <p style="font-size: 0.8rem; margin-bottom: 5px; color: #666;">Include student name(s), age(s), grade(s) for Fall 2027, home church, and any questions. Example: Titus (Age 5, Kindergarten), Faith (Age 7, 2nd Grade). We attend Grace Community Church.</p>
+                            <textarea id="af-details" name="q6_namesAnd" rows="5" placeholder="Student details, home church, and any questions..."></textarea>
+                        </div>
+                        <!-- Honeypot anti-spam -->
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="website" tabindex="-1" value="">
+                        </div>
+                        <button type="submit" class="btn btn-yellow" style="width: 100%; margin-top: 10px;">Submit Application</button>
+                    </form>
                 </div>
 
             </div>
