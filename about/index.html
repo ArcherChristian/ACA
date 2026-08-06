@@ -8,7 +8,7 @@
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="https://englewoodfamily.org/archer/archiconbk.svg?v=1.0" media="(prefers-color-scheme: light)">
@@ -17,18 +17,16 @@
 <body>
 
     <div class="top-bar">
-        Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="../contact/" style="color: inherit; text-decoration: underline;">Inquire Today</a>
+        Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="../contact/">Inquire Today</a>
     </div>
 
     <header>
         <div class="nav-container">
-            <a href="../" class="logo-lockup">
-                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Badge" class="logo-badge logo-badge-light">
-                <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Badge" class="logo-badge logo-badge-dark">
-                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type logo-type-light">
-                <img src="../images/ACA LogoType RGB Negative.png" alt="Archer Christian Academy" class="logo-type logo-type-dark">
+            <a href=".././" class="logo-lockup">
+                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Christian Academy badge" class="logo-badge">
+                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type">
             </a>
-            <nav>
+            <nav id="site-nav">
                 <ul>
                     <li><a href="../about/" class="active">About</a></li>
                     <li><a href="../academics/">Academics</a></li>
@@ -38,47 +36,67 @@
                     <li><a href="../donate/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
-            <a href="../apply/" class="btn btn-yellow">Apply for K&ndash;2</a>
+            <a href="../apply/" class="btn btn-yellow nav-apply">Apply for K&ndash;2</a>
+            <button class="nav-toggle" aria-label="Menu" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <section class="page-header">
         <div class="container">
+            <span class="kicker">About Archer</span>
             <h1>Who We Are</h1>
-            <p class="lead-text">Rooted in Scripture and shaped by classical tradition, we seek to raise a generation of wise, courageous leaders for the renewal of Englewood.</p>
+            <p class="lead-text">Rooted in Scripture and shaped by classical tradition&mdash;raising wise, courageous leaders for the renewal of Englewood.</p>
         </div>
     </section>
 
-    <!-- ======= DIRECTOR'S LETTER ======= -->
+    <!-- ======= DIRECTOR'S LETTER (EXCERPT) ======= -->
     <section class="content-section">
         <div class="container">
             <div class="two-col">
                 <div class="reveal-left">
-                    <h2>A Letter from the Director</h2>
-                    <p>Living and working in Englewood means becoming intimately familiar with a grief that should not be. I have stood with too many families around caskets that should have been graduation stages, listening to their weeping as tears silently roll down my own cheeks at the loss of life.</p>
-                    <p>For over four decades, through <a href="https://englewoodfamily.org" class="default-link">Englewood Family Outreach</a>, our ministry has served families and young people in this community with compassion and faith. That work has been deeply meaningful, yet over time, we began to see its limits. We were often stepping in only after lives had already been shaped by difficult circumstances.</p>
-                    <p><strong>The thought hit me: What if our calling was not just to fix, but to aim?</strong> What if our ministry could become the Archer&mdash;the steady hand that chooses a better target, draws the bow with discipline, and ensures a truer aim from the very start?</p>
-                    <p>This vision is Archer Christian Academy. For our families, this is our commitment. Your children are worth fighting for.</p>
-                    <p style="font-family:'Libre Baskerville'; font-style:italic; margin-top: 24px;">In His Service,<br>Daniel M. Bair, Executive Director</p>
+                    <span class="kicker">A Letter from the Director</span>
+                    <h2>Not Just to Fix, but to Aim</h2>
+                    <p>Living and working in Englewood means becoming intimately familiar with a grief that should not be. I have stood with too many families around caskets that should have been graduation stages.</p>
+                    <p>For over four decades, our ministry has served families here with compassion and faith. Yet we kept arriving after lives had already been shaped by broken systems. Then a question changed everything: <strong>what if our calling was not just to fix, but to aim?</strong></p>
+                    <p>This vision is Archer Christian Academy. For our families, this is our commitment: your children are worth fighting for.</p>
+                    <div class="letter-sig">
+                        <span class="sig-name">Daniel M. Bair</span>
+                        <span class="sig-role">Executive Director</span>
+                    </div>
+                    <a href="letter/" class="read-more-link">Read the full letter &rarr;</a>
                 </div>
-                <div class="highlight-box reveal-right">
-                    <h3 style="color: var(--archer-blue);">Our Purpose</h3>
-                    <p class="mission-text">To cultivate godly wisdom, virtue, and courage so that graduates are launched like arrows: strong in character, true in aim, and ready to serve.</p>
+                <div class="arch-frame reveal-right">
+                    <div class="arch-img"><img src="../images/student-garden.jpg" alt="A smiling young student standing in a garden courtyard" style="object-position: 50% 30%;"></div>
+                    <p class="img-caption">Every child, launched with purpose</p>
+                </div>
+            </div>
 
-                    <h3 style="margin-top: 30px; color: var(--archer-blue);">Our Vision</h3>
-                    <p class="mission-text">To see Englewood renewed by the hope of the Gospel, lived out by generations of servant leaders who build flourishing families, churches, and communities.</p>
-
-                    <h3 style="margin-top: 30px; color: var(--archer-blue);">Our Mission</h3>
-                    <p class="mission-text">To forge students as whole persons&mdash;mind, body, and soul&mdash;through a Christ-centered classical education.</p>
+            <div class="pvm-grid stagger">
+                <div class="pvm-card reveal">
+                    <h3>Our Purpose</h3>
+                    <p>To cultivate godly wisdom, virtue, and courage so that graduates are launched like arrows: strong in character, true in aim, and ready to serve.</p>
+                </div>
+                <div class="pvm-card reveal">
+                    <h3>Our Vision</h3>
+                    <p>To see Englewood renewed by the hope of the Gospel, lived out by generations of servant leaders who build flourishing families, churches, and communities.</p>
+                </div>
+                <div class="pvm-card reveal">
+                    <h3>Our Mission</h3>
+                    <p>To forge students as whole persons&mdash;mind, body, and soul&mdash;through a Christ-centered classical education.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- ======= VALUES ======= -->
-    <section class="values-section">
+    <section class="values-section on-dark">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 50px;" class="reveal">Our Values</h2>
+            <div class="section-head reveal">
+                <span class="kicker">What Guides Us</span>
+                <h2>Our Values</h2>
+            </div>
             <div class="values-grid stagger">
                 <div class="value-card reveal">
                     <span class="value-number">01</span>
@@ -98,62 +116,51 @@
                 <div class="value-card reveal">
                     <span class="value-number">04</span>
                     <h4>Hope for Englewood</h4>
-                    <p>We believe God&rsquo;s light can transform even the darkest places. Every child launched from Archer is a sign of renewal for their family, church, and community.</p>
+                    <p>Every child launched from Archer is a sign of renewal for their family, church, and community.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ======= GUIDING METAPHOR DEEP DIVE ======= -->
-    <section class="content-section" style="background: var(--cream);">
+    <!-- ======= GUIDING METAPHOR ======= -->
+    <section class="metaphor-section">
         <div class="container">
-            <div class="section-header reveal">
-                <h2>Our Guiding Metaphor</h2>
-                <p>Our entire methodology is contained within the relationship between the Archer and the Arrow.</p>
+            <div class="section-head reveal">
+                <span class="kicker">Our Guiding Metaphor</span>
+                <h2>The Archer and the Arrow</h2>
+                <p>Our entire methodology is contained in the relationship between the Archer and the Arrow.</p>
             </div>
 
-            <div class="metaphor-grid stagger" style="margin-bottom: 60px;">
+            <div class="metaphor-grid stagger">
                 <div class="metaphor-card reveal">
-                    <div class="icon">
-                        <!-- School / Building icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/><path d="M12 7v2"/></svg>
-                    </div>
+                    <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-4h6v4"/><path d="M9 10h.01M15 10h.01M9 14h.01M15 14h.01"/><path d="M12 7v2"/></svg></div>
                     <span class="subtitle">The Academy</span>
                     <h3>The Archer</h3>
-                    <p>The school itself is the Archer, choosing the targets, timing, and stance, and activating the bow with discipline and a servant&rsquo;s heart.</p>
+                    <p>The steady hand that chooses a better target and draws the bow&mdash;with discipline and a servant&rsquo;s heart.</p>
                 </div>
                 <div class="metaphor-card reveal">
-                    <div class="icon">
-                        <!-- Open Book icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
-                    </div>
+                    <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg></div>
                     <span class="subtitle">The Educational Model</span>
                     <h3>The Bow</h3>
-                    <p>Our educational model is the bow, hewn from a classical legacy. It takes the form of an open book, storing the potential energy and setting the line of flight. Its pages carry the curriculum.</p>
+                    <p>Hewn from a classical legacy and shaped like an open book&mdash;storing the energy and setting the line of flight.</p>
                 </div>
                 <div class="metaphor-card reveal">
-                    <div class="icon">
-                        <!-- Graduation Cap icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L1 8l11 6 11-6-11-6z"/><path d="M5 11v5c0 2 3.5 4 7 4s7-2 7-4v-5"/><path d="M22 8v6"/></svg>
-                    </div>
+                    <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L1 8l11 6 11-6-11-6z"/><path d="M5 11v5c0 2 3.5 4 7 4s7-2 7-4v-5"/><path d="M22 8v6"/></svg></div>
                     <span class="subtitle">The Student</span>
                     <h3>The Arrow</h3>
-                    <p>The student is the arrow, prepared, aimed, and launched with care, polished for God&rsquo;s purposes (Isaiah 49:2) and sent out like arrows in the hand of a warrior (Psalm 127:4).</p>
+                    <p>Prepared, aimed, and launched with care&mdash;polished for God&rsquo;s purposes and sent out to bring renewal (Isaiah 49:2).</p>
                 </div>
                 <div class="metaphor-card reveal">
-                    <div class="icon">
-                        <!-- Classical Lamp of Learning icon -->
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6"/><path d="M10 21v-3a5 5 0 01-3-4.5C7 10.5 9.2 8 12 8s5 2.5 5 5.5A5 5 0 0114 18v3"/><path d="M12 2v3"/><path d="M4.2 5.2l2.1 2.1"/><path d="M19.8 5.2l-2.1 2.1"/><path d="M2 12h3"/><path d="M19 12h3"/></svg>
-                    </div>
+                    <div class="icon"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21h6"/><path d="M10 21v-3a5 5 0 01-3-4.5C7 10.5 9.2 8 12 8s5 2.5 5 5.5A5 5 0 0114 18v3"/><path d="M12 2v3"/><path d="M4.2 5.2l2.1 2.1"/><path d="M19.8 5.2l-2.1 2.1"/><path d="M2 12h3"/><path d="M19 12h3"/></svg></div>
                     <span class="subtitle">The Teachers</span>
                     <h3>The String</h3>
-                    <p>Our teachers are the vital connection. They are mentors who bear the tension of high standards and transfer the bow&rsquo;s energy to the arrow with care and precision.</p>
+                    <p>Mentors who bear the tension of high standards and transfer the bow&rsquo;s energy to the arrow with precision.</p>
                 </div>
             </div>
 
-            <div style="text-align: center; max-width: 600px; margin: 0 auto;" class="reveal">
-                <h3 style="font-size: 1.4rem; margin-bottom: 12px; color: var(--archer-blue);">Our Mantra</h3>
-                <p style="font-size: 1.3rem; font-weight: 700; color: var(--dark-blue); font-family: 'Work Sans', sans-serif;">Launched true, for God and community.</p>
+            <div class="mantra-line reveal">
+                <span class="motto-label">Our Mantra</span>
+                <span class="motto-text">Launched true, for God and community.</span>
             </div>
         </div>
     </section>
@@ -161,8 +168,8 @@
     <!-- ======= PORTRAIT OF GRADUATE ======= -->
     <section class="graduate-section">
         <div class="container">
-            <h2 class="reveal">The Portrait of a Graduate: The Arrow</h2>
-            <p class="section-subtitle reveal">Every graduate is an arrow launched not for self-glory, but to bring renewal. They are shaped and sharpened for lasting impact.</p>
+            <h2 class="reveal">The Portrait of a Graduate</h2>
+            <p class="section-subtitle reveal">Every graduate is an arrow launched not for self-glory, but to bring renewal&mdash;shaped and sharpened for lasting impact.</p>
 
             <div class="arrow-anatomy stagger">
                 <div class="arrow-part reveal">
@@ -183,7 +190,6 @@
             </div>
 
             <div class="arrow-line reveal">
-                
                 <span class="arrow-shaft"></span>
                 <span class="arrow-point">&#9654;</span>
             </div>
@@ -195,11 +201,26 @@
         </div>
     </section>
 
+    <!-- ======= NINE WORDS TEASER ======= -->
+    <section class="founding-cta reveal">
+        <div class="container">
+            <span class="kicker">The Filter for Every Decision</span>
+            <h2>Nine Words, Unmistakably Ours</h2>
+            <p>True. Disciplined. Discerning. Whole-Person. Classical. Known. Christ. Stretched-and-Loved. Faithful. Nine words guide every choice we make&mdash;from hiring to curriculum to how we treat a single child on a hard day.</p>
+            <div class="cta-buttons">
+                <a href="../our-words/" class="btn btn-blue">Explore the Nine Words</a>
+            </div>
+        </div>
+    </section>
+
     <!-- ======= STATEMENT OF FAITH ======= -->
-    <section class="content-section" style="background-color: var(--off-white);">
+    <section class="content-section" style="background-color: var(--paper);">
         <div class="container" style="max-width: 800px;">
-            <h2 style="text-align: center; margin-bottom: 16px;" class="reveal">Statement of Faith</h2>
-            <p style="text-align: center; margin-bottom: 40px; color: #555;" class="reveal">We are unapologetically Christian. Our faith is not confined to a Bible class but is the foundation of everything we do.</p>
+            <div class="section-head reveal" style="margin-bottom: 36px;">
+                <span class="kicker">Our Foundation</span>
+                <h2>Statement of Faith</h2>
+                <p>We are unapologetically Christian. Our faith is not confined to a Bible class but is the foundation of everything we do.</p>
+            </div>
 
             <div class="accordion reveal">
                 <details>
@@ -244,7 +265,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div style="margin-bottom: 15px;">
-                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer" style="height: 50px; width: auto; opacity: 0.8;">
+                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Christian Academy" style="height: 50px; width: auto; opacity: 0.85;">
                     </div>
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="mailto:daniel@archerchristian.org">daniel@archerchristian.org</a></p>
@@ -255,7 +276,8 @@
                     <h4>Our School</h4>
                     <ul>
                         <li><a href="../about/">About</a></li>
-                        <li><a href="../about/">Our Story</a></li>
+                        <li><a href="../about/letter/">A Letter from the Director</a></li>
+                        <li><a href="../our-words/">Our Nine Words</a></li>
                         <li><a href="../contact/">Employment</a></li>
                         <li><a href="../contact/">Contact Us</a></li>
                     </ul>
@@ -272,13 +294,13 @@
                 <div class="footer-col">
                     <div class="footer-cta">
                         <h4>Support the Mission</h4>
-                        <p>Help us make elite Classical Christian education accessible to Englewood.</p>
+                        <p>Help us make an elite classical Christian education accessible to Englewood.</p>
                         <a href="../donate/" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
-                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/" style="color: inherit; text-decoration: underline;">Non-Discriminatory Policy</a>
+                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/">Non-Discriminatory Policy</a>
             </div>
         </div>
     </footer>
@@ -287,8 +309,11 @@
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
     window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50); });
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
     </script>
 
 </body>

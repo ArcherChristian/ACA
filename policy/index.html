@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Non-Discriminatory Policy | Archer Christian Academy</title>
-    
+    <meta name="description" content="Notice of nondiscriminatory policy as to students at Archer Christian Academy.">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="https://englewoodfamily.org/archer/archiconbk.svg?v=1.0" media="(prefers-color-scheme: light)">
     <link rel="icon" href="https://englewoodfamily.org/archer/archiconwt.svg?v=1.0" media="(prefers-color-scheme: dark)">
@@ -16,19 +17,16 @@
 <body>
 
     <div class="top-bar">
-        Launching Fall 2027 &mdash; Grades K&ndash;2 | <a href="../contact/" style="color: inherit; text-decoration: underline;">Inquire Today</a>
+        Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="../contact/">Inquire Today</a>
     </div>
 
     <header>
         <div class="nav-container">
-            <a href="../" class="logo-lockup">
-                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Badge" class="logo-badge logo-badge-light">
-                <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Badge" class="logo-badge logo-badge-dark">
-                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type logo-type-light">
-                <img src="../images/ACA LogoType RGB Negative.png" alt="Archer Christian Academy" class="logo-type logo-type-dark">
+            <a href=".././" class="logo-lockup">
+                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Christian Academy badge" class="logo-badge">
+                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type">
             </a>
-
-            <nav>
+            <nav id="site-nav">
                 <ul>
                     <li><a href="../about/">About</a></li>
                     <li><a href="../academics/">Academics</a></li>
@@ -38,30 +36,37 @@
                     <li><a href="../donate/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
-
-            <a href="../apply/" class="btn btn-yellow">Apply for K-2</a>
+            <a href="../apply/" class="btn btn-yellow nav-apply">Apply for K&ndash;2</a>
+            <button class="nav-toggle" aria-label="Menu" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
-    <section class="content-section">
-        <div class="container" style="max-width: 800px;">
-            <h1>Notice of Nondiscriminatory Policy As To Students</h1>
-            
-            <div style="background-color: var(--off-white); padding: 40px; border-left: 5px solid var(--archer-blue); margin-top: 30px; font-size: 1.1rem; line-height: 1.8;">
-                <p>Archer Christian Academy admits students of any race, color, and national or ethnic origin to all the rights, privileges, programs, and activities generally accorded or made available to students at the school.</p>
-                <br>
-                <p>It does not discriminate on the basis of race, color, or national or ethnic origin in the administration of its educational policies, admissions policies, scholarship and loan programs, and athletic and other school-administered programs.</p>
-            </div>
-
+    <section class="page-header">
+        <div class="container">
+            <span class="kicker">Policy</span>
+            <h1>Nondiscriminatory Policy</h1>
+            <p class="lead-text">Notice of Nondiscriminatory Policy As To Students</p>
         </div>
     </section>
 
+    <section class="content-section">
+        <div class="container" style="max-width: 800px;">
+            <div class="highlight-box" style="font-size: 1.05rem; line-height: 1.8;">
+                <p>Archer Christian Academy admits students of any race, color, and national or ethnic origin to all the rights, privileges, programs, and activities generally accorded or made available to students at the school.</p>
+                <p>It does not discriminate on the basis of race, color, or national or ethnic origin in the administration of its educational policies, admissions policies, scholarship and loan programs, and athletic and other school-administered programs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======= FOOTER ======= -->
     <footer>
         <div class="container">
             <div class="footer-grid">
                 <div class="footer-col">
                     <div style="margin-bottom: 15px;">
-                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer" style="height: 50px; width: auto; opacity: 0.8;">
+                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Christian Academy" style="height: 50px; width: auto; opacity: 0.85;">
                     </div>
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="mailto:daniel@archerchristian.org">daniel@archerchristian.org</a></p>
@@ -72,7 +77,8 @@
                     <h4>Our School</h4>
                     <ul>
                         <li><a href="../about/">About</a></li>
-                        <li><a href="../about/">Our Story</a></li>
+                        <li><a href="../about/letter/">A Letter from the Director</a></li>
+                        <li><a href="../our-words/">Our Nine Words</a></li>
                         <li><a href="../contact/">Employment</a></li>
                         <li><a href="../contact/">Contact Us</a></li>
                     </ul>
@@ -89,13 +95,13 @@
                 <div class="footer-col">
                     <div class="footer-cta">
                         <h4>Support the Mission</h4>
-                        <p>Help us make elite Classical Christian education accessible to Englewood.</p>
+                        <p>Help us make an elite classical Christian education accessible to Englewood.</p>
                         <a href="../donate/" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
-                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/" style="color: inherit; text-decoration: underline;">Non-Discriminatory Policy</a>
+                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/">Non-Discriminatory Policy</a>
             </div>
         </div>
     </footer>
@@ -104,8 +110,11 @@
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
     window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50); });
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
     </script>
 
 </body>

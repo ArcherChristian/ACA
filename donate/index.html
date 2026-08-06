@@ -4,11 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Give | Archer Christian Academy</title>
-    <meta name="description" content="Partner with Archer Christian Academy through a financial gift. Your generosity helps bring elite classical Christian education to Englewood.">
+    <meta name="description" content="Partner with Archer Christian Academy through a financial gift. Your generosity helps bring classical Christian education to Englewood.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Work+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles.css">
     <link rel="icon" href="https://englewoodfamily.org/archer/archiconbk.svg?v=1.0" media="(prefers-color-scheme: light)">
@@ -17,18 +17,16 @@
 <body>
 
     <div class="top-bar">
-        Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="../contact/" style="color: inherit; text-decoration: underline;">Inquire Today</a>
+        Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="../contact/">Inquire Today</a>
     </div>
 
     <header>
         <div class="nav-container">
-            <a href="../" class="logo-lockup">
-                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Badge" class="logo-badge logo-badge-light">
-                <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Badge" class="logo-badge logo-badge-dark">
-                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type logo-type-light">
-                <img src="../images/ACA LogoType RGB Negative.png" alt="Archer Christian Academy" class="logo-type logo-type-dark">
+            <a href=".././" class="logo-lockup">
+                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Christian Academy badge" class="logo-badge">
+                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type">
             </a>
-            <nav>
+            <nav id="site-nav">
                 <ul>
                     <li><a href="../about/">About</a></li>
                     <li><a href="../academics/">Academics</a></li>
@@ -38,36 +36,40 @@
                     <li><a href="../donate/" class="nav-give active">Give</a></li>
                 </ul>
             </nav>
-            <a href="../apply/" class="btn btn-yellow">Apply for K&ndash;2</a>
+            <a href="../apply/" class="btn btn-yellow nav-apply">Apply for K&ndash;2</a>
+            <button class="nav-toggle" aria-label="Menu" aria-controls="site-nav">
+                <span></span><span></span><span></span>
+            </button>
         </div>
     </header>
 
     <section class="page-header">
         <div class="container">
+            <span class="kicker">Give</span>
             <h1>Give to Archer</h1>
-            <p class="lead-text">Every gift launches a student true. Your generosity makes elite classical Christian education accessible to the families of Englewood.</p>
+            <p class="lead-text">Every gift launches a student true. Your generosity makes a classical Christian education accessible to the families of Englewood.</p>
         </div>
     </section>
 
     <!-- ======= DONATION FORM ======= -->
     <section class="content-section">
         <div class="container">
-            <div class="two-col">
+            <div class="two-col" style="align-items: start;">
 
                 <div class="reveal-left">
                     <h2>Your Gift at Work</h2>
-                    <p>Archer Christian Academy is building something rare&mdash;a school where rigorous academics, deep character formation, and the Gospel meet in one of Chicago&rsquo;s most under-resourced communities. Because we ask families to contribute only <strong>$100 per month</strong>, we depend on generous partners to bridge the gap between tuition and the true cost of a world-class education.</p>
+                    <p>Archer Christian Academy is building something rare&mdash;a school where rigorous academics, deep character formation, and the Gospel meet in one of Chicago&rsquo;s most under-resourced communities. Because every family&rsquo;s tuition is set by what they are able to contribute, generous partners bridge the gap between tuition and the true cost of a world-class education.</p>
 
                     <div class="highlight-box" style="margin-top: 30px; margin-bottom: 30px;">
                         <h4 style="color: var(--dark-blue); margin-bottom: 10px;">Partnership Levels</h4>
-                        <ul style="margin-left: 20px; line-height: 2;">
+                        <ul style="margin-left: 20px; line-height: 2; list-style: disc;">
                             <li><strong>Arrow Partner &mdash; $5,000:</strong> Covers key administrative and legal costs.</li>
                             <li><strong>Bow Partner &mdash; $10,000:</strong> Covers a full month of teacher salary.</li>
-                            <li><strong>Archer Partner &mdash; $25,000:</strong> A foundational gift&mdash;one-seventh of our pre-launch fund.</li>
+                            <li><strong>Archer Partner &mdash; $25,000:</strong> A foundational gift.</li>
                         </ul>
                     </div>
 
-                    <p>All gifts are tax-deductible. Archer Christian Academy is a ministry of <a href="https://englewoodfamily.org" target="_blank" rel="noopener" class="default-link"><strong>Englewood Family Outreach</strong></a>, a registered 501(c)(3) nonprofit organization.</p>
+                    <p>All gifts are tax-deductible. Archer Christian Academy is a ministry of <a href="https://englewoodfamily.org" target="_blank" rel="noopener" class="default-link"><strong>Urban Youth Outreach</strong></a>, a registered 501(c)(3) nonprofit organization.</p>
 
                     <p style="margin-top: 20px;"><a href="../support/" class="default-link" style="text-decoration: underline;">Learn more about our vision and how your investment makes an impact &rarr;</a></p>
                 </div>
@@ -78,6 +80,7 @@
                     <div style="background: #fff; border-radius: 6px; padding: 10px; margin: 0 -10px;">
                         <iframe
                             src="https://secure.lglforms.com/form_engine/s/LcLqT_k9rJ1J-I2miS-6cA"
+                            title="Donation form"
                             allowtransparency="true"
                             allow="payment"
                             frameborder="0"
@@ -93,13 +96,13 @@
     </section>
 
     <!-- ======= ADDITIONAL WAYS ======= -->
-    <section class="admissions-cta">
+    <section class="access-cta on-dark">
         <div class="container reveal">
             <h2>Other Ways to Partner</h2>
-            <p style="max-width: 700px; margin: 0 auto 30px; color: rgba(255,255,255,0.9); font-size: 1.1rem;">
+            <p class="access-lead" style="margin-bottom: 30px;">
                 Not ready to give financially? There are other meaningful ways to invest in the mission of Archer Christian Academy.
             </p>
-            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+            <div class="cta-buttons">
                 <a href="../contact/" class="btn btn-yellow">Contact Us</a>
                 <a href="../support/" class="btn btn-outline-white">Learn About Partnerships</a>
             </div>
@@ -112,7 +115,7 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div style="margin-bottom: 15px;">
-                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer" style="height: 50px; width: auto; opacity: 0.8;">
+                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Christian Academy" style="height: 50px; width: auto; opacity: 0.85;">
                     </div>
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="mailto:daniel@archerchristian.org">daniel@archerchristian.org</a></p>
@@ -123,7 +126,8 @@
                     <h4>Our School</h4>
                     <ul>
                         <li><a href="../about/">About</a></li>
-                        <li><a href="../about/">Our Story</a></li>
+                        <li><a href="../about/letter/">A Letter from the Director</a></li>
+                        <li><a href="../our-words/">Our Nine Words</a></li>
                         <li><a href="../contact/">Employment</a></li>
                         <li><a href="../contact/">Contact Us</a></li>
                     </ul>
@@ -140,13 +144,13 @@
                 <div class="footer-col">
                     <div class="footer-cta">
                         <h4>Support the Mission</h4>
-                        <p>Help us make elite Classical Christian education accessible to Englewood.</p>
+                        <p>Help us make an elite classical Christian education accessible to Englewood.</p>
                         <a href="../donate/" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
-                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/" style="color: inherit; text-decoration: underline;">Non-Discriminatory Policy</a>
+                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/">Non-Discriminatory Policy</a>
             </div>
         </div>
     </footer>
@@ -155,8 +159,11 @@
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale').forEach(el => observer.observe(el));
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right').forEach(el => observer.observe(el));
     window.addEventListener('scroll', () => { document.querySelector('header').classList.toggle('scrolled', window.scrollY > 50); });
+    const navToggle = document.querySelector('.nav-toggle');
+    navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
+    document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
     </script>
 
 </body>
