@@ -1712,6 +1712,62 @@ details p { padding: 18px 24px; border-top: 1px solid #f0ede5; margin: 0; color:
 }
 .word-entry p { color: #3a4450; font-size: 1rem; }
 
+/* --- 404 PAGE --- */
+.notfound {
+    background:
+        radial-gradient(circle at 85% -10%, rgba(29,110,203,0.5) 0%, transparent 55%),
+        linear-gradient(150deg, var(--dark-blue) 0%, var(--navy-deep) 100%);
+    color: var(--white);
+    text-align: center;
+    padding: 130px 0 140px;
+    position: relative;
+    overflow: hidden;
+}
+.notfound::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.045) 1px, transparent 1px);
+    background-size: 13px 13px;
+    pointer-events: none;
+}
+.notfound-mark {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 26px;
+    margin-bottom: 26px;
+    position: relative;
+}
+.nf-404 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: clamp(4rem, 10vw, 6.5rem);
+    color: var(--archer-yellow);
+    line-height: 1;
+    letter-spacing: 0.04em;
+}
+.nf-line {
+    width: min(160px, 18vw);
+    height: 3px;
+    border-radius: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255,221,0,0.7));
+}
+.nf-line:last-child { background: linear-gradient(90deg, rgba(255,221,0,0.7), transparent); }
+.notfound h1 {
+    color: var(--white);
+    font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+    margin-bottom: 16px;
+    position: relative;
+}
+.notfound p {
+    max-width: 560px;
+    margin: 0 auto 36px;
+    color: rgba(255,255,255,0.85);
+    position: relative;
+}
+.notfound .cta-buttons { position: relative; }
+
 /* --- SMART QUOTES --- */
 q { quotes: "\201C" "\201D" "\2018" "\2019"; }
 q::before { content: open-quote; }
