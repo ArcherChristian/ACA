@@ -1,0 +1,695 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Family Rhythm &amp; Chore Chart</title>
+<style>
+  :root{
+    --paper:#faf6ec; --card:#fffdf7; --ink:#3b342a; --soft:#6f675a; --line:#e7dfc9;
+    --ari:#2e7d32; --ari-bg:#e8f3e9;
+    --ti:#00727f; --ti-bg:#e3f1f3;
+    --rissa:#c62828; --rissa-bg:#fbe9e9;
+    --bo:#e06c00; --bo-bg:#fdeede;
+    --all:#5d4037; --all-bg:#efe7e1;
+    --mom:#6a4fa3; --mom-bg:#eee9f7;
+    --dad:#31517d; --dad-bg:#e6ecf5;
+    --accent:#8a6d1d;
+    --hl:#8a6d1d; --hl-bg:#faf0cd;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{background:var(--paper); color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.45; padding-bottom:60px;}
+  body.focus-ari{--hl:var(--ari); --hl-bg:var(--ari-bg);}
+  body.focus-ti{--hl:var(--ti); --hl-bg:var(--ti-bg);}
+  body.focus-rissa{--hl:var(--rissa); --hl-bg:var(--rissa-bg);}
+  body.focus-bo{--hl:var(--bo); --hl-bg:var(--bo-bg);}
+  body.focus-mom{--hl:var(--mom); --hl-bg:var(--mom-bg);}
+  body.focus-dad{--hl:var(--dad); --hl-bg:var(--dad-bg);}
+  .wrap{max-width:1080px; margin:0 auto; padding:0 14px;}
+  header{padding:26px 0 10px;}
+  header h1{font-size:1.45rem; letter-spacing:.2px;}
+  header .sub{color:var(--soft); font-size:.92rem; margin-top:4px;}
+  .legend{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px;}
+  .chip{display:inline-flex; align-items:center; gap:6px; font-size:.8rem; font-weight:600;
+    padding:4px 10px; border-radius:999px; border:1.5px solid; background:#fff; cursor:pointer; user-select:none;}
+  .chip .dot{width:9px; height:9px; border-radius:50%;}
+  .chip.on{box-shadow:0 0 0 2.5px currentColor; font-weight:800;}
+  .c-ari{color:var(--ari); border-color:var(--ari);} .c-ari .dot{background:var(--ari);}
+  .c-ti{color:var(--ti); border-color:var(--ti);} .c-ti .dot{background:var(--ti);}
+  .c-rissa{color:var(--rissa); border-color:var(--rissa);} .c-rissa .dot{background:var(--rissa);}
+  .c-bo{color:var(--bo); border-color:var(--bo);} .c-bo .dot{background:var(--bo);}
+  .c-all{color:var(--all); border-color:var(--all);} .c-all .dot{background:var(--all);}
+  .c-mom{color:var(--mom); border-color:var(--mom);} .c-mom .dot{background:var(--mom);}
+  .c-dad{color:var(--dad); border-color:var(--dad);} .c-dad .dot{background:var(--dad);}
+  .hint{font-size:.78rem; color:var(--soft); margin-top:6px;}
+  nav{position:sticky; top:0; z-index:50; background:rgba(250,246,236,.96); backdrop-filter:blur(4px);
+    border-bottom:1px solid var(--line); margin-top:10px;}
+  nav .row{display:flex; gap:6px; overflow-x:auto; padding:10px 2px; -webkit-overflow-scrolling:touch;}
+  nav a{flex:0 0 auto; text-decoration:none; color:var(--ink); font-size:.82rem; font-weight:600;
+    padding:6px 12px; border-radius:999px; border:1px solid var(--line); background:var(--card); white-space:nowrap;}
+  nav a:active{background:var(--all-bg);}
+  section{padding-top:22px;}
+  h2{font-size:1.12rem; margin-bottom:4px; color:var(--ink);}
+  .lede{color:var(--soft); font-size:.88rem; margin-bottom:12px;}
+  .grid{display:grid; gap:12px;}
+  .days{grid-template-columns:repeat(auto-fit,minmax(270px,1fr));}
+  .card{background:var(--card); border:1px solid var(--line); border-radius:12px; padding:14px;
+    box-shadow:0 1px 2px rgba(90,75,40,.06);}
+  .day h3{font-size:.98rem; padding-bottom:8px; border-bottom:2px solid var(--line); margin-bottom:8px;
+    display:flex; justify-content:space-between; align-items:baseline;}
+  .day h3 .theme{font-size:.72rem; font-weight:600; color:var(--soft);}
+  .slot{display:flex; gap:8px; padding:5px 4px; border-bottom:1px dashed #efe8d5; font-size:.85rem; border-radius:6px;}
+  .slot:last-child{border-bottom:none;}
+  .slot .t{flex:0 0 62px; font-weight:700; font-size:.76rem; color:var(--accent); padding-top:2px;}
+  .slot .what b{font-weight:700;}
+  .who{display:inline-block; font-size:.68rem; font-weight:700; border-radius:4px; padding:1px 5px; margin-left:4px; vertical-align:1px; cursor:pointer;}
+  .w-ari{background:var(--ari-bg); color:var(--ari);}
+  .w-ti{background:var(--ti-bg); color:var(--ti);}
+  .w-rissa{background:var(--rissa-bg); color:var(--rissa);}
+  .w-bo{background:var(--bo-bg); color:var(--bo);}
+  .w-all{background:var(--all-bg); color:var(--all);}
+  .w-mom{background:var(--mom-bg); color:var(--mom);}
+  .w-dad{background:var(--dad-bg); color:var(--dad);}
+  .rules{background:#fdf3d9; border:1.5px solid #e8d193; border-radius:12px; padding:14px 16px; margin-bottom:14px;}
+  .rules h3{font-size:.95rem; margin-bottom:6px;}
+  .rules li{margin:4px 0 4px 18px; font-size:.88rem;}
+  table{width:100%; border-collapse:collapse; font-size:.84rem; background:var(--card);}
+  th,td{border:1px solid var(--line); padding:7px 9px; text-align:left; vertical-align:top;}
+  th{background:#f3ecda; font-size:.78rem; text-transform:uppercase; letter-spacing:.4px;}
+  .twrap{overflow-x:auto; border-radius:10px; border:1px solid var(--line);}
+  .tag{font-weight:700;}
+  .kid-card{border-top:4px solid;}
+  .kid-card.ari{border-top-color:var(--ari);} .kid-card.ti{border-top-color:var(--ti);}
+  .kid-card.rissa{border-top-color:var(--rissa);} .kid-card.bo{border-top-color:var(--bo);}
+  .kid-card h3{font-size:1rem; margin-bottom:2px;}
+  .kid-card .age{color:var(--soft); font-size:.78rem; margin-bottom:8px;}
+  .kid-card h4, .pcard h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; color:var(--soft); margin:10px 0 4px;}
+  .ck{list-style:none;}
+  .ck li{padding:3px 4px 3px 24px; position:relative; font-size:.86rem; border-radius:6px;}
+  .ck li::before{content:"☐"; position:absolute; left:4px; top:2px; color:#b3a67f;}
+  .zone h3{font-size:.92rem; margin-bottom:6px;}
+  .star{color:var(--bo); font-weight:700;}
+  .foot{margin-top:30px; padding-top:14px; border-top:1px solid var(--line); color:var(--soft); font-size:.8rem;}
+  .qbox{background:var(--card); border:1.5px dashed #c9b97f; border-radius:12px; padding:14px 16px;}
+  .qbox li{margin:6px 0 6px 18px; font-size:.88rem;}
+  .two{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));}
+  .zones{grid-template-columns:repeat(auto-fit,minmax(250px,1fr));}
+  .note{font-size:.8rem; color:var(--soft); margin-top:8px;}
+  /* spotlight */
+  .dim{opacity:.32; transition:opacity .15s;}
+  .slot.hit{background:var(--hl-bg); box-shadow:inset 3px 0 0 var(--hl);}
+  .ck li.hit{background:var(--hl-bg); box-shadow:inset 3px 0 0 var(--hl);}
+  tr.hit td{background:var(--hl-bg);}
+  .card.hit{outline:2.5px solid var(--hl);}
+  @media print{
+    nav{display:none;} body{background:#fff; padding-bottom:0;}
+    .card{box-shadow:none; break-inside:avoid;}
+    .dim{opacity:1;} .hint{display:none;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <h1>Family Rhythm &amp; Chore Chart</h1>
+  <div class="sub">Homeschool · school year 2026–27</div>
+  <div class="legend">
+    <span class="chip c-ari" data-kid="ari"><span class="dot"></span>Ari</span>
+    <span class="chip c-ti" data-kid="ti"><span class="dot"></span>Ti</span>
+    <span class="chip c-rissa" data-kid="rissa"><span class="dot"></span>Rissa</span>
+    <span class="chip c-bo" data-kid="bo"><span class="dot"></span>Bo</span>
+    <span class="chip c-mom" data-kid="mom"><span class="dot"></span>Mom</span>
+    <span class="chip c-dad" data-kid="dad"><span class="dot"></span>Dad</span>
+    <span class="chip c-all" data-kid=""><span class="dot"></span>Everyone</span>
+  </div>
+  <div class="hint">Tap a name to spotlight their week — tap again (or "Everyone") to clear.</div>
+</header>
+
+<nav><div class="row">
+  <a href="#week">Week at a glance</a>
+  <a href="#rhythm">Daily rhythm</a>
+  <a href="#strands">Six strands</a>
+  <a href="#kids">Kids' checklists</a>
+  <a href="#chores">Chores &amp; rotations</a>
+  <a href="#saturday">Saturday reset</a>
+  <a href="#parents">Mom &amp; Dad</a>
+  <a href="#activities">Activities &amp; to-decide</a>
+</div></nav>
+
+<section id="week">
+  <h2>Week at a Glance</h2>
+  <p class="lede">Anchors only — school runs checklist-style between them. Lights out 10:00 for the big kids, 8:30 for Bo.</p>
+  <div class="grid days">
+
+    <div class="card day">
+      <h3>Monday <span class="theme">work + lessons day</span></h3>
+      <div class="slot"><span class="t">6:00</span><span class="what">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what"><b>Opening Assembly</b> — prayer, song, plan the day <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">7:25</span><span class="what">Breakfast + AM chores 🔒 devices locked until done <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what"><b>Ari → work @ HH</b> (8:00–3:30) — strands: whatever fits tonight; catch up over the week <span class="who w-ari">Ari</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what">Strands 1–4, 45–60 min each <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo 1-on-1 with Mom (reading, Bible copywork + journal, TMM, CC memory) <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">12:00</span><span class="what">Lunch + recess <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">12:30</span><span class="what"><b>Piano + voice lessons</b> 12:30–2:05 (Rissa: piano–Greaves, voice–White · Ti: piano–Adm?) <span class="who w-rissa">Rissa</span><span class="who w-ti">Ti</span></span></div>
+      <div class="slot"><span class="t">2:00</span><span class="what">Strand 5 <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo rest + play <span class="who w-bo">Bo</span></span></div>
+      <div class="slot"><span class="t">3:00</span><span class="what"><b>Woodworking class</b> 3:00–4:30 <span class="who w-ti">Ti</span> · Strand 6 <span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">4:45</span><span class="what">Ti + Mom weekly meeting (30 min) <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">5:00</span><span class="what">Dinner — <b>Mom cooks</b> <span class="who w-mom">Mom</span> · 6:00 dinner + crew</span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what">W·R·Wr — Walk, Read, Write · Strand 6 + piano practice <span class="who w-ti">Ti</span> <span class="who w-all">All</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Tuesday <span class="theme">debate day</span></h3>
+      <div class="slot"><span class="t">6:00</span><span class="what">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what"><b>Opening Assembly</b> <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">7:25</span><span class="what">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: read, CC, TMM <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">12:00</span><span class="what">Lunch + recess <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">12:30</span><span class="what">Quiet hour — piano practice / free read · early Strand 5 if possible</span></div>
+      <div class="slot"><span class="t">2:00</span><span class="what"><b>Debate Club</b> 2:00–4:00 (Ari: LD) <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> · Strands 5–6 + PE outside <span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">4:15</span><span class="what">Strand 5 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span></div>
+      <div class="slot"><span class="t">5:00</span><span class="what">Dinner — <b>Rissa cooks</b> (with Mom) <span class="who w-rissa">Rissa</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what">W·R·Wr + Strand 6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> <span class="who w-all">All</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Wednesday <span class="theme">WOCA + date night</span></h3>
+      <div class="slot"><span class="t">7:00</span><span class="what"><b>Opening Assembly</b> + breakfast, load the car (no 6:00 gym) <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:30</span><span class="what"><b>White Oak Classical Academy (WOCA)</b> 8:30–12:30 — <b>all 4 kids</b>; Mom teaches <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">12:45</span><span class="what">Lunch <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">1:30</span><span class="what"><b>East St. sports</b> 1:30–3:30 <span class="who w-ti">Ti</span> · PE outside? <span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">2:00</span><span class="what">Strands — as many as fit after WOCA (aim: 4/5/6) <span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span> · SAT/CLT prep + college apps <span class="who w-ari">Ari</span></span></div>
+      <div class="slot"><span class="t">5:30</span><span class="what"><b>Kids' night:</b> Rissa + Bo make a simple dinner <span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span></div>
+      <div class="slot"><span class="t">6:00</span><span class="what"><b>Mom + Dad date night</b> 💛 <span class="who w-mom">Mom</span><span class="who w-dad">Dad</span></span></div>
+      <div class="slot"><span class="t">6:30</span><span class="what"><b>Personal Finance class</b> 6:30–8:30 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Thursday <span class="theme">prep + pizza night</span></h3>
+      <div class="slot"><span class="t">6:00</span><span class="what">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what"><b>Opening Assembly</b> <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">7:25</span><span class="what">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: CC, TMM, read <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">12:00</span><span class="what">Lunch + recess <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">12:30</span><span class="what">Quiet hour · Ti midweek check-in with Mom <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">2:00</span><span class="what">Strands 5–6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Archer work + paper feedback <span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">4:00</span><span class="what"><b>CC prep:</b> practice presentations, pack + load the car <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">5:30</span><span class="what"><b>Pizza night</b> — <b>Dad cooks</b> <span class="who w-dad">Dad</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what">W·R·Wr, early wind-down — big day tomorrow <span class="who w-all">All</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Friday <span class="theme">CC day (Dad) · planning day (Mom)</span></h3>
+      <div class="slot"><span class="t">6:00</span><span class="what">Gym — optional <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what">Quick assembly + breakfast, final load, leave on time <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:30</span><span class="what"><b>CC — Classical Conversations community day</b> ~8:30–2:30, <b>Dad drives + stays</b> — Challenge seminars cover all six strands with tutors <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Foundations <span class="who w-bo">Bo</span></span></div>
+      <div class="slot"><span class="t">8:30</span><span class="what"><b>Mom's planning day</b> (quiet house): WOCA prep, weekly lesson prep, meal plan + grocery order <span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">3:30</span><span class="what">Friends over / free play (flex) <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">5:00</span><span class="what">Dinner — <b>Mom cooks</b> (guests some weeks) <span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">7:00</span><span class="what">W·R·Wr or family fun night <span class="who w-all">All</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Saturday <span class="theme">chores + reset</span></h3>
+      <div class="slot"><span class="t">7:30</span><span class="what">Home gym / yoga / jog (optional) <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what">Breakfast · <b>first one awake picks chores first!</b></span></div>
+      <div class="slot"><span class="t">9:00</span><span class="what"><b>CHORES + RESET</b> 9:00–11:30 — own room + weekly reset list + zones <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">11:30</span><span class="what"><b>Bible + prayer + songs</b> — kids take turns leading · Dad: how-to-study (sermon text + discuss) <span class="who w-all">All</span><span class="who w-dad">Dad</span></span></div>
+      <div class="slot"><span class="t">12:30</span><span class="what">Lunch <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">2:00</span><span class="what"><b>Family activity</b> — outdoors · piano concert · read-aloud + games · driving practice with Dad <span class="who w-ti">Ti</span><span class="who w-dad">Dad</span></span></div>
+      <div class="slot"><span class="t">4:30</span><span class="what">Sunday-lunch prep — Mom + helper-of-the-week <span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">5:30</span><span class="what">Dinner — <b>Ari cooks</b> <span class="who w-ari">Ari</span></span></div>
+      <div class="slot"><span class="t">10:00</span><span class="what">Lights out <span class="who w-all">All</span></span></div>
+    </div>
+
+    <div class="card day">
+      <h3>Sunday <span class="theme">church + hosting</span></h3>
+      <div class="slot"><span class="t">7:45</span><span class="what">Up + breakfast <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:15</span><span class="what">Load up + leave — <b>at HCC by 8:40</b> <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">9:00</span><span class="what"><b>Church — HCC</b> 9:00–12:00 <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">12:15</span><span class="what">Home · finish lunch setup (prepped Saturday) <span class="who w-mom">Mom</span></span></div>
+      <div class="slot"><span class="t">1:00</span><span class="what"><b>Sunday lunch — guests invited</b> (plan invites by Thursday) <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">3:00</span><span class="what">Rest · games · read-aloud · Ari ↔ Mom or Dad date walk (biweekly) <span class="who w-ari">Ari</span></span></div>
+      <div class="slot"><span class="t">4:30</span><span class="what"><b>Reset for the week:</b> pack bags, 10-min room reset, review the calendar <span class="who w-all">All</span></span></div>
+      <div class="slot"><span class="t">8:00</span><span class="what">Bo bed · light supper crowd winds down <span class="who w-bo">Bo</span></span></div>
+      <div class="slot"><span class="t">9:30</span><span class="what">Lights out <span class="who w-all">All</span></span></div>
+    </div>
+
+  </div>
+  <p class="note">Goal: all six CC Challenge strands every school day, 45–60 min each. Friday's community day covers them with tutors; Wednesday and Ari's Monday are partial + catch-up.</p>
+</section>
+
+<section id="rhythm">
+  <h2>Daily Rhythm (Mon–Fri backbone)</h2>
+  <p class="lede">Checklist-style school: after Assembly, each kid works through the six strands at their own pace. Only the bolded anchors are clock times.</p>
+  <div class="twrap"><table>
+    <tr><th style="width:110px">Time</th><th>Anchor</th><th>Notes</th></tr>
+    <tr><td><b>6:00–7:00</b></td><td>Gym — <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog/bike/blades — <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></td><td>Mon/Tue/Thu/Fri. Saturday: home yoga or a jog for whoever's up.</td></tr>
+    <tr><td>6:45</td><td>Everyone up + dressed <span class="who w-all">All</span></td><td></td></tr>
+    <tr><td><b>7:00</b></td><td><b>Opening Assembly</b> <span class="who w-all">All</span></td><td>Prayer + song, read-aloud, hand out the day's checklists (~20 min).</td></tr>
+    <tr><td><b>7:25</b></td><td>Breakfast + <b>AM chores</b> <span class="who w-all">All</span></td><td>🔒 Devices stay locked until AM chores are done + checked.</td></tr>
+    <tr><td>8:00–12:00</td><td>Strands 1–4 (45–60 min each) <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span></td><td>Checklist order, own pace. Bo instead: 1-on-1 with Mom 9:00–10:30, then play <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span>. Mom floats: Bo first, Rissa 10:30–12:00.</td></tr>
+    <tr><td><b>12:00</b></td><td>Lunch + recess <span class="who w-all">All</span></td><td>Read-aloud at the table; Bo + Rissa outside after.</td></tr>
+    <tr><td>12:30–2:00</td><td>Quiet hour</td><td>Piano practice rotation, rest, free reading. (Mon: lessons 12:30–2:05.)</td></tr>
+    <tr><td>2:00–5:00</td><td>Strands 5–6 + activities <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span></td><td>45–60 min each around clubs, sports, work. A strand may land after dinner on full days (Mon/Tue).</td></tr>
+    <tr><td><b>5:00</b></td><td>Dinner prep</td><td>Cook-of-the-day + Bo as sous-chef when invited <span class="who w-bo">Bo</span>. Cook cleans as they go.</td></tr>
+    <tr><td><b>6:00</b></td><td>Dinner → post-meal crew <span class="who w-all">All</span></td><td>Meal-job crew finishes kitchen; 10-minute all-hands pickup after.</td></tr>
+    <tr><td><b>7:00–8:00</b></td><td><b>W·R·Wr</b> — Walk · Read · Write <span class="who w-all">All</span></td><td>Family quiet hour (Van Loon guide). Leftover strand or piano practice here.</td></tr>
+    <tr><td><b>8:00</b></td><td>Bo bath + bed <span class="who w-bo">Bo</span></td><td>Bo lights out 8:30.</td></tr>
+    <tr><td>9:00</td><td>Wind-down, screens docked</td><td></td></tr>
+    <tr><td><b>10:00</b></td><td><b>Lights out</b> <span class="who w-all">All</span></td><td>9:30 on Sundays.</td></tr>
+  </table></div>
+</section>
+
+<section id="strands">
+  <h2>The Six Strands — CC Challenge</h2>
+  <p class="lede">Every school day, all six, 45–60 minutes each (Ari, Ti, Rissa). Content deepens by Challenge level, but the six strands stay the same A → IV.</p>
+  <div class="twrap"><table>
+    <tr><th style="width:130px">Strand</th><th>What it is</th></tr>
+    <tr><td class="tag">1 · Logic</td><td>Mathematics — daily math work.</td></tr>
+    <tr><td class="tag">2 · Grammar</td><td>Latin — vocabulary, grammar, translation.</td></tr>
+    <tr><td class="tag">3 · Research</td><td>Science — biology/astronomy in Challenge A; research + lab skills up the levels.</td></tr>
+    <tr><td class="tag">4 · Exposition</td><td>Literature + composition — reading and persuasive/essay writing.</td></tr>
+    <tr><td class="tag">5 · Debate</td><td>Geography/cartography in Challenge A; history, government + current events at higher levels.</td></tr>
+    <tr><td class="tag">6 · Reasoning</td><td>Logic, analogies + fallacies; philosophy and apologetics at higher levels.</td></tr>
+  </table></div>
+  <p class="note">Bo does Foundations-level work instead: reading, Bible copywork + journal, TMM math, and CC memory work — 1-on-1 with Mom. Friday community day = all six strands with tutors, so home strands run Mon–Thu.</p>
+</section>
+
+<section id="kids">
+  <h2>Kids' Daily Checklists</h2>
+  <p class="lede">Same order every day; pace is theirs. AM chores before devices unlock.</p>
+  <div class="grid two">
+
+    <div class="card kid-card bo k-bo">
+      <h3>Bo</h3><div class="age">Foundations</div>
+      <h4>Every day</h4>
+      <ul class="ck">
+        <li>Morning routine: dressed, teeth, bed made (with help)</li>
+        <li>AM chores: breakfast dish in dishwasher + table-setter job</li>
+        <li>Opening Assembly 7:00 with everyone</li>
+        <li>1-on-1 school with Mom (1–2 hrs): reading lesson, Bible copywork + journal, TMM math, CC memory work</li>
+        <li>Outside play / recess after lunch</li>
+        <li>Quiet hour: rest, audiobooks, picture books</li>
+        <li>Afternoon: play + one ⭐ helper job</li>
+        <li>Sous-chef with the cook-of-the-day (when invited)</li>
+        <li>Evening pickup · bath 8:00 · lights out 8:30</li>
+      </ul>
+      <h4>Week specials</h4>
+      <ul class="ck"><li>Wed: WOCA with the whole family</li><li>Thu: match socks with Mom (towel day)</li><li>Fri: CC community day — Foundations</li><li>Sun: church (HCC) + lunch guests</li></ul>
+    </div>
+
+    <div class="card kid-card rissa k-rissa">
+      <h3>Rissa</h3><div class="age">Challenge — all six strands daily</div>
+      <h4>Every day</h4>
+      <ul class="ck">
+        <li>Jog / bike / blades with Dad — optional, 6:00</li>
+        <li>Opening Assembly 7:00 · AM chores before devices</li>
+        <li>All six strands, 45–60 min each — aim for 4 before lunch</li>
+        <li>Guided time with Mom, 10:30–12:00</li>
+        <li>Piano (Greaves) + voice (White) practice — 30 min in quiet hour</li>
+        <li>PE outside 3×/week (Tue, Wed?, Sat)</li>
+        <li>Meal job of the week + W·R·Wr</li>
+      </ul>
+      <h4>Week specials</h4>
+      <ul class="ck"><li>Mon 12:30–2:05: piano + voice lessons</li><li>Wed: WOCA — all 4 kids</li><li>Wed 5:30: cook kids'-night dinner with Bo</li><li>Fri: CC — strands with tutors</li><li>Work for Millers — day TBD</li></ul>
+    </div>
+
+    <div class="card kid-card ti k-ti">
+      <h3>Ti</h3><div class="age">Challenge — all six strands daily</div>
+      <h4>Every day</h4>
+      <ul class="ck">
+        <li>Gym 6:00 with Mom (Mon/Tue/Thu/Fri)</li>
+        <li>Opening Assembly 7:00 · AM chores before devices</li>
+        <li>All six strands, 45–60 min each — 4 before lunch, rest around activities</li>
+        <li>Piano practice (quiet hour)</li>
+        <li>Meal job of the week + W·R·Wr</li>
+      </ul>
+      <h4>Week specials</h4>
+      <ul class="ck">
+        <li>Mon: piano lesson (Adm?) · woodworking 3:00–4:30 · weekly meeting with Mom 4:45 · Strand 6 after dinner</li>
+        <li>Tue: Debate Club 2:00–4:00</li>
+        <li>Wed: WOCA — all 4 kids · East St. sports 1:30–3:30 · Personal Finance class 6:30–8:30 with Ari</li>
+        <li>Thu: midweek check-in with Mom · CC prep</li>
+        <li>Fri: CC — strands with tutors · Sat: driving practice with Dad</li>
+        <li>Biweekly one-on-one with Dad</li>
+      </ul>
+    </div>
+
+    <div class="card kid-card ari k-ari">
+      <h3>Ari</h3><div class="age">Challenge — all six strands daily</div>
+      <h4>Every day</h4>
+      <ul class="ck">
+        <li>Jog / bike / blades with Dad — optional, 6:00</li>
+        <li>Opening Assembly 7:00 · AM chores before devices</li>
+        <li>All six strands, 45–60 min each — Mon: whatever fits after work; catch up over the week</li>
+        <li>SAT/ACT/CLT prep — 30 min minimum</li>
+        <li>Meal job of the week + W·R·Wr</li>
+      </ul>
+      <h4>Week specials</h4>
+      <ul class="ck">
+        <li>Mon: work @ HH 8:00–3:30</li>
+        <li>Tue: Debate Club (LD) 2:00–4:00</li>
+        <li>Wed: WOCA — all 4 kids · PM: SAT/CLT + college-app block · Personal Finance class 6:30–8:30 with Ti</li>
+        <li>Fri: CC — strands with tutors · college-app block Wed + Sun</li>
+        <li>Sat: cook dinner · soap business (Sweet Peonies?) afternoon slot</li>
+        <li>Biweekly date with Mom (alt Sundays) + time with Dad</li>
+        <li>⚠️ Register for SAT / ACT / CLT</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<section id="chores">
+  <h2>Chores &amp; Rotations</h2>
+  <div class="rules">
+    <h3>🏠 House rules</h3>
+    <ul>
+      <li>🔒 <b>All devices stay locked until AM chores are completed</b> (and checked).</li>
+      <li>⏰ Saturday reset: <b>first one awake gets to pick chores first.</b></li>
+      <li>🧺 Laundry on your assigned day: start after breakfast, <b>fold + put away the same day</b>.</li>
+      <li>🍳 Cook's rule: clean as you go — the post-meal crew finishes the rest.</li>
+    </ul>
+  </div>
+
+  <div class="grid two">
+    <div class="card">
+      <h3 style="font-size:.95rem; margin-bottom:6px;">Daily personal chores — every kid</h3>
+      <ul class="ck">
+        <li>Bed made</li>
+        <li>Dirty clothes in hamper, floor clear</li>
+        <li>Dressed, teeth, hair</li>
+        <li>Breakfast dish into dishwasher</li>
+        <li>One "own room" item from the room list</li>
+        <li>School spot cleared when done</li>
+        <li>After dinner: 10-minute all-hands pickup</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3 style="font-size:.95rem; margin-bottom:6px;">Meal jobs — what each role does</h3>
+      <ul class="ck">
+        <li><b>Table setter (Bo, fixed):</b> set out utensils + napkins + dishes <span class="who w-bo">Bo</span></li>
+        <li><b>Dishes + sink:</b> load dirty dishes, clear + clean sink, wipe counters</li>
+        <li><b>Table + floor:</b> clear + wipe table, broom/vacuum around + under table + chairs</li>
+        <li><b>Runner:</b> empty clean dishwasher (AM), empty + reline trash bins → outside bin, help where needed</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 style="margin:16px 0 6px; font-size:.98rem;">Rotations — swap every Monday</h3>
+  <div class="twrap"><table>
+    <tr><th></th><th>Week 1</th><th>Week 2</th><th>Week 3</th></tr>
+    <tr><td class="tag">Dishes + sink</td><td><span class="who w-ari">Ari</span></td><td><span class="who w-ti">Ti</span></td><td><span class="who w-rissa">Rissa</span></td></tr>
+    <tr><td class="tag">Table + floor</td><td><span class="who w-ti">Ti</span></td><td><span class="who w-rissa">Rissa</span></td><td><span class="who w-ari">Ari</span></td></tr>
+    <tr><td class="tag">Runner</td><td><span class="who w-rissa">Rissa</span></td><td><span class="who w-ari">Ari</span></td><td><span class="who w-ti">Ti</span></td></tr>
+    <tr><td class="tag">Table setter</td><td colspan="3" style="text-align:center"><span class="who w-bo">Bo</span> every week (his fixed job)</td></tr>
+  </table></div>
+
+  <div class="grid two" style="margin-top:12px">
+    <div class="twrap"><table>
+      <tr><th colspan="2">🍽 Dinner — cook of the day</th></tr>
+      <tr><td>Monday</td><td><span class="who w-mom">Mom</span></td></tr>
+      <tr><td>Tuesday</td><td><span class="who w-rissa">Rissa</span> with Mom</td></tr>
+      <tr><td>Wednesday</td><td>Kids' night: <span class="who w-rissa">Rissa</span> + <span class="who w-bo">Bo</span>, simple meal — Mom + Dad out, Ari + Ti at class</td></tr>
+      <tr><td>Thursday</td><td><span class="who w-dad">Dad</span> — pizza night</td></tr>
+      <tr><td>Friday</td><td><span class="who w-mom">Mom</span> (+ guests some weeks)</td></tr>
+      <tr><td>Saturday</td><td><span class="who w-ari">Ari</span></td></tr>
+      <tr><td>Sunday</td><td>Big hosted lunch after church (Mom + helper) · light supper <span class="who w-mom">Mom</span></td></tr>
+    </table></div>
+    <div class="twrap"><table>
+      <tr><th colspan="2">🧺 Laundry — assigned days</th></tr>
+      <tr><td>Monday</td><td><span class="who w-rissa">Rissa</span> — own load, start after breakfast</td></tr>
+      <tr><td>Tuesday</td><td><span class="who w-ti">Ti</span> — own load</td></tr>
+      <tr><td>Wednesday</td><td><span class="who w-ari">Ari</span> — own load (after WOCA)</td></tr>
+      <tr><td>Thursday</td><td><span class="who w-mom">Mom</span> + <span class="who w-bo">Bo</span> — towels + Bo's clothes; Bo sorts + matches socks</td></tr>
+      <tr><td>Friday</td><td>Sheets — rotating kid (W1 <span class="who w-ari">Ari</span> · W2 <span class="who w-ti">Ti</span> · W3 <span class="who w-rissa">Rissa</span>; Bo's bed with Mom)</td></tr>
+      <tr><td colspan="2">Rhythm: wash after breakfast → dryer at lunch → <b>fold + put away</b> during quiet hour.</td></tr>
+    </table></div>
+  </div>
+</section>
+
+<section id="saturday">
+  <h2>Saturday Chores + Reset (9:00–11:30)</h2>
+  <p class="lede">Everyone does their <b>own room</b> + a share of the <b>weekly reset list</b>, then picks zones — first awake picks first. ⭐ = good Bo jobs (with a buddy).</p>
+
+  <div class="grid two" style="margin-bottom:12px">
+    <div class="card zone">
+      <h3>Own room — everyone</h3>
+      <ul class="ck">
+        <li>⭐ Tidy + put away</li>
+        <li>Dust fans, counters, etc.</li>
+        <li>Wipe clean window sill + glass</li>
+        <li>Clean out junk + drawers → donation + trash</li>
+        <li>Make bed (sheets need washed?)</li>
+        <li>Vacuum</li>
+        <li>Door + knob</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Weekly reset list — split it up</h3>
+      <ul class="ck">
+        <li>Empty ALL trash bins + reline + take out to outside bin</li>
+        <li>Clean out drawers → fill the donation basket!</li>
+        <li>Organize shelves</li>
+        <li>⭐ Empty out bags (school, gym, car)</li>
+        <li>Spray + wipe clean windows + mirrors</li>
+        <li>Clean out fridge (before weekend groceries)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="grid zones">
+    <div class="card zone">
+      <h3>Kitchen</h3>
+      <ul class="ck">
+        <li>Dust fan, window sill, floorboards, door trim</li>
+        <li>Clorox-wipe all white surfaces + handles</li>
+        <li>Wipe trash bin, door + knob</li>
+        <li>Vacuum floor first</li>
+        <li>Then wash floor: multiple clean rags, soapy-water bucket + empty bucket</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Bathrooms</h3>
+      <ul class="ck">
+        <li>Wet-wipe all surfaces (dust etc.)</li>
+        <li>Mirror + sink</li>
+        <li>Handles + door + knob</li>
+        <li>Toilet · bathtub + shower tiles</li>
+        <li>Floor · vent · trash</li>
+        <li>Clear + organize cabinet</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>School room</h3>
+      <ul class="ck">
+        <li>⭐ Pick up floor + counter, put away</li>
+        <li>Dust all surfaces</li>
+        <li>Vacuum + mop</li>
+        <li>Wipe floorboards + AC intake</li>
+        <li>Table cleared + glassboard cleaned</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Sun room</h3>
+      <ul class="ck">
+        <li>Piano: organize + put away, around + on top</li>
+        <li>Clear floor + all surfaces</li>
+        <li>Dust, then vacuum</li>
+        <li>⭐ Shoes away</li>
+        <li>Shake out all rugs outside</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Stairs + landing</h3>
+      <ul class="ck">
+        <li>Vacuum (with the right attachment)</li>
+        <li>Wipe all white surfaces + wall smudges</li>
+        <li>Basement door + knob</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Basement</h3>
+      <ul class="ck">
+        <li>Window sill</li>
+        <li>Dust shelves</li>
+        <li>Donation / trash pass?</li>
+        <li>⭐ Books in place</li>
+        <li>Vacuum</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Laundry room</h3>
+      <ul class="ck">
+        <li>⭐ Trash?</li>
+        <li>Wipe clean</li>
+        <li>Vacuum</li>
+        <li>Organize?</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Cars</h3>
+      <ul class="ck">
+        <li>Clean out compartments, sleeves, cubbies, under car seats, under seats, trunk</li>
+        <li>Wipe clean / sanitize surfaces</li>
+        <li>Vacuum</li>
+        <li>⭐ Deliver stray items to their owners</li>
+      </ul>
+    </div>
+    <div class="card zone">
+      <h3>Outside</h3>
+      <ul class="ck">
+        <li>⭐ Put away (toys, bikes, tools)</li>
+        <li>Anything out of place?</li>
+        <li>Mow? (seasonal — Ti/Ari)</li>
+        <li>Deck — sweep + reset</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Typical picks: Ari → cars or kitchen · Ti → outside or stairs + basement · Rissa → bathrooms or sun room · Bo → ⭐ jobs with a buddy. First-awake still picks!</p>
+</section>
+
+<section id="parents">
+  <h2>Mom &amp; Dad</h2>
+  <div class="grid two">
+    <div class="card pcard k-mom" style="border-top:4px solid var(--mom)">
+      <h3 style="font-size:1rem;">Mom</h3>
+      <h4>Daily</h4>
+      <ul class="ck">
+        <li>Gym with Ti — 6:00 (Mon/Tue/Thu/Fri)</li>
+        <li>QT — Scripture memory + copying + writing (before Assembly)</li>
+        <li>WRM reading</li>
+        <li>Bo one-on-one school, 1–2 hrs (9:00–10:30)</li>
+        <li>Rissa guided time (10:30–12:00)</li>
+        <li>Read-aloud (lunch + W·R·Wr)</li>
+      </ul>
+      <h4>Weekly</h4>
+      <ul class="ck">
+        <li>Mon — grocery shop/pickup · Ti weekly meeting 4:45</li>
+        <li>Tue + Thu 2:00–4:00 — Archer work blocks</li>
+        <li>Wed — teach at WOCA · date night with D 💛</li>
+        <li>Thu — Ti midweek check-in · confirm Sunday-lunch invites · check + give feedback on kids' papers + projects</li>
+        <li>Fri — <b>planning day</b> (kids at CC with Dad): WOCA prep, weekly lesson prep, meal plan + grocery order</li>
+        <li>Sat 4:30 — Sunday-lunch prep with helper-of-the-week</li>
+        <li>Sat quiet hour — master recipe collection → sleeves + binder</li>
+        <li>Games with kids (Sat/Sun) · Ari date biweekly (alt Sundays)</li>
+        <li>Maintenance cleaning as needed (kept off the kids' lists)</li>
+      </ul>
+    </div>
+    <div class="card pcard k-dad" style="border-top:4px solid var(--dad)">
+      <h3 style="font-size:1rem;">Dad</h3>
+      <ul class="ck">
+        <li>Jog / bike / blades with the early crew — 6:00 (Mon/Tue/Thu)</li>
+        <li>Wed — date night with Mom 💛</li>
+        <li>Thu — pizza night dinner</li>
+        <li>Fri — <b>CC community day</b>: drive + stay with all four kids</li>
+        <li>Sat — how-to-study session (sermon text + discuss) · family activity</li>
+        <li>Sun — church (HCC) + hosting</li>
+        <li>Ti — biweekly one-on-one (driving practice + lunch pairs well)</li>
+        <li>Ari — biweekly one-on-one (alt Sundays: walk / coffee)</li>
+        <li>Car-wash supervision · mow training</li>
+      </ul>
+      <h4>Family activity ideas</h4>
+      <ul class="ck">
+        <li>Outdoors day · piano concert · read-aloud + games night</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="activities">
+  <h2>Activities &amp; Still-to-Decide</h2>
+  <div class="grid two">
+    <div class="twrap"><table>
+      <tr><th>Kid</th><th>Locked in ✓</th><th>Still deciding</th></tr>
+      <tr><td><span class="who w-ari">Ari</span></td>
+        <td>Debate LD (Tue) · Work @ HH (Mon) · Personal Finance (Wed) · College apps · SAT/ACT/CLT prep</td>
+        <td><b>Register for SAT/ACT/CLT!</b> · Soap — Sweet Peonies? · PE — what?</td></tr>
+      <tr><td><span class="who w-ti">Ti</span></td>
+        <td>Debate (Tue) · Woodworking (Mon) · East St. PE (Wed) · Piano lessons (Mon) · Personal Finance (Wed) · Driving practice (Sat)</td>
+        <td>Piano teacher = Adm? · Umpire? · Math club? · Chess club? · Snow-shoveling business? · Tutoring?</td></tr>
+      <tr><td><span class="who w-rissa">Rissa</span></td>
+        <td>Piano (Greaves) · Voice (White) · Mon lessons 12:30–2:05</td>
+        <td>PE outside — what + when? · Work for Millers — which day?</td></tr>
+      <tr><td><span class="who w-bo">Bo</span></td>
+        <td>CC Foundations (Fri) · Daily reading, Bible copywork + journal, TMM, CC memory work</td>
+        <td>—</td></tr>
+    </table></div>
+    <div class="qbox">
+      <h3 style="font-size:.95rem; margin-bottom:6px;">To decide this term</h3>
+      <ol>
+        <li>Register Ari for SAT / ACT / CLT</li>
+        <li>Pick Rissa's Millers work day + PE-outside plan</li>
+        <li>Ti's maybes: umpire? math club? chess? tutoring? snow business?</li>
+        <li>Ari's Monday strands — spread over the week, or a Saturday make-up block?</li>
+        <li>Confirm Ti's piano teacher (Adm?)</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<div class="foot">
+  House rules: devices unlock after AM chores · first one awake picks Saturday chores first · laundry folded + put away same day.
+  Strands per Classical Conversations Challenge · Assembly 7:00 · Church (HCC) Sundays 9:00–12:00.
+</div>
+
+</div>
+<script>
+(function(){
+  var active = null;
+  var FOCUS = ['ari','ti','rissa','bo','mom','dad'];
+
+  function scopes(){
+    var list = [];
+    document.querySelectorAll('.slot').forEach(function(e){ list.push(e); });
+    document.querySelectorAll('.kid-card, .pcard').forEach(function(e){ list.push(e); });
+    document.querySelectorAll('.twrap tr').forEach(function(e){
+      if(!e.querySelector('th')) list.push(e);
+    });
+    document.querySelectorAll('.zone .ck li').forEach(function(e){ list.push(e); });
+    return list;
+  }
+
+  function matches(el, kid){
+    if(el.classList.contains('k-' + kid)) return true;
+    if(el.querySelector('.w-' + kid)) return true;
+    if(el.querySelector('.w-all')) return true;
+    if(kid === 'bo' && el.textContent.indexOf('⭐') !== -1) return true;
+    return false;
+  }
+
+  function apply(){
+    FOCUS.forEach(function(k){ document.body.classList.remove('focus-' + k); });
+    if(active) document.body.classList.add('focus-' + active);
+    document.querySelectorAll('.chip[data-kid]').forEach(function(c){
+      c.classList.toggle('on', !!active && c.dataset.kid === active);
+    });
+    scopes().forEach(function(el){
+      el.classList.remove('hit','dim');
+      if(!active) return;
+      if(matches(el, active)) el.classList.add('hit');
+      else el.classList.add('dim');
+    });
+  }
+
+  document.addEventListener('click', function(ev){
+    var chip = ev.target.closest('.chip[data-kid]');
+    if(chip){
+      var k = chip.dataset.kid;
+      active = (!k || active === k) ? null : k;
+      apply();
+      return;
+    }
+    var who = ev.target.closest('.who');
+    if(who){
+      var m = (who.className.match(/w-(ari|ti|rissa|bo|mom|dad)/) || [])[1];
+      if(m){ active = (active === m) ? null : m; apply(); }
+    }
+  });
+})();
+</script>
+</body>
+</html>
