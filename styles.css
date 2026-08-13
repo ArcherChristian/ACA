@@ -1407,21 +1407,6 @@ details p { padding: 18px 24px; border-top: 1px solid #f0ede5; margin: 0; color:
     border-top-color: var(--archer-yellow);
     box-shadow: 0 10px 40px rgba(255,221,0,0.22);
 }
-.tier-card.featured::before {
-    content: 'Most Common';
-    position: absolute;
-    top: -13px; left: 50%;
-    transform: translateX(-50%);
-    background: var(--archer-yellow);
-    color: var(--dark-blue);
-    font-family: 'Poppins', sans-serif;
-    font-size: 0.68rem;
-    font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 4px 14px;
-    border-radius: 100px;
-}
 .tier-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lift); }
 .tier-card h4 { font-size: 1.15rem; margin-bottom: 6px; }
 .tier-card .tier-amount {
