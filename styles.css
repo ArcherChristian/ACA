@@ -1589,23 +1589,20 @@ details p { padding: 18px 24px; border-top: 1px solid #f0ede5; margin: 0; color:
 .form-success p { color: var(--muted); font-size: 0.95rem; }
 
 /* --- LGL DONATION EMBED ---
-   The iframe cannot auto-size to the form inside it, so its height is set
-   here. If the LGL form gains/loses fields, adjust these two numbers.
-   Content taller than the frame scrolls rather than being cut off. */
+   Uses LGL's JavaScript embed, which injects the iframe and auto-resizes
+   it to the form's real height (validation errors, captcha, and the
+   confirmation screen included) — no fixed height, no white gap. */
 .lgl-embed {
     background: #fff;
     border-radius: 6px;
     padding: 10px;
     margin: 0 -10px;
+    min-height: 320px; /* placeholder space while the script loads */
 }
 .lgl-embed iframe {
     display: block;
-    width: 100%;
-    height: 1150px;
+    width: 100% !important;
     border: none;
-}
-@media (max-width: 640px) {
-    .lgl-embed iframe { height: 1350px; }
 }
 
 /* --- LETTER PAGE --- */
