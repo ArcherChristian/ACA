@@ -33,12 +33,13 @@
         /* Standalone RSVP page — logo header only, no nav */
         .rsvp-header {
             background: var(--dark-blue);
-            padding: 34px 20px 30px;
+            padding: 16px 20px 14px;
             text-align: center;
+            position: static; /* override site-wide sticky header — scroll with the page */
         }
         .rsvp-header a { display: inline-block; line-height: 0; }
         .rsvp-header img {
-            width: min(340px, 78vw);
+            width: clamp(150px, 34vw, 230px);
             height: auto;
         }
         .rsvp-main {
