@@ -2019,3 +2019,28 @@ q::after { content: close-quote; }
     .quiver-tab, .quiver-icon, .quiver-fletch, .quiver-fletch::after { transition: none; }
     .quiver-pane.is-active { animation: none; }
 }
+
+/* facts card inside a quiver pane */
+.way-facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+    gap: 14px 24px;
+    margin: 20px 0 6px;
+    padding: 18px 22px;
+    background: var(--cream);
+    border-radius: 8px;
+    max-width: 58ch;
+}
+.way-facts div { min-width: 0; }
+.way-facts dt {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--archer-blue);
+    margin-bottom: 3px;
+}
+.way-facts dd { margin: 0; font-size: 0.95rem; color: var(--ink); line-height: 1.45; }
+.quiver-pane .way-facts + .way-tip { margin-top: 16px; }
+.section-head + .quiver { margin-top: 0; }
