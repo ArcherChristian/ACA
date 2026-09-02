@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archer Christian Academy | Englewood, Chicago</title>
-    <meta name="description" content="Archer Christian Academy is a Christ-centered, classical school launching Fall 2027 in Englewood, Chicago — forming students who are known, stretched, and loved, and launched with purpose.">
+    <meta name="description" content="A Christ-centered, classical school opening Fall 2027 in Englewood, Chicago. Enrolling K–2; growing to K–12. Every child known, stretched, and loved.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,7 +21,7 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Archer Christian Academy">
     <meta property="og:title" content="Archer Christian Academy | Englewood, Chicago">
-    <meta property="og:description" content="Archer Christian Academy is a Christ-centered, classical school launching Fall 2027 in Englewood, Chicago — forming students who are known, stretched, and loved, and launched with purpose.">
+    <meta property="og:description" content="A Christ-centered, classical school opening Fall 2027 in Englewood, Chicago. Enrolling K–2; growing to K–12. Every child known, stretched, and loved.">
     <meta property="og:url" content="https://archerchristian.org/">
     <meta property="og:image" content="https://archerchristian.org/images/social-card.jpg">
     <meta property="og:image:width" content="1200">
@@ -30,13 +30,27 @@
     <meta name="twitter:card" content="summary_large_image">
     <link rel="preload" as="image" href="images/classroom-raised-hands.jpg">
     <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@context": "https://schema.org",
-      "@type": "School",
+      "@type": [
+        "School",
+        "EducationalOrganization"
+      ],
+      "@id": "https://archerchristian.org/#organization",
       "name": "Archer Christian Academy",
-      "description": "A Christ-centered, classical school launching Fall 2027 with grades K\u20132 in Englewood, Chicago.",
+      "alternateName": [
+        "Archer",
+        "ACA"
+      ],
+      "slogan": "Launched true, for God and community.",
+      "description": "Archer Christian Academy is a Christ-centered, classical Christian school opening Fall 2027 in the Englewood neighborhood of Chicago. It launches with kindergarten through 2nd grade, adds one grade each year through 12th, and keeps classes to 14 students. Curriculum follows the classical Trivium (Grammar, Logic, Rhetoric) with Latin, Scripture, music, art, and applied arts including archery and woodworking.",
       "url": "https://archerchristian.org/",
-      "logo": "https://archerchristian.org/images/ACA%20Archer%20Badge%20RGB%20Positive.png",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://archerchristian.org/images/ACA%20Archer%20Badge%20RGB%20Positive.png"
+      },
       "image": "https://archerchristian.org/images/social-card.jpg",
       "email": "daniel@archerchristian.org",
       "telephone": "+1-312-539-0644",
@@ -47,8 +61,126 @@
         "addressRegion": "IL",
         "postalCode": "60621",
         "addressCountry": "US"
+      },
+      "areaServed": {
+        "@type": "Place",
+        "name": "Englewood, Chicago, Illinois"
+      },
+      "sameAs": [
+        "https://www.facebook.com/ArcherEnglewood/",
+        "https://www.linkedin.com/company/archerchristian",
+        "https://www.instagram.com/archerchristianacademy/"
+      ],
+      "parentOrganization": {
+        "@type": "NGO",
+        "name": "Urban Youth Outreach",
+        "nonprofitStatus": "https://schema.org/Nonprofit501c3"
+      },
+      "nonprofitStatus": "https://schema.org/Nonprofit501c3",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "Englewood, Chicago, IL"
+      },
+      "educationalLevel": [
+        "Kindergarten",
+        "Grade 1",
+        "Grade 2"
+      ],
+      "availableLanguage": "English",
+      "keywords": "classical Christian school, Englewood, Chicago, private school, kindergarten, elementary school, Trivium, K-12, Christ-centered education",
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Programs",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "EducationalOccupationalProgram",
+              "name": "Grammar School (K–5)",
+              "description": "Founding grades K–2 enroll for Fall 2027. Phonics-based reading, classic literature, chronological history, mastery mathematics, observational science, Latin, Scripture, music, art, archery and woodworking.",
+              "educationalProgramMode": "onsite",
+              "programType": "Elementary",
+              "url": "https://archerchristian.org/academics/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "EducationalOccupationalProgram",
+              "name": "Logic School (6–8)",
+              "description": "Planned as grades are added; integrated history, literature, Latin, formal logic, mathematics and sciences through Socratic discussion.",
+              "url": "https://archerchristian.org/academics/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "EducationalOccupationalProgram",
+              "name": "Rhetoric School (9–12)",
+              "description": "Planned as grades are added; the full K–12 vision.",
+              "url": "https://archerchristian.org/academics/"
+            }
+          }
+        ]
+      },
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "contactType": "admissions",
+          "email": "daniel@archerchristian.org",
+          "telephone": "+1-312-539-0644",
+          "availableLanguage": "English",
+          "url": "https://archerchristian.org/contact/"
+        }
+      ],
+      "potentialAction": {
+        "@type": "ApplyAction",
+        "name": "Apply for K–2",
+        "target": "https://archerchristian.org/apply/"
       }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://archerchristian.org/#website",
+      "url": "https://archerchristian.org/",
+      "name": "Archer Christian Academy",
+      "publisher": {
+        "@id": "https://archerchristian.org/#organization"
+      },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://archerchristian.org/#webpage",
+      "url": "https://archerchristian.org/",
+      "name": "Archer Christian Academy | Englewood, Chicago",
+      "description": "A Christ-centered, classical school opening Fall 2027 in Englewood, Chicago. Enrolling K–2; growing to K–12. Every child known, stretched, and loved.",
+      "isPartOf": {
+        "@id": "https://archerchristian.org/#website"
+      },
+      "about": {
+        "@id": "https://archerchristian.org/#organization"
+      },
+      "inLanguage": "en-US",
+      "breadcrumb": {
+        "@id": "https://archerchristian.org/#breadcrumb"
+      },
+      "primaryImageOfPage": "https://archerchristian.org/images/social-card.jpg"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://archerchristian.org/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://archerchristian.org/"
+        }
+      ]
     }
+  ]
+}
     </script>
 </head>
 <body>
@@ -287,6 +419,7 @@
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="mailto:daniel@archerchristian.org">daniel@archerchristian.org</a></p>
                     <p><a href="tel:3125390644">312-539-0644</a></p>
+                    <p class="footer-social" style="margin-top: 12px;"><a href="https://www.facebook.com/ArcherEnglewood/" rel="me noopener" target="_blank">Facebook</a> &middot; <a href="https://www.instagram.com/archerchristianacademy/" rel="me noopener" target="_blank">Instagram</a> &middot; <a href="https://www.linkedin.com/company/archerchristian" rel="me noopener" target="_blank">LinkedIn</a></p>
                     <img src="images/ACA Motto RGB White.svg" alt="sagitta vera" class="motto-img" title="True Arrow">
                 </div>
                 <div class="footer-col">
