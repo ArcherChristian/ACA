@@ -1859,3 +1859,163 @@ q::after { content: close-quote; }
     .gift-details { padding: 28px 22px; }
     .gift-details dl { grid-template-columns: 1fr; }
 }
+
+/* --- THE QUIVER (donate: more ways to give) --- */
+.quiver {
+    display: grid;
+    grid-template-columns: minmax(280px, 340px) 1fr;
+    gap: 28px;
+    align-items: stretch;
+    margin-top: 40px;
+}
+.quiver-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.quiver-tab {
+    position: relative;
+    display: grid;
+    grid-template-columns: 44px 1fr 22px;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    text-align: left;
+    padding: 14px 18px 14px 16px;
+    background: rgba(255,255,255,0.55);
+    border: 1px solid transparent;
+    border-radius: var(--radius);
+    cursor: pointer;
+    font: inherit;
+    color: var(--ink);
+    transition: background 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+}
+.quiver-tab:hover { background: var(--white); transform: translateX(4px); }
+.quiver-tab:focus-visible { outline: 3px solid var(--archer-blue); outline-offset: 2px; }
+.quiver-tab.is-active {
+    background: var(--white);
+    border-color: var(--line);
+    box-shadow: var(--shadow-soft);
+    transform: translateX(8px);
+}
+.quiver-icon {
+    width: 44px; height: 44px;
+    border-radius: 50%;
+    background: var(--cream);
+    color: var(--archer-blue);
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s, color 0.25s;
+}
+.quiver-icon svg { width: 22px; height: 22px; }
+.quiver-tab.is-active .quiver-icon { background: var(--dark-blue); color: var(--archer-yellow); }
+.quiver-title {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--dark-blue);
+    line-height: 1.3;
+}
+.quiver-teaser { display: block; font-size: 0.82rem; color: var(--muted); margin-top: 2px; }
+/* the fletching: a short shaft that grows into an arrow on the active tab */
+.quiver-fletch {
+    position: relative;
+    width: 22px; height: 2px;
+    background: var(--line);
+    transition: background 0.25s, width 0.25s;
+}
+.quiver-fletch::after {
+    content: '';
+    position: absolute; right: -1px; top: -4px;
+    width: 10px; height: 10px;
+    border-top: 2px solid var(--line);
+    border-right: 2px solid var(--line);
+    transform: rotate(45deg) scale(0.6);
+    opacity: 0;
+    transition: opacity 0.25s, transform 0.25s, border-color 0.25s;
+}
+.quiver-tab.is-active .quiver-fletch { background: var(--archer-yellow); }
+.quiver-tab.is-active .quiver-fletch::after { opacity: 1; transform: rotate(45deg) scale(1); border-color: var(--archer-yellow); }
+
+.quiver-panel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--white);
+    border-radius: var(--radius);
+    border-left: 4px solid var(--archer-blue);
+    box-shadow: var(--shadow-soft);
+    overflow: hidden;
+}
+.quiver-panel::before {
+    /* faint target rings, top-right */
+    content: '';
+    position: absolute; right: -90px; top: -90px;
+    width: 300px; height: 300px;
+    border-radius: 50%;
+    background:
+        radial-gradient(circle, transparent 58%, rgba(29,110,203,0.06) 59%, rgba(29,110,203,0.06) 62%, transparent 63%,
+                        transparent 76%, rgba(29,110,203,0.06) 77%, rgba(29,110,203,0.06) 80%, transparent 81%,
+                        transparent 94%, rgba(29,110,203,0.06) 95%, rgba(29,110,203,0.06) 98%, transparent 99%);
+    pointer-events: none;
+}
+.quiver-pane {
+    position: relative;
+    padding: 44px 48px 44px 44px;
+}
+.quiver-pane.is-active { animation: quiver-in 0.4s cubic-bezier(.2,.7,.2,1) both; }
+@keyframes quiver-in {
+    from { opacity: 0; transform: translateX(14px); }
+    to   { opacity: 1; transform: none; }
+}
+.quiver-num {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.18em;
+    color: var(--archer-blue);
+    margin-bottom: 10px;
+}
+.quiver-pane h3 { font-size: 1.5rem; color: var(--dark-blue); margin-bottom: 16px; }
+.quiver-pane p { font-size: 1rem; color: var(--ink); line-height: 1.7; max-width: 58ch; }
+.quiver-pane p + p { margin-top: 14px; }
+.quiver-pane .way-tip {
+    font-size: 0.9rem; font-style: italic; color: var(--muted);
+    padding-left: 14px; border-left: 3px solid var(--archer-yellow);
+}
+.quiver-pane .way-address {
+    font-family: 'Poppins', sans-serif; font-weight: 500;
+    background: var(--cream); display: inline-block;
+    padding: 14px 20px; border-radius: 8px; line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+    .quiver { grid-template-columns: 1fr; gap: 16px; }
+    .quiver-list {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+    .quiver-tab {
+        grid-template-columns: 36px 1fr;
+        gap: 10px;
+        padding: 10px 12px;
+        background: var(--white);
+        border-color: var(--line);
+    }
+    .quiver-tab:hover, .quiver-tab.is-active { transform: none; }
+    .quiver-tab.is-active { border-color: var(--archer-blue); box-shadow: 0 0 0 2px rgba(29,110,203,0.15); }
+    .quiver-icon { width: 36px; height: 36px; }
+    .quiver-icon svg { width: 18px; height: 18px; }
+    .quiver-title { font-size: 0.88rem; }
+    .quiver-teaser, .quiver-fletch { display: none; }
+    .quiver-panel { min-height: 0; justify-content: flex-start; }
+    .quiver-pane { padding: 30px 26px; }
+    .quiver-pane h3 { font-size: 1.3rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+    .quiver-tab, .quiver-icon, .quiver-fletch, .quiver-fletch::after { transition: none; }
+    .quiver-pane.is-active { animation: none; }
+}
