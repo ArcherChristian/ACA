@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vision Breakfast | Archer Christian Academy</title>
+    <meta name="description" content="You're invited to the Archer Christian Academy Vision Breakfast — Thursday, October 29, 7–8 AM at Christ Presbyterian Church in Carol Stream. Come hear the vision for a Christ-centered, classical school in Englewood, Chicago.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&family=Dancing+Script:wght@600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../images/favicon-64.png" type="image/png" sizes="64x64">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
+    <meta name="theme-color" content="#002058">
+    <link rel="canonical" href="https://archerchristian.org/breakfast/">
+    <!-- Social sharing -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Archer Christian Academy">
+    <meta property="og:title" content="Vision Breakfast | Archer Christian Academy">
+    <meta property="og:description" content="You're invited to the Archer Christian Academy Vision Breakfast — Thursday, October 29, 7–8 AM at Christ Presbyterian Church in Carol Stream.">
+    <meta property="og:url" content="https://archerchristian.org/breakfast/">
+    <meta property="og:image" content="https://archerchristian.org/images/social-card.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Archer Christian Academy — a Christ-centered, classical school in Englewood, Chicago, launching Fall 2027">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Event structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Archer Christian Academy Vision Breakfast",
+      "startDate": "2026-10-29T07:00:00-05:00",
+      "endDate": "2026-10-29T08:00:00-05:00",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "location": {
+        "@type": "Place",
+        "name": "Christ Presbyterian Church",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "371 S. Schmale Road",
+          "addressLocality": "Carol Stream",
+          "addressRegion": "IL",
+          "addressCountry": "US"
+        }
+      },
+      "description": "Come learn about Archer Christian Academy, a Christian classical school starting fall of 2027 in Englewood, and see what it would look like for you to partner alongside us.",
+      "organizer": {
+        "@type": "Organization",
+        "name": "Archer Christian Academy",
+        "url": "https://archerchristian.org"
+      },
+      "isAccessibleForFree": true,
+      "url": "https://archerchristian.org/breakfast/"
+    }
+    </script>
+
+    <style>
+        /* Brand fallbacks so this page renders correctly even without styles.css
+           (e.g. in a file preview). On the live site, ../styles.css loads first
+           and these simply match it. */
+        :root {
+            --archer-blue: #1D6ECB;
+            --dark-blue: #002058;
+            --archer-yellow: #FFDD00;
+            --gold-deep: #E6C700;
+            --cream: #FFF8E7;
+            --paper: #FBF8F1;
+            --white: #ffffff;
+            --ink: #2b3440;
+            --muted: #5b6673;
+        }
+        body {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            color: var(--ink);
+            line-height: 1.75;
+            background: var(--white);
+            margin: 0;
+            font-size: 16px;
+            overflow-x: hidden;
+        }
+        .container-narrow { max-width: 820px; margin: 0 auto; padding: 0 24px; }
+        a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+        img { max-width: 100%; display: block; }
+        .btn {
+            display: inline-block;
+            padding: 15px 32px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            border-radius: 6px;
+            letter-spacing: 0.08em;
+            font-size: 0.82rem;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        .btn-yellow {
+            background-color: var(--archer-yellow);
+            color: var(--dark-blue);
+            border-color: var(--archer-yellow);
+        }
+        .btn-yellow:hover {
+            background-color: var(--gold-deep);
+            border-color: var(--gold-deep);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(255,221,0,0.38);
+        }
+
+        /* Standalone event page — logo header only, no nav (matches /rsvp/) */
+        .vb-header {
+            background: var(--dark-blue);
+            padding: 16px 20px 14px;
+            text-align: center;
+            position: static;
+        }
+        .vb-header a { display: inline-block; line-height: 0; }
+        .vb-header img { width: clamp(150px, 34vw, 230px); height: auto; }
+
+        /* --- Flyer composition --- */
+
+        /* White top: script + headline */
+        .vb-invite {
+            background: var(--white);
+            text-align: center;
+            padding: clamp(44px, 8vw, 84px) 24px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        .vb-invite::after {
+            /* dotted texture, echoing the flyer's corner pattern */
+            content: '';
+            position: absolute;
+            top: 20px; right: 4vw;
+            width: 180px; height: 180px;
+            background-image: radial-gradient(rgba(0, 32, 88, 0.14) 1.5px, transparent 1.5px);
+            background-size: 14px 14px;
+            pointer-events: none;
+        }
+        .vb-script {
+            font-family: 'Dancing Script', cursive;
+            font-weight: 700;
+            font-size: clamp(1.7rem, 4.5vw, 2.5rem);
+            color: var(--dark-blue);
+            display: block;
+            margin-bottom: 6px;
+            transform: rotate(-2deg);
+        }
+        .vb-invite h1 {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-weight: 700;
+            font-size: clamp(2.1rem, 6.5vw, 3.9rem);
+            color: var(--dark-blue);
+            letter-spacing: 0.01em;
+            line-height: 1.12;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Cream wedge: event details */
+        .vb-details {
+            background: var(--cream);
+            clip-path: polygon(0 clamp(24px, 5vw, 60px), 100% 0, 100% 100%, 0 100%);
+            margin-top: clamp(30px, 6vw, 56px);
+            padding: clamp(56px, 10vw, 104px) 24px clamp(48px, 8vw, 88px);
+            position: relative;
+        }
+        .vb-details .container-narrow { text-align: center; }
+        .vb-details p { margin: 0; }
+        .vb-when {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: clamp(1.25rem, 3.2vw, 1.7rem);
+            color: var(--dark-blue);
+            margin-bottom: 4px;
+        }
+        .vb-when a { color: var(--dark-blue); }
+        .vb-when a:hover { color: var(--archer-blue); }
+        .vb-where {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+            color: var(--dark-blue);
+        }
+        .vb-address {
+            font-style: italic;
+            color: var(--muted);
+            margin-top: 6px !important;
+            font-size: 0.98rem;
+        }
+        .vb-address a {
+            color: var(--archer-blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .vb-address a:hover { color: var(--dark-blue); }
+        .vb-calendar {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 0.04em;
+            margin-top: 16px !important;
+        }
+        .vb-calendar a {
+            color: var(--archer-blue);
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+        .vb-calendar a:hover { color: var(--dark-blue); }
+
+        /* Blue wedge: invitation + RSVP */
+        .vb-blue {
+            background: var(--archer-blue);
+            color: var(--white);
+            clip-path: polygon(0 clamp(24px, 5vw, 60px), 100% 0, 100% 100%, 0 100%);
+            margin-top: calc(-1 * clamp(20px, 4vw, 44px));
+            padding: clamp(64px, 11vw, 120px) 24px clamp(56px, 9vw, 96px);
+            text-align: center;
+        }
+        .vb-blue p.vb-copy {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+            line-height: 1.8;
+            max-width: 720px;
+            margin: 0 auto 34px;
+        }
+        .vb-blue .btn { position: relative; }
+        .vb-deadline {
+            font-family: 'Libre Baskerville', Georgia, serif;
+            font-style: italic;
+            color: var(--archer-yellow);
+            margin-top: 22px;
+            font-size: 0.95rem;
+        }
+        .vb-gold-bar { height: 8px; background: var(--archer-yellow); }
+
+        .vb-footer {
+            background: var(--dark-blue);
+            color: rgba(255, 255, 255, 0.75);
+            text-align: center;
+            font-size: 0.85rem;
+            padding: 22px 20px;
+        }
+        .vb-footer a { color: var(--archer-yellow); text-decoration: none; }
+        .vb-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <header class="vb-header">
+        <a href="https://archerchristian.org/" aria-label="Archer Christian Academy home">
+            <img src="../ACA Primary RGB MonoWhite.png" alt="Archer Christian Academy">
+        </a>
+    </header>
+
+    <main>
+        <section class="vb-invite">
+            <span class="vb-script">you're invited!</span>
+            <h1>Join Us For Breakfast</h1>
+
+            <div class="vb-details">
+                <div class="container-narrow">
+                    <p class="vb-when">Thursday, October 29 &middot; 7&ndash;8 AM</p>
+                    <p class="vb-where">Christ Presbyterian Church</p>
+                    <p class="vb-address">
+                        <a href="https://maps.google.com/?q=Christ+Presbyterian+Church,+371+S+Schmale+Rd,+Carol+Stream,+IL" target="_blank" rel="noopener">371 S. Schmale Road, Carol Stream</a>
+                    </p>
+                    <p class="vb-calendar"><a href="breakfast.ics" download>+ Add to calendar</a></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="vb-blue">
+            <div class="container-narrow">
+                <p class="vb-copy">Come learn about Archer Christian Academy, a Christian classical school starting fall of 2027 in Englewood, and see what it would look like for you to partner alongside us. We hope to see you there!</p>
+                <a href="/rsvp/" class="btn btn-yellow">RSVP for the Vision Breakfast</a>
+                <p class="vb-deadline">Please RSVP before Thursday, October 15</p>
+            </div>
+        </section>
+        <div class="vb-gold-bar" aria-hidden="true"></div>
+    </main>
+
+    <footer class="vb-footer">
+        Archer Christian Academy is a ministry of Urban Youth Outreach, a registered 501(c)(3) nonprofit organization.<br>
+        <a href="https://archerchristian.org/">archerchristian.org</a>
+    </footer>
+
+</body>
+</html>
