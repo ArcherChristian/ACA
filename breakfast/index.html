@@ -23,10 +23,10 @@
     <meta property="og:title" content="Vision Breakfast | Archer Christian Academy">
     <meta property="og:description" content="You're invited to the Archer Christian Academy Vision Breakfast — Thursday, October 29, 7–8 AM at Christ Presbyterian Church in Carol Stream.">
     <meta property="og:url" content="https://archerchristian.org/breakfast/">
-    <meta property="og:image" content="https://archerchristian.org/images/social-card.jpg">
+    <meta property="og:image" content="https://archerchristian.org/breakfast/Inspire%202026%20invite.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Archer Christian Academy — a Christ-centered, classical school in Englewood, Chicago, launching Fall 2027">
+    <meta property="og:image:alt" content="You're invited to the Archer Christian Academy Vision Breakfast — Thursday, October 29, 7–8 AM, Christ Presbyterian Church, Carol Stream">
     <meta name="twitter:card" content="summary_large_image">
 
     <!-- Event structured data -->
@@ -137,21 +137,35 @@
             /* dotted texture, echoing the flyer's corner pattern */
             content: '';
             position: absolute;
-            top: 20px; right: 4vw;
-            width: 180px; height: 180px;
+            top: 0; right: 0;
+            width: clamp(60px, 9vw, 110px); height: 100%;
             background-image: radial-gradient(rgba(0, 32, 88, 0.14) 1.5px, transparent 1.5px);
             background-size: 14px 14px;
             pointer-events: none;
         }
+        /* "you're invited!" — hand-lettered image from the Canva flyer.
+           Loads invite.svg; falls back to Dancing Script text if it cannot load. */
         .vb-script {
+            display: block;
+            margin: 0 auto 6px;
+            position: relative;
+            z-index: 1;
+        }
+        .vb-script img {
+            width: clamp(230px, 46vw, 470px);
+            height: auto;
+            margin: 0 auto;
+            transform: rotate(-2deg);
+        }
+        .vb-script .vb-script-text {
             font-family: 'Dancing Script', cursive;
             font-weight: 700;
             font-size: clamp(1.7rem, 4.5vw, 2.5rem);
             color: var(--dark-blue);
             display: block;
-            margin-bottom: 6px;
             transform: rotate(-2deg);
         }
+        .vb-script .vb-script-text[hidden] { display: none; }
         .vb-invite h1 {
             font-family: 'Libre Baskerville', Georgia, serif;
             font-weight: 700;
@@ -167,12 +181,30 @@
         /* Cream wedge: event details */
         .vb-details {
             background: var(--cream);
-            clip-path: polygon(0 clamp(24px, 5vw, 60px), 100% 0, 100% 100%, 0 100%);
-            margin-top: clamp(30px, 6vw, 56px);
-            padding: clamp(56px, 10vw, 104px) 24px clamp(48px, 8vw, 88px);
+            /* top edge falls from the left toward the right, as on the flyer */
+            clip-path: polygon(0 0, 100% clamp(40px, 11vw, 130px), 100% 100%, 0 100%);
+            margin: clamp(24px, 5vw, 48px) -24px 0;   /* full-bleed past the white section's side padding */
+            padding: clamp(72px, 14vw, 170px) 24px clamp(100px, 17vw, 200px);
             position: relative;
         }
-        .vb-details .container-narrow { text-align: center; }
+        .vb-details::before {
+            /* dotted texture in the lower-left corner of the cream */
+            content: '';
+            position: absolute;
+            left: 0; bottom: 0;
+            width: clamp(36px, 9vw, 110px); height: 70%;
+            background-image: radial-gradient(rgba(0, 32, 88, 0.14) 1.5px, transparent 1.5px);
+            background-size: 14px 14px;
+            pointer-events: none;
+        }
+        .vb-details .container-narrow {
+            text-align: left;
+            position: relative;
+            z-index: 1;
+            padding-left: clamp(24px, 6vw, 56px);
+        }
+        .vb-details .vb-copy-block { max-width: 62%; }
+        @media (max-width: 640px) { .vb-details .vb-copy-block { max-width: 100%; } }
         .vb-details p { margin: 0; }
         .vb-when {
             font-family: 'Poppins', sans-serif;
@@ -214,22 +246,31 @@
             text-underline-offset: 3px;
         }
         .vb-calendar a:hover { color: var(--dark-blue); }
+        .vb-calendar .vb-cal-sep { white-space: nowrap; }
+        .vb-calendar .vb-cal-sep > span { color: var(--muted); margin: 0 4px; }
 
         /* Blue wedge: invitation + RSVP */
         .vb-blue {
             background: var(--archer-blue);
             color: var(--white);
-            clip-path: polygon(0 clamp(24px, 5vw, 60px), 100% 0, 100% 100%, 0 100%);
-            margin-top: calc(-1 * clamp(20px, 4vw, 44px));
-            padding: clamp(64px, 11vw, 120px) 24px clamp(56px, 9vw, 96px);
-            text-align: center;
+            /* steep rise from lower-left to upper-right, cutting into the cream */
+            clip-path: polygon(0 clamp(90px, 24vw, 300px), 100% 0, 100% 100%, 0 100%);
+            margin-top: calc(-1 * clamp(110px, 22vw, 280px));
+            padding: clamp(120px, 27vw, 330px) 24px clamp(56px, 9vw, 96px);
+            text-align: right;
         }
+        .vb-blue .container-narrow { padding-right: clamp(24px, 6vw, 56px); }
         .vb-blue p.vb-copy {
             font-family: 'Libre Baskerville', Georgia, serif;
             font-size: clamp(1.05rem, 2.4vw, 1.3rem);
             line-height: 1.8;
-            max-width: 720px;
-            margin: 0 auto 34px;
+            max-width: 620px;
+            margin: 0 0 34px auto;
+        }
+        @media (max-width: 640px) {
+            .vb-blue { text-align: center; }
+            .vb-blue .container-narrow { padding-right: 24px; }
+            .vb-blue p.vb-copy { margin: 0 auto 34px; }
         }
         .vb-blue .btn { position: relative; }
         .vb-deadline {
@@ -304,17 +345,29 @@
 
     <main>
         <section class="vb-invite">
-            <span class="vb-script">you're invited!</span>
+            <span class="vb-script">
+                <img src="invite.svg" alt="you're invited!" width="360" height="126" decoding="async"
+                     onerror="this.hidden=true;this.nextElementSibling.hidden=false;">
+                <span class="vb-script-text" hidden>you're invited!</span>
+            </span>
             <h1>Join Us For Breakfast</h1>
 
             <div class="vb-details">
                 <div class="container-narrow">
+                  <div class="vb-copy-block">
                     <p class="vb-when">Thursday, October 29 &middot; 7&ndash;8 AM</p>
                     <p class="vb-where">Christ Presbyterian Church</p>
                     <p class="vb-address">
                         <a href="https://maps.google.com/?q=Christ+Presbyterian+Church,+371+S+Schmale+Rd,+Carol+Stream,+IL" target="_blank" rel="noopener">371 S. Schmale Road, Carol Stream</a>
                     </p>
-                    <p class="vb-calendar"><a href="breakfast.ics" download>+ Add to calendar</a></p>
+                    <p class="vb-calendar">Add to Calendar:
+                        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Archer+Christian+Academy+Vision+Breakfast&amp;dates=20261029T120000Z/20261029T130000Z&amp;location=Christ+Presbyterian+Church%2C+371+S+Schmale+Rd%2C+Carol+Stream%2C+IL+60188" target="_blank" rel="noopener">Google</a>
+                        <span class="vb-cal-sep"><span aria-hidden="true">|</span>
+                        <a href="https://outlook.live.com/calendar/0/deeplink/compose?path=/calendar/action/compose&amp;rru=addevent&amp;subject=Archer+Christian+Academy+Vision+Breakfast&amp;startdt=2026-10-29T12:00:00Z&amp;enddt=2026-10-29T13:00:00Z&amp;location=Christ+Presbyterian+Church%2C+371+S+Schmale+Rd%2C+Carol+Stream%2C+IL+60188" target="_blank" rel="noopener">Microsoft</a></span>
+                        <span class="vb-cal-sep"><span aria-hidden="true">|</span>
+                        <a href="breakfast.ics" download>Apple</a></span>
+                    </p>
+                  </div>
                 </div>
             </div>
         </section>
