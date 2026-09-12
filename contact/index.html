@@ -119,8 +119,26 @@
                     <div style="margin-top: 30px;">
                         <h4 style="color: var(--archer-blue); margin-bottom: 10px;">Visit Us</h4>
                         <p><strong>Archer Christian Academy</strong><br>
+
+                        <!-- The Map Link -->
+                        <a id="map-link" href="https://google.com" target="_blank">
                         672 West Marquette Road<br>
-                        Chicago, Illinois 60621</p>
+                        Chicago, Illinois 60621
+                        </a>
+                        
+                        <!-- The Script right next to it -->
+                        <script>
+                          document.addEventListener("DOMContentLoaded", function() {
+                            // Check if the user is on an Apple device
+                            const isApple = /Mac|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                            
+                            if (isApple) {
+                              const mapLink = document.getElementById("map-link");
+                              // Swap the destination to Apple Maps
+                              mapLink.href = "https://apple.com";
+                            }
+                          });
+                        </script></p>
                     </div>
 
                     <div style="margin-top: 30px;">
