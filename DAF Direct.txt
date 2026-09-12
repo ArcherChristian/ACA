@@ -1,0 +1,5 @@
+DAF Direct
+
+https://www.dafdirect.org/DAFDirect/daflink?_dafdirect_settings=MzYzMzgyNTI3XzIxMTFfNWEzZjA5ZmItNGY1ZS00MzVjLTk4YzMtOGZmMjBhNTkyNmQ2&designatedText=QXJjaGVyIENocmlzdGlhbiBBY2FkZW15&amountValue=
+
+<script type = "text/javascript">_dafdirect_settings="363382527_1111_1fcbee84-2bf6-45e7-817d-0c245bbcc295"</script><script type = "text/javascript" src = "https://www.dafdirect.org/ddirect/dafdirect4.js"></script>
