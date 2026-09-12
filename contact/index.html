@@ -121,21 +121,20 @@
                         <p><strong>Archer Christian Academy</strong><br>
 
                         <!-- The Map Link -->
-                        <a id="map-link" href="https://google.com" target="_blank">
+                        <a id="map-link" href="geo:0,0?q=672+W+Marquette+Rd,+Chicago,+IL+60621" target="_blank">
                         672 West Marquette Road<br>
                         Chicago, Illinois 60621
                         </a>
                         
-                        <!-- The Script right next to it -->
                         <script>
                           document.addEventListener("DOMContentLoaded", function() {
-                            // Check if the user is on an Apple device
-                            const isApple = /Mac|iPhone|iPad|iPod/i.test(navigator.userAgent);
+                            // Check if the user is on an iPhone or iPad
+                            const isAppleMobile = /iPhone|iPad|iPod/i.test(navigator.userAgent);
                             
-                            if (isApple) {
+                            if (isAppleMobile) {
                               const mapLink = document.getElementById("map-link");
-                              // Swap the destination to Apple Maps
-                              mapLink.href = "https://apple.com";
+                              // 'maps://' forces iOS to immediately open the native Apple Maps App
+                              mapLink.href = "maps://?q=672+W+Marquette+Rd,+Chicago,+IL+60621";
                             }
                           });
                         </script></p>
