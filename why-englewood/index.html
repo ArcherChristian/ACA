@@ -120,21 +120,50 @@
             <div class="section-head reveal">
                 <span class="kicker">The Academic Need</span>
                 <h2>Most Students Are Not Yet Proficient</h2>
-                <p>On the 2025 Illinois Assessment of Readiness, fewer than half of Chicago Public Schools students in grades 3&ndash;8 met the state standard in English language arts, and about one in four met it in mathematics.</p>
+                <p>The Illinois Assessment of Readiness measures whether students in grades 3&ndash;8 are working at grade level. In Chicago Public Schools, most are not&mdash;whichever standard Illinois applies.</p>
             </div>
-            <div class="need-tiles need-tiles-2 stagger">
-                <div class="need-tile reveal">
-                    <span class="need-num">40.6%</span>
-                    <span class="need-label">Proficient in English Language Arts</span>
-                    <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2025</span>
-                </div>
-                <div class="need-tile reveal">
-                    <span class="need-num">26.2%</span>
-                    <span class="need-label">Proficient in Mathematics</span>
-                    <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2025</span>
-                </div>
+
+            <div class="need-toggle reveal" role="group" aria-label="Choose which proficiency standard to display">
+                <button type="button" class="need-toggle-btn is-active" data-standard="former" aria-pressed="true">Former Standard <small>2024</small></button>
+                <button type="button" class="need-toggle-btn" data-standard="current" aria-pressed="false">Current Standard <small>2025</small></button>
             </div>
-            <p class="need-source reveal">Source: Chicago Public Schools, 2025 Illinois Assessment of Readiness results, as reported on the 2025 Illinois Report Card. Illinois set new proficiency benchmarks in 2025; results from earlier years are not comparable.</p>
+
+            <div class="need-standard" data-standard="former">
+                <div class="need-tiles need-tiles-2 stagger">
+                    <div class="need-tile reveal">
+                        <span class="need-num">30.5%</span>
+                        <span class="need-label">Proficient in English Language Arts</span>
+                        <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2024</span>
+                    </div>
+                    <div class="need-tile reveal">
+                        <span class="need-num">18.3%</span>
+                        <span class="need-label">Proficient in Mathematics</span>
+                        <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2024</span>
+                    </div>
+                </div>
+                <p class="need-source reveal">Source: Chicago Public Schools, 2024 Illinois Assessment of Readiness results (2024 Illinois Report Card)&mdash;the last year scored under the proficiency standard Illinois used from 2015 through 2024.</p>
+            </div>
+
+            <div class="need-standard" data-standard="current" hidden>
+                <div class="need-tiles need-tiles-2 stagger">
+                    <div class="need-tile reveal">
+                        <span class="need-num">40.6%</span>
+                        <span class="need-label">Proficient in English Language Arts</span>
+                        <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2025</span>
+                    </div>
+                    <div class="need-tile reveal">
+                        <span class="need-num">26.2%</span>
+                        <span class="need-label">Proficient in Mathematics</span>
+                        <span class="need-sub">Chicago Public Schools, grades 3&ndash;8, 2025</span>
+                    </div>
+                </div>
+                <p class="need-source reveal">Source: Chicago Public Schools, 2025 Illinois Assessment of Readiness results (2025 Illinois Report Card)&mdash;the first year scored under the cut scores Illinois adopted in August 2025.</p>
+            </div>
+
+            <div class="need-note reveal">
+                <h4>A Note on the Numbers</h4>
+                <p>In August 2025, the Illinois State Board of Education lowered the cut scores that decide which students count as proficient in reading and math. The state describes the new levels as better aligned with national norms. The practical effect is that most of the jump in reported proficiency between 2024 and 2025 came from the new cut scores, not from new learning. Redrawing the line does not teach a child to read or to reason. We show the former standard first because it is the one that measured Chicago&rsquo;s classrooms for a decade, and the current standard beside it so the comparison is plain.</p>
+            </div>
         </div>
     </section>
 
@@ -298,6 +327,22 @@
     const navToggle = document.querySelector('.nav-toggle');
     navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
     document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
+
+    /* Former / current proficiency standard toggle */
+    const standardButtons = document.querySelectorAll('.need-toggle-btn');
+    standardButtons.forEach(btn => btn.addEventListener('click', () => {
+        const pick = btn.getAttribute('data-standard');
+        standardButtons.forEach(b => {
+            const on = b === btn;
+            b.classList.toggle('is-active', on);
+            b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        document.querySelectorAll('.need-standard').forEach(panel => {
+            const show = panel.getAttribute('data-standard') === pick;
+            panel.hidden = !show;
+            if (show) panel.querySelectorAll('.reveal').forEach(el => el.classList.add('visible'));
+        });
+    }));
     </script>
 
     <script src="../site.js" defer></script>
