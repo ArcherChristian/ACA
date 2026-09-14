@@ -23,7 +23,10 @@
   header{padding:26px 0 10px; position:relative;}
   header h1{font-size:1.45rem; letter-spacing:.2px;}
   header .sub{color:var(--soft); font-size:.92rem; margin-top:4px;}
-  .sync-status{position:absolute; right:0; top:28px; font-size:.78rem; font-weight:600; padding:3px 8px; border-radius:6px; background:#eee9dc; color:var(--soft);}
+  .header-controls{position:absolute; right:0; top:24px; display:flex; align-items:center; gap:8px;}
+  .toggle-edit{font-size:.78rem; font-weight:700; padding:4px 10px; border-radius:999px; border:1.5px solid var(--accent); background:#fff; color:var(--accent); cursor:pointer;}
+  body.edit-mode .toggle-edit{background:var(--accent); color:#fff;}
+  .sync-status{font-size:.78rem; font-weight:600; padding:3px 8px; border-radius:6px; background:#eee9dc; color:var(--soft);}
   .sync-status.saving{background:#fdeede; color:var(--bo);}
   .sync-status.saved{background:#e8f3e9; color:var(--ari);}
   .legend{display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 4px;}
@@ -53,15 +56,24 @@
   .slot{display:flex; gap:8px; padding:5px 4px; border-bottom:1px dashed #efe8d5; font-size:.85rem; border-radius:6px; position:relative; align-items:flex-start;}
   .slot:last-child{border-bottom:none;}
   .slot .t{flex:0 0 62px; font-weight:700; font-size:.76rem; color:var(--accent); padding-top:2px; outline:none; border-radius:3px;}
-  .slot .t:focus, .slot .what:focus{background:#fff8db; box-shadow:0 0 0 2px #e0c878;}
   .slot .what{flex:1; outline:none; border-radius:3px;}
   .slot .what b{font-weight:700;}
-  .slot .del-btn{opacity:0; border:none; background:transparent; color:#a39281; cursor:pointer; font-size:.85rem; line-height:1; padding:2px 4px; border-radius:3px; transition:opacity .15s;}
-  .slot:hover .del-btn{opacity:1;}
-  .slot .del-btn:hover{color:var(--rissa); background:var(--rissa-bg);}
-  .add-slot-btn{display:block; width:100%; margin-top:8px; padding:4px 0; border:1px dashed var(--line); background:transparent; border-radius:6px; font-size:.75rem; font-weight:600; color:var(--soft); cursor:pointer;}
-  .add-slot-btn:hover{background:#f3ecda; color:var(--ink);}
-  .who{display:inline-block; font-size:.68rem; font-weight:700; border-radius:4px; padding:1px 5px; margin-left:4px; vertical-align:1px; cursor:pointer; user-select:none;}
+  
+  body.edit-mode [contenteditable="true"]{cursor:text;}
+  body.edit-mode .slot .t:focus, body.edit-mode .slot .what:focus, body.edit-mode .ck li .item-text:focus{background:#fff8db; box-shadow:0 0 0 2px #e0c878;}
+  body:not(.edit-mode) [contenteditable="true"]{-webkit-user-modify:read-only; cursor:default;}
+  
+  .del-btn, .add-btn, .add-slot-btn{display:none;}
+  body.edit-mode .add-btn, body.edit-mode .add-slot-btn{display:block;}
+  body.edit-mode .del-btn{display:inline-block; opacity:0;}
+  body.edit-mode .slot:hover .del-btn, body.edit-mode .ck li:hover .del-btn{opacity:1;}
+  
+  .del-btn{border:none; background:transparent; color:#a39281; cursor:pointer; font-size:.85rem; line-height:1; padding:2px 4px; border-radius:3px; transition:opacity .15s;}
+  .del-btn:hover{color:var(--rissa); background:var(--rissa-bg);}
+  .add-slot-btn, .add-btn{width:100%; margin-top:8px; padding:4px 0; border:1px dashed var(--line); background:transparent; border-radius:6px; font-size:.75rem; font-weight:600; color:var(--soft); cursor:pointer;}
+  .add-slot-btn:hover, .add-btn:hover{background:#f3ecda; color:var(--ink);}
+  
+  .who{display:inline-block; font-size:.68rem; font-weight:700; border-radius:4px; padding:1px 5px; margin:0 2px; vertical-align:1px; cursor:pointer; user-select:none;}
   .w-ari{background:var(--ari-bg); color:var(--ari);}
   .w-ti{background:var(--ti-bg); color:var(--ti);}
   .w-rissa{background:var(--rissa-bg); color:var(--rissa);}
@@ -83,9 +95,13 @@
   .kid-card h3{font-size:1rem; margin-bottom:2px;}
   .kid-card .age{color:var(--soft); font-size:.78rem; margin-bottom:8px;}
   .kid-card h4, .pcard h4{font-size:.78rem; text-transform:uppercase; letter-spacing:.5px; color:var(--soft); margin:10px 0 4px;}
+  
   .ck{list-style:none;}
-  .ck li{padding:3px 4px 3px 24px; position:relative; font-size:.86rem; border-radius:6px;}
-  .ck li::before{content:"☐"; position:absolute; left:4px; top:2px; color:#b3a67f;}
+  .ck li{padding:3px 4px 3px 26px; position:relative; font-size:.86rem; border-radius:6px; display:flex; align-items:baseline; justify-content:space-between;}
+  .ck li .box{position:absolute; left:4px; top:3px; cursor:pointer; user-select:none; font-size:1rem; line-height:1; color:#9e8e63;}
+  .ck li .item-text{flex:1; outline:none; border-radius:3px;}
+  .ck li.done .item-text{text-decoration:line-through; opacity:.45;}
+  
   .zone h3{font-size:.92rem; margin-bottom:6px;}
   .star{color:var(--bo); font-weight:700;}
   .foot{margin-top:30px; padding-top:14px; border-top:1px solid var(--line); color:var(--soft); font-size:.8rem;}
@@ -100,7 +116,7 @@
   tr.hit td{background:var(--hl-bg);}
   .card.hit{outline:2.5px solid var(--hl);}
   @media print{
-    nav, .add-slot-btn, .del-btn, .sync-status{display:none;}
+    nav, .add-slot-btn, .add-btn, .del-btn, .header-controls{display:none;}
     body{background:#fff; padding-bottom:0;}
     .card{box-shadow:none; break-inside:avoid;}
     .dim{opacity:1;} .hint{display:none;}
@@ -109,7 +125,10 @@
 <header>
   <h1>Family Rhythm &amp; Chore Chart</h1>
   <div class="sub">Homeschool · school year 2026–27</div>
-  <div class="sync-status" id="syncStatus">Synced</div>
+  <div class="header-controls">
+    <button class="toggle-edit" id="toggleEditBtn">✎ Edit Mode</button>
+    <div class="sync-status" id="syncStatus">Synced</div>
+  </div>
   <div class="legend">
     <span class="chip c-ari" data-kid="ari"><span class="dot"></span>Ari</span>
     <span class="chip c-ti" data-kid="ti"><span class="dot"></span>Ti</span>
@@ -119,7 +138,7 @@
     <span class="chip c-dad" data-kid="dad"><span class="dot"></span>Dad</span>
     <span class="chip c-all" data-kid=""><span class="dot"></span>Everyone</span>
   </div>
-  <div class="hint">Tap a name to spotlight their week. Click any event time or text to edit it directly.</div>
+  <div class="hint">Tap a name to spotlight. Click checkboxes to track daily progress. Turn on Edit Mode to modify schedule &amp; lists.</div>
 </header>
 
 <nav><div class="row">
@@ -140,107 +159,107 @@
     <div class="card day" data-day="mon">
       <h3>Monday <span class="theme">work + lessons day</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> — prayer, song, plan the day <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 devices locked until done <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true"><b>Ari → work @ HH</b> (8:00–3:30) — strands: whatever fits tonight; catch up over the week <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo 1-on-1 with Mom (reading, Bible copywork + journal, TMM, CC memory) <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true"><b>Piano + voice lessons</b> 12:30–2:05 (Rissa: piano–Greaves, voice–White · Ti: piano–Adm?) <span class="who w-rissa">Rissa</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strand 5 <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo rest + play <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">3:00</span><span class="what" contenteditable="true"><b>Woodworking class</b> 3:00–4:30 <span class="who w-ti">Ti</span> · Strand 6 <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">4:45</span><span class="what" contenteditable="true">Ti + Mom weekly meeting (30 min) <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Mom cooks</b> <span class="who w-mom">Mom</span> · 6:00 dinner + crew</span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr — Walk, Read, Write · Strand 6 + piano practice <span class="who w-ti">Ti</span> <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> — prayer, song, plan the day <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 devices locked until done <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true"><b>Ari → work @ HH</b> (8:00–3:30) — strands: whatever fits tonight; catch up over the week <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo 1-on-1 with Mom (reading, Bible copywork + journal, TMM, CC memory) <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true"><b>Piano + voice lessons</b> 12:30–2:05 (Rissa: piano–Greaves, voice–White · Ti: piano–Adm?) <span class="who w-rissa">Rissa</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strand 5 <span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo rest + play <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">3:00</span><span class="what" contenteditable="true"><b>Woodworking class</b> 3:00–4:30 <span class="who w-ti">Ti</span> · Strand 6 <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">4:45</span><span class="what" contenteditable="true">Ti + Mom weekly meeting (30 min) <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Mom cooks</b> <span class="who w-mom">Mom</span> · 6:00 dinner + crew</span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr — Walk, Read, Write · Strand 6 + piano practice <span class="who w-ti">Ti</span> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="tue">
       <h3>Tuesday <span class="theme">debate day</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: read, CC, TMM <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Quiet hour — piano practice / free read · early Strand 5 if possible</span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true"><b>Debate Club</b> 2:00–4:00 (Ari: LD) <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> · Strands 5–6 + PE outside <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">4:15</span><span class="what" contenteditable="true">Strand 5 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Rissa cooks</b> (with Mom) <span class="who w-rissa">Rissa</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr + Strand 6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: read, CC, TMM <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Quiet hour — piano practice / free read · early Strand 5 if possible</span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true"><b>Debate Club</b> 2:00–4:00 (Ari: LD) <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> · Strands 5–6 + PE outside <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">4:15</span><span class="what" contenteditable="true">Strand 5 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Rissa cooks</b> (with Mom) <span class="who w-rissa">Rissa</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr + Strand 6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="wed">
       <h3>Wednesday <span class="theme">WOCA + date night</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> + breakfast, load the car (no 6:00 gym) <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>White Oak Classical Academy (WOCA)</b> 8:30–12:30 — <b>all 4 kids</b>; Mom teaches <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:45</span><span class="what" contenteditable="true">Lunch <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">1:30</span><span class="what" contenteditable="true"><b>East St. sports</b> 1:30–3:30 <span class="who w-ti">Ti</span> · PE outside? <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strands — as many as fit after WOCA (aim: 4/5/6) <span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span> · SAT/CLT prep + college apps <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true"><b>Kids' night:</b> Rissa + Bo make a simple dinner <span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true"><b>Mom + Dad date night</b> 💛 <span class="who w-mom">Mom</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">6:30</span><span class="what" contenteditable="true"><b>Personal Finance class</b> 6:30–8:30 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> + breakfast, load the car (no 6:00 gym) <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>White Oak Classical Academy (WOCA)</b> 8:30–12:30 — <b>all 4 kids</b>; Mom teaches <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:45</span><span class="what" contenteditable="true">Lunch <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">1:30</span><span class="what" contenteditable="true"><b>East St. sports</b> 1:30–3:30 <span class="who w-ti">Ti</span> · PE outside? <span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strands — as many as fit after WOCA (aim: 4/5/6) <span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span> · SAT/CLT prep + college apps <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true"><b>Kids' night:</b> Rissa + Bo make a simple dinner <span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true"><b>Mom + Dad date night</b> 💛 <span class="who w-mom">Mom</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:30</span><span class="what" contenteditable="true"><b>Personal Finance class</b> 6:30–8:30 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="thu">
       <h3>Thursday <span class="theme">prep + pizza night</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: CC, TMM, read <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Quiet hour · Ti midweek check-in with Mom <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strands 5–6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Archer work + paper feedback <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">4:00</span><span class="what" contenteditable="true"><b>CC prep:</b> practice presentations, pack + load the car <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true"><b>Pizza night</b> — <b>Dad cooks</b> <span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr, early wind-down — big day tomorrow <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: CC, TMM, read <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:00</span><span class="what" contenteditable="true">Lunch + recess <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Quiet hour · Ti midweek check-in with Mom <span class="who w-ti">Ti</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true">Strands 5–6 <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Archer work + paper feedback <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">4:00</span><span class="what" contenteditable="true"><b>CC prep:</b> practice presentations, pack + load the car <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true"><b>Pizza night</b> — <b>Dad cooks</b> <span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr, early wind-down — big day tomorrow <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="fri">
       <h3>Friday <span class="theme">CC day (Dad) · planning day (Mom)</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym — optional <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">Quick assembly + breakfast, final load, leave on time <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>CC — Classical Conversations community day</b> ~8:30–2:30, <b>Dad drives + stays</b> — Challenge seminars cover all six strands with tutors <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Foundations <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>Mom's planning day</b> (quiet house): WOCA prep, weekly lesson prep, meal plan + grocery order <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">3:30</span><span class="what" contenteditable="true">Friends over / free play (flex) <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Mom cooks</b> (guests some weeks) <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr or family fun night <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym — optional <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">Quick assembly + breakfast, final load, leave on time <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>CC — Classical Conversations community day</b> ~8:30–2:30, <b>Dad drives + stays</b> — Challenge seminars cover all six strands with tutors <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Foundations <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:30</span><span class="what" contenteditable="true"><b>Mom's planning day</b> (quiet house): WOCA prep, weekly lesson prep, meal plan + grocery order <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">3:30</span><span class="what" contenteditable="true">Friends over / free play (flex) <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:00</span><span class="what" contenteditable="true">Dinner — <b>Mom cooks</b> (guests some weeks) <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true">W·R·Wr or family fun night <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="sat">
       <h3>Saturday <span class="theme">chores + reset</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">7:30</span><span class="what" contenteditable="true">Home gym / yoga / jog (optional) <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Breakfast · <b>first one awake picks chores first!</b></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">9:00</span><span class="what" contenteditable="true"><b>CHORES + RESET</b> 9:00–11:30 — own room + weekly reset list + zones <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">11:30</span><span class="what" contenteditable="true"><b>Bible + prayer + songs</b> — kids take turns leading · Dad: how-to-study (sermon text + discuss) <span class="who w-all">All</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Lunch <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true"><b>Family activity</b> — outdoors · piano concert · read-aloud + games · driving practice with Dad <span class="who w-ti">Ti</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">4:30</span><span class="what" contenteditable="true">Sunday-lunch prep — Mom + helper-of-the-week <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true">Dinner — <b>Ari cooks</b> <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">10:00</span><span class="what" contenteditable="true">Lights out <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:30</span><span class="what" contenteditable="true">Home gym / yoga / jog (optional) <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Breakfast · <b>first one awake picks chores first!</b></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">9:00</span><span class="what" contenteditable="true"><b>CHORES + RESET</b> 9:00–11:30 — own room + weekly reset list + zones <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">11:30</span><span class="what" contenteditable="true"><b>Bible + prayer + songs</b> — kids take turns leading · Dad: how-to-study (sermon text + discuss) <span class="who w-all">All</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:30</span><span class="what" contenteditable="true">Lunch <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">2:00</span><span class="what" contenteditable="true"><b>Family activity</b> — outdoors · piano concert · read-aloud + games · driving practice with Dad <span class="who w-ti">Ti</span><span class="who w-dad">Dad</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">4:30</span><span class="what" contenteditable="true">Sunday-lunch prep — Mom + helper-of-the-week <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">5:30</span><span class="what" contenteditable="true">Dinner — <b>Ari cooks</b> <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">10:00</span><span class="what" contenteditable="true">Lights out <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
     <div class="card day" data-day="sun">
       <h3>Sunday <span class="theme">church + hosting</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">7:45</span><span class="what" contenteditable="true">Up + breakfast <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:15</span><span class="what" contenteditable="true">Load up + leave — <b>at HCC by 8:40</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">9:00</span><span class="what" contenteditable="true"><b>Church — HCC</b> 9:00–12:00 <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">12:15</span><span class="what" contenteditable="true">Home · finish lunch setup (prepped Saturday) <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">1:00</span><span class="what" contenteditable="true"><b>Sunday lunch — guests invited</b> (plan invites by Thursday) <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">3:00</span><span class="what" contenteditable="true">Rest · games · read-aloud · Ari ↔ Mom or Dad date walk (biweekly) <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">4:30</span><span class="what" contenteditable="true"><b>Reset for the week:</b> pack bags, 10-min room reset, review the calendar <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Bo bed · light supper crowd winds down <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete slot">✕</button></div>
-        <div class="slot"><span class="t" contenteditable="true">9:30</span><span class="what" contenteditable="true">Lights out <span class="who w-all">All</span></span><button class="del-btn" title="Delete slot">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">7:45</span><span class="what" contenteditable="true">Up + breakfast <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:15</span><span class="what" contenteditable="true">Load up + leave — <b>at HCC by 8:40</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">9:00</span><span class="what" contenteditable="true"><b>Church — HCC</b> 9:00–12:00 <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">12:15</span><span class="what" contenteditable="true">Home · finish lunch setup (prepped Saturday) <span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">1:00</span><span class="what" contenteditable="true"><b>Sunday lunch — guests invited</b> (plan invites by Thursday) <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">3:00</span><span class="what" contenteditable="true">Rest · games · read-aloud · Ari ↔ Mom or Dad date walk (biweekly) <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">4:30</span><span class="what" contenteditable="true"><b>Reset for the week:</b> pack bags, 10-min room reset, review the calendar <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Bo bed · light supper crowd winds down <span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">9:30</span><span class="what" contenteditable="true">Lights out <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
       </div>
       <button class="add-slot-btn">+ Add Event</button>
     </div>
@@ -287,80 +306,102 @@
 
 <section id="kids">
   <h2>Kids' Daily Checklists</h2>
-  <p class="lede">Same order every day; pace is theirs. AM chores before devices unlock.</p>
+  <p class="lede">Same order every day; pace is theirs. Check boxes reset every night at midnight. AM chores before devices unlock.</p>
   <div class="grid two">
     <div class="card kid-card bo k-bo">
       <h3>Bo</h3><div class="age">Foundations</div>
       <h4>Every day</h4>
-      <ul class="ck">
-        <li>Morning routine: dressed, teeth, bed made (with help)</li>
-        <li>AM chores: breakfast dish in dishwasher + table-setter job</li>
-        <li>Opening Assembly 7:00 with everyone</li>
-        <li>1-on-1 school with Mom (1–2 hrs): reading lesson, Bible copywork + journal, TMM math, CC memory work</li>
-        <li>Outside play / recess after lunch</li>
-        <li>Quiet hour: rest, audiobooks, picture books</li>
-        <li>Afternoon: play + one ⭐ helper job</li>
-        <li>Sous-chef with the cook-of-the-day (when invited)</li>
-        <li>Evening pickup · bath 8:00 · lights out 8:30</li>
+      <ul class="ck" data-ckid="k-bo-daily">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Morning routine: dressed, teeth, bed made (with help)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">AM chores: breakfast dish in dishwasher + table-setter job</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Opening Assembly 7:00 with everyone</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">1-on-1 school with Mom (1–2 hrs): reading lesson, Bible copywork + journal, TMM math, CC memory work</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Outside play / recess after lunch</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Quiet hour: rest, audiobooks, picture books</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Afternoon: play + one ⭐ helper job</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Sous-chef with the cook-of-the-day (when invited)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Evening pickup · bath 8:00 · lights out 8:30</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-bo-daily">+ Add Daily Item</button>
       <h4>Week specials</h4>
-      <ul class="ck"><li>Wed: WOCA with the whole family</li><li>Thu: match socks with Mom (towel day)</li><li>Fri: CC community day — Foundations</li><li>Sun: church (HCC) + lunch guests</li></ul>
+      <ul class="ck" data-ckid="k-bo-specials">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wed: WOCA with the whole family</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Thu: match socks with Mom (towel day)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Fri: CC community day — Foundations</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Sun: church (HCC) + lunch guests</span><button class="del-btn">✕</button></li>
+      </ul>
+      <button class="add-btn" data-target="k-bo-specials">+ Add Special Item</button>
     </div>
+
     <div class="card kid-card rissa k-rissa">
       <h3>Rissa</h3><div class="age">Challenge — all six strands daily</div>
       <h4>Every day</h4>
-      <ul class="ck">
-        <li>Jog / bike / blades with Dad — optional, 6:00</li>
-        <li>Opening Assembly 7:00 · AM chores before devices</li>
-        <li>All six strands, 45–60 min each — aim for 4 before lunch</li>
-        <li>Guided time with Mom, 10:30–12:00</li>
-        <li>Piano (Greaves) + voice (White) practice — 30 min in quiet hour</li>
-        <li>PE outside 3×/week (Tue, Wed?, Sat)</li>
-        <li>Meal job of the week + W·R·Wr</li>
+      <ul class="ck" data-ckid="k-rissa-daily">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Jog / bike / blades with Dad — optional, 6:00</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Opening Assembly 7:00 · AM chores before devices</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">All six strands, 45–60 min each — aim for 4 before lunch</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Guided time with Mom, 10:30–12:00</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Piano (Greaves) + voice (White) practice — 30 min in quiet hour</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">PE outside 3×/week (Tue, Wed?, Sat)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Meal job of the week + W·R·Wr</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-rissa-daily">+ Add Daily Item</button>
       <h4>Week specials</h4>
-      <ul class="ck"><li>Mon 12:30–2:05: piano + voice lessons</li><li>Wed: WOCA — all 4 kids</li><li>Wed 5:30: cook kids'-night dinner with Bo</li><li>Fri: CC — strands with tutors</li><li>Work for Millers — day TBD</li></ul>
+      <ul class="ck" data-ckid="k-rissa-specials">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Mon 12:30–2:05: piano + voice lessons</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wed: WOCA — all 4 kids</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wed 5:30: cook kids'-night dinner with Bo</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Fri: CC — strands with tutors</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Work for Millers — day TBD</span><button class="del-btn">✕</button></li>
+      </ul>
+      <button class="add-btn" data-target="k-rissa-specials">+ Add Special Item</button>
     </div>
+
     <div class="card kid-card ti k-ti">
       <h3>Ti</h3><div class="age">Challenge — all six strands daily</div>
       <h4>Every day</h4>
-      <ul class="ck">
-        <li>Gym 6:00 with Mom (Mon/Tue/Thu/Fri)</li>
-        <li>Opening Assembly 7:00 · AM chores before devices</li>
-        <li>All six strands, 45–60 min each — 4 before lunch, rest around activities</li>
-        <li>Piano practice (quiet hour)</li>
-        <li>Meal job of the week + W·R·Wr</li>
+      <ul class="ck" data-ckid="k-ti-daily">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Gym 6:00 with Mom (Mon/Tue/Thu/Fri)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Opening Assembly 7:00 · AM chores before devices</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">All six strands, 45–60 min each — 4 before lunch, rest around activities</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Piano practice (quiet hour)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Meal job of the week + W·R·Wr</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-ti-daily">+ Add Daily Item</button>
       <h4>Week specials</h4>
-      <ul class="ck">
-        <li>Mon: piano lesson (Adm?) · woodworking 3:00–4:30 · weekly meeting with Mom 4:45 · Strand 6 after dinner</li>
-        <li>Tue: Debate Club 2:00–4:00</li>
-        <li>Wed: WOCA — all 4 kids · East St. sports 1:30–3:30 · Personal Finance class 6:30–8:30 with Ari</li>
-        <li>Thu: midweek check-in with Mom · CC prep</li>
-        <li>Fri: CC — strands with tutors · Sat: driving practice with Dad</li>
-        <li>Biweekly one-on-one with Dad</li>
+      <ul class="ck" data-ckid="k-ti-specials">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Mon: piano lesson (Adm?) · woodworking 3:00–4:30 · weekly meeting with Mom 4:45 · Strand 6 after dinner</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Tue: Debate Club 2:00–4:00</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wed: WOCA — all 4 kids · East St. sports 1:30–3:30 · Personal Finance class 6:30–8:30 with Ari</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Thu: midweek check-in with Mom · CC prep</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Fri: CC — strands with tutors · Sat: driving practice with Dad</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Biweekly one-on-one with Dad</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-ti-specials">+ Add Special Item</button>
     </div>
+
     <div class="card kid-card ari k-ari">
       <h3>Ari</h3><div class="age">Challenge — all six strands daily</div>
       <h4>Every day</h4>
-      <ul class="ck">
-        <li>Jog / bike / blades with Dad — optional, 6:00</li>
-        <li>Opening Assembly 7:00 · AM chores before devices</li>
-        <li>All six strands, 45–60 min each — Mon: whatever fits after work; catch up over the week</li>
-        <li>SAT/ACT/CLT prep — 30 min minimum</li>
-        <li>Meal job of the week + W·R·Wr</li>
+      <ul class="ck" data-ckid="k-ari-daily">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Jog / bike / blades with Dad — optional, 6:00</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Opening Assembly 7:00 · AM chores before devices</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">All six strands, 45–60 min each — Mon: whatever fits after work; catch up over the week</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">SAT/ACT/CLT prep — 30 min minimum</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Meal job of the week + W·R·Wr</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-ari-daily">+ Add Daily Item</button>
       <h4>Week specials</h4>
-      <ul class="ck">
-        <li>Mon: work @ HH 8:00–3:30</li>
-        <li>Tue: Debate Club (LD) 2:00–4:00</li>
-        <li>Wed: WOCA — all 4 kids · PM: SAT/CLT + college-app block · Personal Finance class 6:30–8:30 with Ti</li>
-        <li>Fri: CC — strands with tutors · college-app block Wed + Sun</li>
-        <li>Sat: cook dinner · soap business (Sweet Peonies?) afternoon slot</li>
-        <li>Biweekly date with Mom (alt Sundays) + time with Dad</li>
-        <li>⚠️ Register for SAT / ACT / CLT</li>
+      <ul class="ck" data-ckid="k-ari-specials">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Mon: work @ HH 8:00–3:30</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Tue: Debate Club (LD) 2:00–4:00</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wed: WOCA — all 4 kids · PM: SAT/CLT + college-app block · Personal Finance class 6:30–8:30 with Ti</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Fri: CC — strands with tutors · college-app block Wed + Sun</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Sat: cook dinner · soap business (Sweet Peonies?) afternoon slot</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Biweekly date with Mom (alt Sundays) + time with Dad</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⚠️ Register for SAT / ACT / CLT</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="k-ari-specials">+ Add Special Item</button>
     </div>
   </div>
 </section>
@@ -379,24 +420,26 @@
   <div class="grid two">
     <div class="card">
       <h3 style="font-size:.95rem; margin-bottom:6px;">Daily personal chores — every kid</h3>
-      <ul class="ck">
-        <li>Bed made</li>
-        <li>Dirty clothes in hamper, floor clear</li>
-        <li>Dressed, teeth, hair</li>
-        <li>Breakfast dish into dishwasher</li>
-        <li>One "own room" item from the room list</li>
-        <li>School spot cleared when done</li>
-        <li>After dinner: 10-minute all-hands pickup</li>
+      <ul class="ck" data-ckid="chores-daily">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Bed made</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dirty clothes in hamper, floor clear</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dressed, teeth, hair</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Breakfast dish into dishwasher</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">One "own room" item from the room list</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">School spot cleared when done</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">After dinner: 10-minute all-hands pickup</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="chores-daily">+ Add Item</button>
     </div>
     <div class="card">
       <h3 style="font-size:.95rem; margin-bottom:6px;">Meal jobs — what each role does</h3>
-      <ul class="ck">
-        <li><b>Table setter (Bo, fixed):</b> set out utensils + napkins + dishes <span class="who w-bo">Bo</span></li>
-        <li><b>Dishes + sink:</b> load dirty dishes, clear + clean sink, wipe counters</li>
-        <li><b>Table + floor:</b> clear + wipe table, broom/vacuum around + under table + chairs</li>
-        <li><b>Runner:</b> empty clean dishwasher (AM), empty + reline trash bins → outside bin, help where needed</li>
+      <ul class="ck" data-ckid="chores-meal">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true"><b>Table setter (Bo, fixed):</b> set out utensils + napkins + dishes <span class="who w-bo">Bo</span></span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true"><b>Dishes + sink:</b> load dirty dishes, clear + clean sink, wipe counters</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true"><b>Table + floor:</b> clear + wipe table, broom/vacuum around + under table + chairs</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true"><b>Runner:</b> empty clean dishwasher (AM), empty + reline trash bins → outside bin, help where needed</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="chores-meal">+ Add Item</button>
     </div>
   </div>
   <h3 style="margin:16px 0 6px; font-size:.98rem;">Rotations — swap every Monday</h3>
@@ -436,114 +479,125 @@
   <div class="grid two" style="margin-bottom:12px">
     <div class="card zone">
       <h3>Own room — everyone</h3>
-      <ul class="ck">
-        <li>⭐ Tidy + put away</li>
-        <li>Dust fans, counters, etc.</li>
-        <li>Wipe clean window sill + glass</li>
-        <li>Clean out junk + drawers → donation + trash</li>
-        <li>Make bed (sheets need washed?)</li>
-        <li>Vacuum</li>
-        <li>Door + knob</li>
+      <ul class="ck" data-ckid="zone-own">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Tidy + put away</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dust fans, counters, etc.</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe clean window sill + glass</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clean out junk + drawers → donation + trash</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Make bed (sheets need washed?)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Door + knob</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-own">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Weekly reset list — split it up</h3>
-      <ul class="ck">
-        <li>Empty ALL trash bins + reline + take out to outside bin</li>
-        <li>Clean out drawers → fill the donation basket!</li>
-        <li>Organize shelves</li>
-        <li>⭐ Empty out bags (school, gym, car)</li>
-        <li>Spray + wipe clean windows + mirrors</li>
-        <li>Clean out fridge (before weekend groceries)</li>
+      <ul class="ck" data-ckid="zone-reset">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Empty ALL trash bins + reline + take out to outside bin</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clean out drawers → fill the donation basket!</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Organize shelves</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Empty out bags (school, gym, car)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Spray + wipe clean windows + mirrors</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clean out fridge (before weekend groceries)</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-reset">+ Add Item</button>
     </div>
   </div>
   <div class="grid zones">
     <div class="card zone">
       <h3>Kitchen</h3>
-      <ul class="ck">
-        <li>Dust fan, window sill, floorboards, door trim</li>
-        <li>Clorox-wipe all white surfaces + handles</li>
-        <li>Wipe trash bin, door + knob</li>
-        <li>Vacuum floor first</li>
-        <li>Then wash floor: multiple clean rags, soapy-water bucket + empty bucket</li>
+      <ul class="ck" data-ckid="zone-kitchen">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dust fan, window sill, floorboards, door trim</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clorox-wipe all white surfaces + handles</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe trash bin, door + knob</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum floor first</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Then wash floor: multiple clean rags, soapy-water bucket + empty bucket</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-kitchen">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Bathrooms</h3>
-      <ul class="ck">
-        <li>Wet-wipe all surfaces (dust etc.)</li>
-        <li>Mirror + sink</li>
-        <li>Handles + door + knob</li>
-        <li>Toilet · bathtub + shower tiles</li>
-        <li>Floor · vent · trash</li>
-        <li>Clear + organize cabinet</li>
+      <ul class="ck" data-ckid="zone-bath">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wet-wipe all surfaces (dust etc.)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Mirror + sink</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Handles + door + knob</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Toilet · bathtub + shower tiles</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Floor · vent · trash</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clear + organize cabinet</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-bath">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>School room</h3>
-      <ul class="ck">
-        <li>⭐ Pick up floor + counter, put away</li>
-        <li>Dust all surfaces</li>
-        <li>Vacuum + mop</li>
-        <li>Wipe floorboards + AC intake</li>
-        <li>Table cleared + glassboard cleaned</li>
+      <ul class="ck" data-ckid="zone-school">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Pick up floor + counter, put away</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dust all surfaces</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum + mop</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe floorboards + AC intake</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Table cleared + glassboard cleaned</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-school">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Sun room</h3>
-      <ul class="ck">
-        <li>Piano: organize + put away, around + on top</li>
-        <li>Clear floor + all surfaces</li>
-        <li>Dust, then vacuum</li>
-        <li>⭐ Shoes away</li>
-        <li>Shake out all rugs outside</li>
+      <ul class="ck" data-ckid="zone-sun">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Piano: organize + put away, around + on top</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clear floor + all surfaces</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dust, then vacuum</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Shoes away</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Shake out all rugs outside</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-sun">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Stairs + landing</h3>
-      <ul class="ck">
-        <li>Vacuum (with the right attachment)</li>
-        <li>Wipe all white surfaces + wall smudges</li>
-        <li>Basement door + knob</li>
+      <ul class="ck" data-ckid="zone-stairs">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum (with the right attachment)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe all white surfaces + wall smudges</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Basement door + knob</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-stairs">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Basement</h3>
-      <ul class="ck">
-        <li>Window sill</li>
-        <li>Dust shelves</li>
-        <li>Donation / trash pass?</li>
-        <li>⭐ Books in place</li>
-        <li>Vacuum</li>
+      <ul class="ck" data-ckid="zone-basement">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Window sill</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Dust shelves</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Donation / trash pass?</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Books in place</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-basement">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Laundry room</h3>
-      <ul class="ck">
-        <li>⭐ Trash?</li>
-        <li>Wipe clean</li>
-        <li>Vacuum</li>
-        <li>Organize?</li>
+      <ul class="ck" data-ckid="zone-laundry">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Trash?</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe clean</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Organize?</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-laundry">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Cars</h3>
-      <ul class="ck">
-        <li>Clean out compartments, sleeves, cubbies, under car seats, under seats, trunk</li>
-        <li>Wipe clean / sanitize surfaces</li>
-        <li>Vacuum</li>
-        <li>⭐ Deliver stray items to their owners</li>
+      <ul class="ck" data-ckid="zone-cars">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Clean out compartments, sleeves, cubbies, under car seats, under seats, trunk</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Wipe clean / sanitize surfaces</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Vacuum</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Deliver stray items to their owners</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-cars">+ Add Item</button>
     </div>
     <div class="card zone">
       <h3>Outside</h3>
-      <ul class="ck">
-        <li>⭐ Put away (toys, bikes, tools)</li>
-        <li>Anything out of place?</li>
-        <li>Mow? (seasonal — Ti/Ari)</li>
-        <li>Deck — sweep + reset</li>
+      <ul class="ck" data-ckid="zone-outside">
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">⭐ Put away (toys, bikes, tools)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Anything out of place?</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Mow? (seasonal — Ti/Ari)</span><button class="del-btn">✕</button></li>
+        <li><span class="box">☐</span><span class="item-text" contenteditable="true">Deck — sweep + reset</span><button class="del-btn">✕</button></li>
       </ul>
+      <button class="add-btn" data-target="zone-outside">+ Add Item</button>
     </div>
   </div>
   <p class="note">Typical picks: Ari → cars or kitchen · Ti → outside or stairs + basement · Rissa → bathrooms or sun room · Bo → ⭐ jobs with a buddy. First-awake still picks!</p>
@@ -556,42 +610,42 @@
       <h3 style="font-size:1rem;">Mom</h3>
       <h4>Daily</h4>
       <ul class="ck">
-        <li>Gym with Ti — 6:00 (Mon/Tue/Thu/Fri)</li>
-        <li>QT — Scripture memory + copying + writing (before Assembly)</li>
-        <li>WRM reading</li>
-        <li>Bo one-on-one school, 1–2 hrs (9:00–10:30)</li>
-        <li>Rissa guided time (10:30–12:00)</li>
-        <li>Read-aloud (lunch + W·R·Wr)</li>
+        <li><span class="box">☐</span><span class="item-text">Gym with Ti — 6:00 (Mon/Tue/Thu/Fri)</span></li>
+        <li><span class="box">☐</span><span class="item-text">QT — Scripture memory + copying + writing (before Assembly)</span></li>
+        <li><span class="box">☐</span><span class="item-text">WRM reading</span></li>
+        <li><span class="box">☐</span><span class="item-text">Bo one-on-one school, 1–2 hrs (9:00–10:30)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Rissa guided time (10:30–12:00)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Read-aloud (lunch + W·R·Wr)</span></li>
       </ul>
       <h4>Weekly</h4>
       <ul class="ck">
-        <li>Mon — grocery shop/pickup · Ti weekly meeting 4:45</li>
-        <li>Tue + Thu 2:00–4:00 — Archer work blocks</li>
-        <li>Wed — teach at WOCA · date night with D 💛</li>
-        <li>Thu — Ti midweek check-in · confirm Sunday-lunch invites · check + give feedback on kids' papers + projects</li>
-        <li>Fri — <b>planning day</b> (kids at CC with Dad): WOCA prep, weekly lesson prep, meal plan + grocery order</li>
-        <li>Sat 4:30 — Sunday-lunch prep with helper-of-the-week</li>
-        <li>Sat quiet hour — master recipe collection → sleeves + binder</li>
-        <li>Games with kids (Sat/Sun) · Ari date biweekly (alt Sundays)</li>
-        <li>Maintenance cleaning as needed (kept off the kids' lists)</li>
+        <li><span class="box">☐</span><span class="item-text">Mon — grocery shop/pickup · Ti weekly meeting 4:45</span></li>
+        <li><span class="box">☐</span><span class="item-text">Tue + Thu 2:00–4:00 — Archer work blocks</span></li>
+        <li><span class="box">☐</span><span class="item-text">Wed — teach at WOCA · date night with D 💛</span></li>
+        <li><span class="box">☐</span><span class="item-text">Thu — Ti midweek check-in · confirm Sunday-lunch invites · check + give feedback on kids' papers + projects</span></li>
+        <li><span class="box">☐</span><span class="item-text">Fri — <b>planning day</b> (kids at CC with Dad): WOCA prep, weekly lesson prep, meal plan + grocery order</span></li>
+        <li><span class="box">☐</span><span class="item-text">Sat 4:30 — Sunday-lunch prep with helper-of-the-week</span></li>
+        <li><span class="box">☐</span><span class="item-text">Sat quiet hour — master recipe collection → sleeves + binder</span></li>
+        <li><span class="box">☐</span><span class="item-text">Games with kids (Sat/Sun) · Ari date biweekly (alt Sundays)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Maintenance cleaning as needed (kept off the kids' lists)</span></li>
       </ul>
     </div>
     <div class="card pcard k-dad" style="border-top:4px solid var(--dad)">
       <h3 style="font-size:1rem;">Dad</h3>
       <ul class="ck">
-        <li>Jog / bike / blades with the early crew — 6:00 (Mon/Tue/Thu)</li>
-        <li>Wed — date night with Mom 💛</li>
-        <li>Thu — pizza night dinner</li>
-        <li>Fri — <b>CC community day</b>: drive + stay with all four kids</li>
-        <li>Sat — how-to-study session (sermon text + discuss) · family activity</li>
-        <li>Sun — church (HCC) + hosting</li>
-        <li>Ti — biweekly one-on-one (driving practice + lunch pairs well)</li>
-        <li>Ari — biweekly one-on-one (alt Sundays: walk / coffee)</li>
-        <li>Car-wash supervision · mow training</li>
+        <li><span class="box">☐</span><span class="item-text">Jog / bike / blades with the early crew — 6:00 (Mon/Tue/Thu)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Wed — date night with Mom 💛</span></li>
+        <li><span class="box">☐</span><span class="item-text">Thu — pizza night dinner</span></li>
+        <li><span class="box">☐</span><span class="item-text">Fri — <b>CC community day</b>: drive + stay with all four kids</span></li>
+        <li><span class="box">☐</span><span class="item-text">Sat — how-to-study session (sermon text + discuss) · family activity</span></li>
+        <li><span class="box">☐</span><span class="item-text">Sun — church (HCC) + hosting</span></li>
+        <li><span class="box">☐</span><span class="item-text">Ti — biweekly one-on-one (driving practice + lunch pairs well)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Ari — biweekly one-on-one (alt Sundays: walk / coffee)</span></li>
+        <li><span class="box">☐</span><span class="item-text">Car-wash supervision · mow training</span></li>
       </ul>
       <h4>Family activity ideas</h4>
       <ul class="ck">
-        <li>Outdoors day · piano concert · read-aloud + games night</li>
+        <li><span class="box">☐</span><span class="item-text">Outdoors day · piano concert · read-aloud + games night</span></li>
       </ul>
     </div>
   </div>
@@ -641,6 +695,7 @@
   var FOCUS = ['ari','ti','rissa','bo','mom','dad'];
   var saveTimer = null;
   var statusEl = document.getElementById('syncStatus');
+  var editBtn = document.getElementById('toggleEditBtn');
 
   function setStatus(text, className){
     if(!statusEl) return;
@@ -648,6 +703,43 @@
     statusEl.className = 'sync-status ' + (className || '');
   }
 
+  // Toggle Edit Mode
+  editBtn.addEventListener('click', function(){
+    document.body.classList.toggle('edit-mode');
+    var isEdit = document.body.classList.contains('edit-mode');
+    editBtn.textContent = isEdit ? "✓ Done Editing" : "✎ Edit Mode";
+  });
+
+  // Daily Checkbox Storage & Midnight Reset
+  var TODAY_KEY = 'family_checks_' + new Date().toISOString().slice(0,10);
+  function loadChecks(){
+    var checkedMap = {};
+    try { checkedMap = JSON.parse(localStorage.getItem(TODAY_KEY) || '{}'); } catch(e){}
+    document.querySelectorAll('.ck li').forEach(function(li, idx){
+      var box = li.querySelector('.box');
+      if(!box) return;
+      var key = (li.closest('.ck').dataset.ckid || 'g') + '_' + idx;
+      if(checkedMap[key]){
+        li.classList.add('done');
+        box.textContent = '☑';
+      } else {
+        li.classList.remove('done');
+        box.textContent = '☐';
+      }
+    });
+  }
+  function saveChecks(){
+    var checkedMap = {};
+    document.querySelectorAll('.ck li').forEach(function(li, idx){
+      if(li.classList.contains('done')){
+        var key = (li.closest('.ck').dataset.ckid || 'g') + '_' + idx;
+        checkedMap[key] = true;
+      }
+    });
+    localStorage.setItem(TODAY_KEY, JSON.stringify(checkedMap));
+  }
+
+  // Spotlight Filtering
   function scopes(){
     var list = [];
     document.querySelectorAll('.slot').forEach(function(e){ list.push(e); });
@@ -667,7 +759,7 @@
     return false;
   }
 
-  function apply(){
+  function applySpotlight(){
     FOCUS.forEach(function(k){ document.body.classList.remove('focus-' + k); });
     if(active) document.body.classList.add('focus-' + active);
     document.querySelectorAll('.chip[data-kid]').forEach(function(c){
@@ -681,18 +773,82 @@
     });
   }
 
-  function serializeDays(){
-    var data = {};
+  // Name Tag Auto-Replacement
+  var NAME_MAP = [
+    { regex: /\b(Ari)\b(?![^<]*>)/gi, tag: '<span class="who w-ari">Ari</span>' },
+    { regex: /\b(Ti)\b(?![^<]*>)/gi, tag: '<span class="who w-ti">Ti</span>' },
+    { regex: /\b(Rissa)\b(?![^<]*>)/gi, tag: '<span class="who w-rissa">Rissa</span>' },
+    { regex: /\b(Bo)\b(?![^<]*>)/gi, tag: '<span class="who w-bo">Bo</span>' },
+    { regex: /\b(Mom)\b(?![^<]*>)/gi, tag: '<span class="who w-mom">Mom</span>' },
+    { regex: /\b(Dad)\b(?![^<]*>)/gi, tag: '<span class="who w-dad">Dad</span>' },
+    { regex: /\b(All|Everyone)\b(?![^<]*>)/gi, tag: '<span class="who w-all">All</span>' }
+  ];
+
+  function autoFormatNames(el){
+    var html = el.innerHTML;
+    var changed = false;
+    NAME_MAP.forEach(function(item){
+      if(item.regex.test(html)){
+        html = html.replace(item.regex, item.tag);
+        changed = true;
+      }
+    });
+    if(changed){
+      el.innerHTML = html;
+      applySpotlight();
+    }
+  }
+
+  // Chronological Slot Sorting
+  function parseTimeToMinutes(str){
+    var match = str.match(/(\d+)(?::(\d\d))?\s*(am|pm)?/i);
+    if(!match) return 9999;
+    var h = parseInt(match[1], 10);
+    var m = match[2] ? parseInt(match[2], 10) : 0;
+    var mer = match[3] ? match[3].toLowerCase() : null;
+    if(mer === 'pm' && h < 12) h += 12;
+    if(mer === 'am' && h === 12) h = 0;
+    if(!mer){
+      if(h >= 1 && h <= 6) h += 12; // Infer afternoon for typical schedule items (e.g. 2:00 -> 14:00)
+    }
+    return h * 60 + m;
+  }
+
+  function sortSlotsForDay(dayCard){
+    var list = dayCard.querySelector('.slot-list');
+    if(!list) return;
+    var slots = Array.from(list.children);
+    slots.sort(function(a, b){
+      var tA = a.querySelector('.t') ? a.querySelector('.t').textContent.trim() : '';
+      var tB = b.querySelector('.t') ? b.querySelector('.t').textContent.trim() : '';
+      return parseTimeToMinutes(tA) - parseTimeToMinutes(tB);
+    });
+    slots.forEach(function(s){ list.appendChild(s); });
+  }
+
+  // Data Serialization & Sync
+  function serializeAll(){
+    var data = { days: {}, lists: {} };
+    // Days
     document.querySelectorAll('.day[data-day]').forEach(function(dayEl){
       var dayKey = dayEl.dataset.day;
-      data[dayKey] = [];
+      data.days[dayKey] = [];
       dayEl.querySelectorAll('.slot').forEach(function(slotEl){
         var tEl = slotEl.querySelector('.t');
         var whatEl = slotEl.querySelector('.what');
-        data[dayKey].push({
+        data.days[dayKey].push({
           t: tEl ? tEl.innerHTML : '',
           what: whatEl ? whatEl.innerHTML : ''
         });
+      });
+    });
+    // Editable Checklists
+    document.querySelectorAll('.ck[data-ckid]').forEach(function(ul){
+      var ckid = ul.dataset.ckid;
+      data.lists[ckid] = [];
+      ul.querySelectorAll('li').forEach(function(li){
+        var textEl = li.querySelector('.item-text');
+        if(textEl) data.lists[ckid].push(textEl.innerHTML);
       });
     });
     return data;
@@ -702,7 +858,7 @@
     setStatus('Saving...', 'saving');
     clearTimeout(saveTimer);
     saveTimer = setTimeout(function(){
-      var payload = JSON.stringify(serializeDays());
+      var payload = JSON.stringify(serializeAll());
       fetch(ENDPOINT, {
         method: 'POST',
         mode: 'no-cors',
@@ -722,8 +878,14 @@
     div.className = 'slot';
     div.innerHTML = '<span class="t" contenteditable="true">' + t + '</span>' +
                     '<span class="what" contenteditable="true">' + what + '</span>' +
-                    '<button class="del-btn" title="Delete slot">✕</button>';
+                    '<button class="del-btn" title="Delete">✕</button>';
     return div;
+  }
+
+  function renderCheckItem(text){
+    var li = document.createElement('li');
+    li.innerHTML = '<span class="box">☐</span><span class="item-text" contenteditable="true">' + text + '</span><button class="del-btn">✕</button>';
+    return li;
   }
 
   function loadRemoteData(){
@@ -733,62 +895,130 @@
       .then(function(data){
         if(!data || Object.keys(data).length === 0){
           setStatus('Synced');
+          loadChecks();
           return;
         }
-        Object.keys(data).forEach(function(dayKey){
+        // Backward-compatibility: if root has days directly or in data.days
+        var days = data.days || data;
+        Object.keys(days).forEach(function(dayKey){
           var dayCard = document.querySelector('.day[data-day="' + dayKey + '"]');
           if(!dayCard) return;
           var listEl = dayCard.querySelector('.slot-list');
           if(!listEl) return;
           listEl.innerHTML = '';
-          data[dayKey].forEach(function(item){
+          days[dayKey].forEach(function(item){
             listEl.appendChild(renderSlot(item.t, item.what));
           });
         });
-        apply();
+        // Lists
+        if(data.lists){
+          Object.keys(data.lists).forEach(function(ckid){
+            var ul = document.querySelector('.ck[data-ckid="' + ckid + '"]');
+            if(!ul) return;
+            ul.innerHTML = '';
+            data.lists[ckid].forEach(function(itemHtml){
+              ul.appendChild(renderCheckItem(itemHtml));
+            });
+          });
+        }
+        applySpotlight();
+        loadChecks();
         setStatus('Synced');
       })
       .catch(function(){
-        setStatus('Offline / Loaded defaults');
+        setStatus('Offline / Defaults');
+        loadChecks();
       });
   }
 
+  // Event Listeners
   document.addEventListener('click', function(ev){
+    // Checkbox toggle
+    var box = ev.target.closest('.box');
+    if(box){
+      var li = box.closest('li');
+      li.classList.toggle('done');
+      box.textContent = li.classList.contains('done') ? '☑' : '☐';
+      saveChecks();
+      return;
+    }
+
+    // Legend chip spotlight
     var chip = ev.target.closest('.chip[data-kid]');
     if(chip){
       var k = chip.dataset.kid;
       active = (!k || active === k) ? null : k;
-      apply();
+      applySpotlight();
       return;
     }
+
+    // Pill tag click spotlight
     var who = ev.target.closest('.who');
-    if(who){
+    if(who && !document.body.classList.contains('edit-mode')){
       var m = (who.className.match(/w-(ari|ti|rissa|bo|mom|dad)/) || [])[1];
-      if(m){ active = (active === m) ? null : m; apply(); }
+      if(m){ active = (active === m) ? null : m; applySpotlight(); }
       return;
     }
-    if(ev.target.classList.contains('del-btn')){
+
+    // Delete Event Slot
+    if(ev.target.classList.contains('del-btn') && ev.target.closest('.slot')){
       var slot = ev.target.closest('.slot');
-      if(slot){
-        slot.remove();
-        scheduleSave();
-      }
+      slot.remove();
+      scheduleSave();
       return;
     }
+
+    // Delete Checklist item
+    if(ev.target.classList.contains('del-btn') && ev.target.closest('.ck li')){
+      var ckLi = ev.target.closest('.ck li');
+      ckLi.remove();
+      saveChecks();
+      scheduleSave();
+      return;
+    }
+
+    // Add Event Slot
     if(ev.target.classList.contains('add-slot-btn')){
       var dayCard = ev.target.closest('.day');
       var list = dayCard ? dayCard.querySelector('.slot-list') : null;
       if(list){
-        var newSlot = renderSlot('12:00', 'New event <span class="who w-all">All</span>');
+        var newSlot = renderSlot('12:00', 'New event');
         list.appendChild(newSlot);
-        apply();
+        sortSlotsForDay(dayCard);
+        applySpotlight();
         scheduleSave();
       }
+      return;
+    }
+
+    // Add Checklist Item
+    if(ev.target.classList.contains('add-btn')){
+      var targetId = ev.target.dataset.target;
+      var ulTarget = document.querySelector('.ck[data-ckid="' + targetId + '"]');
+      if(ulTarget){
+        var newItem = renderCheckItem('New task');
+        ulTarget.appendChild(newItem);
+        scheduleSave();
+      }
+      return;
+    }
+  });
+
+  // Blur Handler: Sort time & auto-tag names
+  document.addEventListener('focusout', function(ev){
+    if(ev.target.classList.contains('what') || ev.target.classList.contains('item-text')){
+      autoFormatNames(ev.target);
+      scheduleSave();
+    }
+    if(ev.target.classList.contains('t')){
+      var dayCard = ev.target.closest('.day');
+      if(dayCard) sortSlotsForDay(dayCard);
+      scheduleSave();
     }
   });
 
   document.addEventListener('input', function(ev){
-    if(ev.target.matches('.slot .t, .slot .what')){
+    if(ev.target.matches('.slot .t, .slot .what, .ck .item-text')){
       scheduleSave();
     }
   });
