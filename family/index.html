@@ -26,6 +26,9 @@
   .header-controls{position:absolute; right:0; top:24px; display:flex; align-items:center; gap:8px;}
   .toggle-edit{font-size:.78rem; font-weight:700; padding:4px 10px; border-radius:999px; border:1.5px solid var(--accent); background:#fff; color:var(--accent); cursor:pointer;}
   body.edit-mode .toggle-edit{background:var(--accent); color:#fff;}
+  .export-btn{display:none; font-size:.78rem; font-weight:700; padding:4px 10px; border-radius:999px; border:1.5px solid var(--soft); background:#fff; color:var(--soft); cursor:pointer;}
+  body.edit-mode .export-btn{display:inline-block;}
+  .export-btn:hover{background:#f3ecda; color:var(--ink);}
   .sync-status{font-size:.78rem; font-weight:600; padding:3px 8px; border-radius:6px; background:#eee9dc; color:var(--soft);}
   .sync-status.saving{background:#fdeede; color:var(--bo);}
   .sync-status.saved{background:#e8f3e9; color:var(--ari);}
@@ -127,6 +130,7 @@
   <div class="sub">Homeschool · school year 2026–27</div>
   <div class="header-controls">
     <button class="toggle-edit" id="toggleEditBtn">✎ Edit Mode</button>
+    <button class="export-btn" id="exportHtmlBtn">⬇ Export HTML</button>
     <div class="sync-status" id="syncStatus">Synced</div>
   </div>
   <div class="legend">
@@ -159,7 +163,7 @@
     <div class="card day" data-day="mon">
       <h3>Monday <span class="theme">work + lessons day</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades&nbsp;<span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> — prayer, song, plan the day <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 devices locked until done <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true"><b>Ari → work @ HH</b> (8:00–3:30) — strands: whatever fits tonight; catch up over the week <span class="who w-ari">Ari</span></span><button class="del-btn" title="Delete">✕</button></div>
@@ -177,7 +181,7 @@
     <div class="card day" data-day="tue">
       <h3>Tuesday <span class="theme">debate day</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: read, CC, TMM <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
@@ -207,7 +211,7 @@
     <div class="card day" data-day="thu">
       <h3>Thursday <span class="theme">prep + pizza night</span></h3>
       <div class="slot-list">
-        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span></span><button class="del-btn" title="Delete">✕</button></div>
+        <div class="slot"><span class="t" contenteditable="true">6:00</span><span class="what" contenteditable="true">Gym <span class="who w-mom">Mom</span><span class="who w-ti">Ti</span> · Jog / bike / blades <span class="who w-dad">Dad</span><span class="who w-ari">Ari</span><span class="who w-rissa">Rissa</span><span class="who w-bo">Bo</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:00</span><span class="what" contenteditable="true"><b>Opening Assembly</b> <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">7:25</span><span class="what" contenteditable="true">Breakfast + AM chores 🔒 <span class="who w-all">All</span></span><button class="del-btn" title="Delete">✕</button></div>
         <div class="slot"><span class="t" contenteditable="true">8:00</span><span class="what" contenteditable="true">Strands 1–4, 45–60 min each <span class="who w-ari">Ari</span><span class="who w-ti">Ti</span><span class="who w-rissa">Rissa</span> · Bo: CC, TMM, read <span class="who w-bo">Bo</span><span class="who w-mom">Mom</span></span><button class="del-btn" title="Delete">✕</button></div>
@@ -696,6 +700,7 @@
   var saveTimer = null;
   var statusEl = document.getElementById('syncStatus');
   var editBtn = document.getElementById('toggleEditBtn');
+  var exportBtn = document.getElementById('exportHtmlBtn');
 
   function setStatus(text, className){
     if(!statusEl) return;
@@ -708,6 +713,37 @@
     document.body.classList.toggle('edit-mode');
     var isEdit = document.body.classList.contains('edit-mode');
     editBtn.textContent = isEdit ? "✓ Done Editing" : "✎ Edit Mode";
+  });
+
+  // Export HTML with baked changes
+  exportBtn.addEventListener('click', function(){
+    // Temporarily exit edit mode so exported markup is clean
+    document.body.classList.remove('edit-mode');
+    editBtn.textContent = "✎ Edit Mode";
+    
+    // Clear spotlight dimming/hits before exporting
+    var currentActive = active;
+    active = null;
+    applySpotlight();
+
+    var fullHtml = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+    
+    // Restore spotlight if one was active
+    if(currentActive){
+      active = currentActive;
+      applySpotlight();
+    }
+    
+    // Re-enable edit mode for the user
+    document.body.classList.add('edit-mode');
+    editBtn.textContent = "✓ Done Editing";
+
+    var blob = new Blob([fullHtml], { type: 'text/html' });
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'index.html';
+    a.click();
+    URL.revokeObjectURL(a.href);
   });
 
   // Daily Checkbox Storage & Midnight Reset
@@ -809,7 +845,7 @@
     if(mer === 'pm' && h < 12) h += 12;
     if(mer === 'am' && h === 12) h = 0;
     if(!mer){
-      if(h >= 1 && h <= 6) h += 12; // Infer afternoon for typical schedule items (e.g. 2:00 -> 14:00)
+      if(h >= 1 && h <= 6) h += 12;
     }
     return h * 60 + m;
   }
@@ -898,7 +934,6 @@
           loadChecks();
           return;
         }
-        // Backward-compatibility: if root has days directly or in data.days
         var days = data.days || data;
         Object.keys(days).forEach(function(dayKey){
           var dayCard = document.querySelector('.day[data-day="' + dayKey + '"]');
@@ -910,7 +945,6 @@
             listEl.appendChild(renderSlot(item.t, item.what));
           });
         });
-        // Lists
         if(data.lists){
           Object.keys(data.lists).forEach(function(ckid){
             var ul = document.querySelector('.ck[data-ckid="' + ckid + '"]');
@@ -933,7 +967,6 @@
 
   // Event Listeners
   document.addEventListener('click', function(ev){
-    // Checkbox toggle
     var box = ev.target.closest('.box');
     if(box){
       var li = box.closest('li');
@@ -943,7 +976,6 @@
       return;
     }
 
-    // Legend chip spotlight
     var chip = ev.target.closest('.chip[data-kid]');
     if(chip){
       var k = chip.dataset.kid;
@@ -952,7 +984,6 @@
       return;
     }
 
-    // Pill tag click spotlight
     var who = ev.target.closest('.who');
     if(who && !document.body.classList.contains('edit-mode')){
       var m = (who.className.match(/w-(ari|ti|rissa|bo|mom|dad)/) || [])[1];
@@ -960,7 +991,6 @@
       return;
     }
 
-    // Delete Event Slot
     if(ev.target.classList.contains('del-btn') && ev.target.closest('.slot')){
       var slot = ev.target.closest('.slot');
       slot.remove();
@@ -968,7 +998,6 @@
       return;
     }
 
-    // Delete Checklist item
     if(ev.target.classList.contains('del-btn') && ev.target.closest('.ck li')){
       var ckLi = ev.target.closest('.ck li');
       ckLi.remove();
@@ -977,7 +1006,6 @@
       return;
     }
 
-    // Add Event Slot
     if(ev.target.classList.contains('add-slot-btn')){
       var dayCard = ev.target.closest('.day');
       var list = dayCard ? dayCard.querySelector('.slot-list') : null;
@@ -991,7 +1019,6 @@
       return;
     }
 
-    // Add Checklist Item
     if(ev.target.classList.contains('add-btn')){
       var targetId = ev.target.dataset.target;
       var ulTarget = document.querySelector('.ck[data-ckid="' + targetId + '"]');
@@ -1004,7 +1031,6 @@
     }
   });
 
-  // Blur Handler: Sort time & auto-tag names
   document.addEventListener('focusout', function(ev){
     if(ev.target.classList.contains('what') || ev.target.classList.contains('item-text')){
       autoFormatNames(ev.target);
