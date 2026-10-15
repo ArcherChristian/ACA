@@ -11,6 +11,76 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles.css">
+    <style>
+    /* Monthly / one-time gift toggle. These rules live in the page (not styles.css) so the
+       page works the moment it is deployed on its own. html[data-gift="once"] selects the
+       one-time form; anything else means monthly. The inactive form stays laid out at full
+       width (visibility: hidden, clipped to 0px) rather than display: none, so Little Green
+       Light's resizer measures it correctly and it is the right height the moment it shows. */
+    .gift-switch { text-align: center; margin-bottom: 10px; }
+    .gift-switch h3 { margin-bottom: 18px; }
+    .gift-toggle {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 auto 16px;
+        padding: 5px;
+        width: fit-content;
+        max-width: 100%;
+        background: var(--paper);
+        border: 1px solid var(--line);
+        border-radius: 999px;
+    }
+    .gift-toggle-btn {
+        appearance: none;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+        font-family: 'Poppins', sans-serif;
+        font-weight: 600;
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 11px 28px;
+        border-radius: 999px;
+        transition: background 0.25s, color 0.25s;
+    }
+    .gift-toggle-btn:hover { color: var(--dark-blue); }
+    .gift-toggle-btn:focus-visible { outline: 3px solid rgba(29,110,203,0.45); outline-offset: 2px; }
+    .gift-toggle-btn[data-plan="monthly"],
+    html[data-gift="once"] .gift-toggle-btn[data-plan="once"] { background: var(--dark-blue); color: var(--white); }
+    html[data-gift="once"] .gift-toggle-btn[data-plan="monthly"] { background: transparent; color: var(--muted); }
+    html[data-gift="once"] .gift-toggle-btn[data-plan="monthly"]:hover { color: var(--dark-blue); }
+    .gift-intro { font-size: 0.9rem; color: var(--muted); max-width: 620px; margin: 0 auto; }
+    .gift-intro[data-plan="once"],
+    html[data-gift="once"] .gift-intro[data-plan="monthly"] { display: none; }
+    html[data-gift="once"] .gift-intro[data-plan="once"] { display: block; }
+    .gift-panes { position: relative; }
+    .gift-pane { position: relative; }
+    .gift-pane[data-plan="once"],
+    html[data-gift="once"] .gift-pane[data-plan="monthly"] {
+        position: absolute;
+        left: 0; right: 0; top: 0;
+        height: 0;
+        overflow: hidden;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    html[data-gift="once"] .gift-pane[data-plan="once"] {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        visibility: visible;
+        pointer-events: auto;
+    }
+    @media (max-width: 600px) {
+        .form-box.gift-box { padding: 28px 16px; }   /* give the embedded form more room on phones */
+        .gift-toggle { border-radius: 16px; }
+        .gift-toggle-btn { border-radius: 12px; padding: 10px 18px; font-size: 0.76rem; }
+    }
+    </style>
     <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="../images/favicon-64.png" type="image/png" sizes="64x64">
@@ -167,7 +237,7 @@
     <!-- ======= CHOOSE YOUR GIFT (FORM FIRST) ======= -->
     <section class="content-section" style="background: var(--paper); padding-top: 60px; padding-bottom: 64px;">
         <div class="container">
-            <div class="form-box reveal" style="max-width: 880px; margin: 0 auto;">
+            <div class="form-box gift-box reveal" style="max-width: 880px; margin: 0 auto;">
                 <div class="gift-switch">
                     <h3>Choose Your Gift</h3>
                     <div class="gift-toggle" role="group" aria-label="Choose a monthly or one-time gift">
