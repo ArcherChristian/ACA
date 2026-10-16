@@ -18,8 +18,37 @@
        one-time form; anything else means monthly. The inactive form stays laid out at full
        width (visibility: hidden, clipped to 0px) rather than display: none, so Little Green
        Light's resizer measures it correctly and it is the right height the moment it shows. */
-    .gift-switch { text-align: center; margin-bottom: 10px; }
-    .gift-switch h3 { margin-bottom: 18px; }
+    /* Two-column giving layout. The site's dark page-header band stays full width with the
+       headline left-aligned in its left 45%; the form card rises into the band from the right
+       column (negative top margin) and the context copy runs down the left. On phones the
+       grid collapses to hook → form → context. */
+    .give-hero { text-align: left; padding-bottom: 150px; }
+    .give-hero .hook { max-width: calc((100% - 48px) * 0.45); position: relative; }
+    .give-hero .lead-text { margin-left: 0; }
+    .give { background: var(--paper); padding-bottom: 72px; }
+    .give-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
+        grid-template-areas: "context form";
+        column-gap: 48px;
+        align-items: start;
+    }
+    .give-form { grid-area: form; margin-top: -210px; position: relative; z-index: 1; }
+    .give-context { grid-area: context; padding-top: 56px; }
+    .give-context h2 { margin-bottom: 16px; }
+    .give-context .give-sub { color: var(--dark-blue); font-size: 1.1rem; margin: 30px 0 4px; }
+    .give-context .give-muted { font-size: 0.92rem; color: var(--muted); }
+    .give-note { text-align: center; margin-top: 18px; font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+    @media (max-width: 900px) {
+        .give-hero { text-align: center; padding-bottom: 96px; }
+        .give-hero .hook { max-width: 720px; margin: 0 auto; }
+        .give-hero .lead-text { margin-left: auto; }
+        .give-layout { grid-template-columns: 1fr; grid-template-areas: "form" "context"; }
+        .give-form { margin-top: -56px; }
+        .give-context { padding-top: 48px; }
+    }
+    .gift-switch { text-align: center; margin-bottom: 14px; }
     .gift-toggle {
         display: flex;
         justify-content: center;
@@ -54,10 +83,6 @@
     html[data-gift="once"] .gift-toggle-btn[data-plan="once"] { background: var(--dark-blue); color: var(--white); }
     html[data-gift="once"] .gift-toggle-btn[data-plan="monthly"] { background: transparent; color: var(--muted); }
     html[data-gift="once"] .gift-toggle-btn[data-plan="monthly"]:hover { color: var(--dark-blue); }
-    .gift-intro { font-size: 0.9rem; color: var(--muted); max-width: 620px; margin: 0 auto; }
-    .gift-intro[data-plan="once"],
-    html[data-gift="once"] .gift-intro[data-plan="monthly"] { display: none; }
-    html[data-gift="once"] .gift-intro[data-plan="once"] { display: block; }
     .gift-panes { position: relative; }
     .gift-pane { position: relative; }
     .gift-pane[data-plan="once"],
@@ -283,81 +308,76 @@
     </header>
     <main id="main">
 
-    <section class="page-header">
+    <section class="page-header give-hero">
         <div class="container">
-            <span class="kicker">Partner with Us</span>
-            <h1>Partner with Archer</h1>
-            <p class="lead-text">A school is built on steady, faithful giving. Become a monthly partner or make a one-time gift&mdash;either way, you help launch a generation true.</p>
-        </div>
-    </section>
-
-    <!-- ======= CHOOSE YOUR GIFT (FORM FIRST) ======= -->
-    <section class="content-section" style="background: var(--paper); padding-top: 60px; padding-bottom: 64px;">
-        <div class="container">
-            <div class="form-box gift-box reveal" style="max-width: 880px; margin: 0 auto;">
-                <div class="gift-switch">
-                    <h3>Choose Your Gift</h3>
-                    <div class="gift-toggle" role="group" aria-label="Choose a monthly or one-time gift">
-                        <button type="button" class="gift-toggle-btn" data-plan="monthly" aria-pressed="true">Monthly</button>
-                        <button type="button" class="gift-toggle-btn" data-plan="once" aria-pressed="false">One-Time</button>
-                    </div>
-                    <p class="gift-intro" data-plan="monthly">A monthly gift is steady support we can plan around&mdash;teachers, classrooms, and families, month after month. Processed securely by Little Green Light.</p>
-                    <p class="gift-intro" data-plan="once">A single gift, given once&mdash;and every dollar launches a student true. Processed securely by Little Green Light.</p>
-                </div>
-
-                <div class="gift-panes">
-                    <!-- Monthly partnership: LGL form bVzgFShgWgepIhOlnWKXNw — the form with the monthly tiers
-                         ($50–$900) and the Monthly / Quarterly / Yearly schedule. -->
-                    <div class="gift-pane" data-plan="monthly" id="gift-monthly" aria-hidden="false">
-                        <div class="lgl-embed">
-                            <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw">Become a monthly partner of Archer Christian Academy</a><br/></noscript>
-                        </div>
-                        <p class="lgl-fallback">Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
-                    </div>
-                    <!-- One-time gift: LGL form N59ORbn5YqCDiz9p6ybxvQ — the form with the full-year tiers
-                         ($600–$25,000) and the "Make annual? One Time / Yearly" choice. -->
-                    <div class="gift-pane" data-plan="once" id="gift-once" aria-hidden="true" inert>
-                        <div class="lgl-embed">
-                            <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ">Make a one-time gift to Archer Christian Academy</a><br/></noscript>
-                        </div>
-                        <p class="lgl-fallback">Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
-                    </div>
-                </div>
+            <div class="hook">
+                <span class="kicker">Partner with Us</span>
+                <h1>Partner with Archer</h1>
+                <p class="lead-text">A school is built on steady, faithful giving. Become a monthly partner or make a one-time gift&mdash;either way, you help launch a generation true.</p>
             </div>
-            <p style="text-align: center; margin-top: 20px; font-size: 0.88rem; color: var(--muted);" class="reveal">
-                All gifts are tax-deductible. Archer Christian Academy is a ministry of <a href="https://englewoodfamily.org" target="_blank" rel="noopener" class="default-link">Urban Youth Outreach</a>, a registered 501(c)(3) nonprofit organization.
-                <br> <a href="#impact" class="default-link">See how your gift works &darr;</a>
-                <br> <a href="#ways" class="default-link">Prefer a donor-advised fund, check, stock, or IRA gift? More ways to give &darr;</a>
-                <br> <a href="update/" class="default-link">Already a monthly partner? Update your gift &rarr;</a>
-            </p>
         </div>
     </section>
 
-    <!-- ======= YOUR GIFT AT WORK ======= -->
-    <section class="content-section" id="impact">
+    <!-- ======= GIVE: context on the left, form on the right (hook → form → context on phones) ======= -->
+    <section class="give">
         <div class="container">
-            <div class="two-col" style="align-items: start;">
+            <div class="give-layout">
 
-                <div class="reveal-left">
-                    <h2>Your Gift at Work</h2>
-                    <p>Archer Christian Academy is building something rare&mdash;a school where rigorous academics, deep character formation, and the Gospel meet in one of Chicago&rsquo;s most under-resourced communities. The true cost of an Archer education is about <strong>$12,000 per student each year</strong>. Families contribute roughly ten percent of that, as they are able, and partners bridge the rest.</p>
-
-                    <h4 style="color: var(--dark-blue); margin: 28px 0 4px;">Partnership Levels</h4>
-                    <p style="font-size: 0.92rem; color: var(--muted);">Each level can be given at once or spread across the year as a monthly gift.</p>
-                    <ul class="tier-list">
-                        <li><span class="tier-name">Archer Partner</span><span class="tier-cost">$25,000</span><span class="tier-desc">The Archer is the school itself&mdash;a foundational gift toward the launch of the academy.</span></li>
-                        <li><span class="tier-name">Student Sponsor</span><span class="tier-cost">$10,800 <small>or $900/mo.</small></span><span class="tier-desc">Fully funds one student&rsquo;s tuition for the academic year.</span></li>
-                        <li><span class="tier-name">Semester Partner</span><span class="tier-cost">$5,400 <small>or $450/mo.</small></span><span class="tier-desc">Provides complete support for one student for a semester.</span></li>
-                        <li><span class="tier-name">Fletching Partner</span><span class="tier-cost">$3,600 <small>or $300/mo.</small></span><span class="tier-desc">An arrow needs three&mdash;you join two other partners to fully fund a student.</span></li>
-                        <li><span class="tier-name">Advocate</span><span class="tier-cost">$1,200 <small>or $100/mo.</small></span><span class="tier-desc">Underwrites essential program materials and operational launch costs.</span></li>
-                        <li><span class="tier-name">Supporter</span><span class="tier-cost">$600 <small>or $50/mo.</small></span><span class="tier-desc">Provides vital ongoing support to build the foundation of our new program.</span></li>
-                    </ul>
-
-                    <p style="margin-top: 22px;"><a href="../support/" class="default-link" style="text-decoration: underline;">Learn more about our vision and how your investment makes an impact &rarr;</a></p>
+                <div class="give-form">
+                    <div class="form-box gift-box">
+                        <h2 class="sr-only">Give online</h2>
+                        <div class="gift-switch">
+                            <div class="gift-toggle" role="group" aria-label="Choose a monthly or one-time gift">
+                                <button type="button" class="gift-toggle-btn" data-plan="monthly" aria-pressed="true">Monthly</button>
+                                <button type="button" class="gift-toggle-btn" data-plan="once" aria-pressed="false">One-Time</button>
+                            </div>
+                        </div>
+                    <div class="gift-panes">
+                        <!-- Monthly partnership: LGL form bVzgFShgWgepIhOlnWKXNw — the form with the monthly tiers
+                             ($50–$900) and the Monthly / Quarterly / Yearly schedule. -->
+                        <div class="gift-pane" data-plan="monthly" id="gift-monthly" aria-hidden="false">
+                            <div class="lgl-embed">
+                                <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw">Become a monthly partner of Archer Christian Academy</a><br/></noscript>
+                            </div>
+                            <p class="lgl-fallback">Processed securely by Little Green Light. Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/bVzgFShgWgepIhOlnWKXNw" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
+                        </div>
+                        <!-- One-time gift: LGL form N59ORbn5YqCDiz9p6ybxvQ — the form with the full-year tiers
+                             ($600–$25,000) and the "Make annual? One Time / Yearly" choice. -->
+                        <div class="gift-pane" data-plan="once" id="gift-once" aria-hidden="true" inert>
+                            <div class="lgl-embed">
+                                <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ">Make a one-time gift to Archer Christian Academy</a><br/></noscript>
+                            </div>
+                            <p class="lgl-fallback">Processed securely by Little Green Light. Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/N59ORbn5YqCDiz9p6ybxvQ" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
+                        </div>
+                    </div>
+                    </div>
+                    <p class="give-note reveal">
+                        All gifts are tax-deductible. Archer Christian Academy is a ministry of <a href="https://englewoodfamily.org" target="_blank" rel="noopener" class="default-link">Urban Youth Outreach</a>, a registered 501(c)(3) nonprofit organization.
+                        <br> <a href="#ways" class="default-link">Prefer a donor-advised fund, check, stock, or IRA gift? More ways to give &darr;</a>
+                        <br> <a href="update/" class="default-link">Already a monthly partner? Update your gift &rarr;</a>
+                    </p>
                 </div>
 
-                <div class="reveal-right">
-                    <div class="growth-box" style="margin-top: 0;">
+                <div class="give-context" id="impact">
+                    <div class="reveal">
+                        <h2>Your Gift at Work</h2>
+                        <p>Archer Christian Academy is building something rare&mdash;a school where rigorous academics, deep character formation, and the Gospel meet in one of Chicago&rsquo;s most under-resourced communities. The true cost of an Archer education is about <strong>$12,000 per student each year</strong>. Families contribute roughly ten percent of that, as they are able, and partners bridge the rest.</p>
+
+                        <h3 class="give-sub">Partnership Levels</h3>
+                        <p class="give-muted">Each level can be given at once or spread across the year as a monthly gift.</p>
+                        <ul class="tier-list">
+                            <li><span class="tier-name">Archer Partner</span><span class="tier-cost">$25,000</span><span class="tier-desc">The Archer is the school itself&mdash;a foundational gift toward the launch of the academy.</span></li>
+                            <li><span class="tier-name">Student Sponsor</span><span class="tier-cost">$10,800 <small>or $900/mo.</small></span><span class="tier-desc">Fully funds one student&rsquo;s tuition for the academic year.</span></li>
+                            <li><span class="tier-name">Semester Partner</span><span class="tier-cost">$5,400 <small>or $450/mo.</small></span><span class="tier-desc">Provides complete support for one student for a semester.</span></li>
+                            <li><span class="tier-name">Fletching Partner</span><span class="tier-cost">$3,600 <small>or $300/mo.</small></span><span class="tier-desc">An arrow needs three&mdash;you join two other partners to fully fund a student.</span></li>
+                            <li><span class="tier-name">Advocate</span><span class="tier-cost">$1,200 <small>or $100/mo.</small></span><span class="tier-desc">Underwrites essential program materials and operational launch costs.</span></li>
+                            <li><span class="tier-name">Supporter</span><span class="tier-cost">$600 <small>or $50/mo.</small></span><span class="tier-desc">Provides vital ongoing support to build the foundation of our new program.</span></li>
+                        </ul>
+
+                        <p style="margin-top: 22px;"><a href="../support/" class="default-link" style="text-decoration: underline;">Learn more about our vision and how your investment makes an impact &rarr;</a></p>
+                    </div>
+
+                    <div class="growth-box reveal" style="margin-top: 36px;">
                         <h3>The Archer Cornerstone Fund</h3>
                         <p>Every great institution is built on a strong foundation. The Cornerstone Fund is our campaign to lay the groundwork for Archer Christian Academy&mdash;not for operations, but for <em>establishment</em>. We estimate that about <strong>$400,000</strong> will carry Archer through its launch: getting the word out to families, purchasing curriculum, furnishing classrooms, hiring teachers, and everything else it takes to open our doors on August 23, 2027. Gifts serve three mission-critical goals:</p>
                         <ul class="pledge-list" style="margin-top: 22px; position: relative;">
