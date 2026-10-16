@@ -18,35 +18,31 @@
        one-time form; anything else means monthly. The inactive form stays laid out at full
        width (visibility: hidden, clipped to 0px) rather than display: none, so Little Green
        Light's resizer measures it correctly and it is the right height the moment it shows. */
-    /* Two-column giving layout. The site's dark page-header band stays full width with the
-       headline left-aligned in its left 45%; the form card rises into the band from the right
-       column (negative top margin) and the context copy runs down the left. On phones the
-       grid collapses to hook → form → context. */
-    .give-hero { text-align: left; padding-bottom: 150px; }
-    .give-hero .hook { max-width: calc((100% - 48px) * 0.45); position: relative; }
-    .give-hero .lead-text { margin-left: 0; }
-    .give { background: var(--paper); padding-bottom: 72px; }
+    /* Giving layout: the site's full-width page header, then two columns (context 38% / form 62%),
+       then the Cornerstone Fund across the full width. On phones: header → form → context → Cornerstone. */
+    .give { background: var(--paper); padding: 56px 0 72px; }
     .give-layout {
         display: grid;
-        grid-template-columns: minmax(0, 9fr) minmax(0, 11fr);
+        grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
         grid-template-areas: "context form";
         column-gap: 48px;
         align-items: start;
     }
-    .give-form { grid-area: form; margin-top: -210px; position: relative; z-index: 1; }
-    .give-context { grid-area: context; padding-top: 56px; }
+    .give-form { grid-area: form; }
+    .give-context { grid-area: context; }
     .give-context h2 { margin-bottom: 16px; }
     .give-context .give-sub { color: var(--dark-blue); font-size: 1.1rem; margin: 30px 0 4px; }
     .give-context .give-muted { font-size: 0.92rem; color: var(--muted); }
     .give-note { text-align: center; margin-top: 18px; font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+    .give-cornerstone { margin-top: 56px; }
+    .cornerstone-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px 44px; position: relative; align-items: start; }
+    .cornerstone-grid .pledge-list { margin-top: 6px; }
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     @media (max-width: 900px) {
-        .give-hero { text-align: center; padding-bottom: 96px; }
-        .give-hero .hook { max-width: 720px; margin: 0 auto; }
-        .give-hero .lead-text { margin-left: auto; }
-        .give-layout { grid-template-columns: 1fr; grid-template-areas: "form" "context"; }
-        .give-form { margin-top: -56px; }
-        .give-context { padding-top: 48px; }
+        .give { padding-top: 40px; }
+        .give-layout { grid-template-columns: 1fr; grid-template-areas: "form" "context"; row-gap: 48px; }
+        .give-cornerstone { margin-top: 44px; }
+        .cornerstone-grid { grid-template-columns: 1fr; }
     }
     .gift-switch { text-align: center; margin-bottom: 14px; }
     .gift-toggle {
@@ -308,17 +304,15 @@
     </header>
     <main id="main">
 
-    <section class="page-header give-hero">
+    <section class="page-header">
         <div class="container">
-            <div class="hook">
-                <span class="kicker">Partner with Us</span>
-                <h1>Partner with Archer</h1>
-                <p class="lead-text">A school is built on steady, faithful giving. Become a monthly partner or make a one-time gift&mdash;either way, you help launch a generation true.</p>
-            </div>
+            <span class="kicker">Partner with Us</span>
+            <h1>Partner with Archer</h1>
+            <p class="lead-text">A school is built on steady, faithful giving. Become a monthly partner or make a one-time gift&mdash;either way, you help launch a generation true.</p>
         </div>
     </section>
 
-    <!-- ======= GIVE: context on the left, form on the right (hook → form → context on phones) ======= -->
+    <!-- ======= GIVE: context left / form right, then the Cornerstone Fund across both columns ======= -->
     <section class="give">
         <div class="container">
             <div class="give-layout">
@@ -377,18 +371,25 @@
                         <p style="margin-top: 22px;"><a href="../support/" class="default-link" style="text-decoration: underline;">Learn more about our vision and how your investment makes an impact &rarr;</a></p>
                     </div>
 
-                    <div class="growth-box reveal" style="margin-top: 36px;">
+                </div>
+
+            </div>
+
+            <div class="growth-box give-cornerstone reveal" id="cornerstone">
+                <div class="cornerstone-grid">
+                    <div>
                         <h3>The Archer Cornerstone Fund</h3>
                         <p>Every great institution is built on a strong foundation. The Cornerstone Fund is our campaign to lay the groundwork for Archer Christian Academy&mdash;not for operations, but for <em>establishment</em>. We estimate that about <strong>$400,000</strong> will carry Archer through its launch: getting the word out to families, purchasing curriculum, furnishing classrooms, hiring teachers, and everything else it takes to open our doors on August 23, 2027. Gifts serve three mission-critical goals:</p>
-                        <ul class="pledge-list" style="margin-top: 22px; position: relative;">
+                    </div>
+                    <div>
+                        <ul class="pledge-list">
                             <li><strong>Secure Our Founding Team.</strong> Bring on the key personnel and strategic partners required for a successful launch.</li>
                             <li><strong>Establish Our Home.</strong> Secure and prepare our physical location in Englewood.</li>
                             <li><strong>Build Our Plan.</strong> Cover the administrative, legal, and strategic consulting costs needed to build an excellent, sustainable school from day one.</li>
                         </ul>
-                        <p style="font-style: italic;">A Cornerstone gift is a <q>first-in,</q> foundational investment. You are not just supporting a school&mdash;you are one of its builders.</p>
+                        <p style="font-style: italic; margin-top: 18px;">A Cornerstone gift is a <q>first-in,</q> foundational investment. You are not just supporting a school&mdash;you are one of its builders.</p>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
