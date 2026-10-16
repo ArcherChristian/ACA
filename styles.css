@@ -2222,7 +2222,7 @@ q::after { content: close-quote; }
 /* donate/update: fallback link under the embedded LGL form */
 .lgl-fallback { margin-top: 14px; font-size: 0.85rem; color: var(--muted); text-align: center; }
 
-/* --- ACCESSIBILITY: skip link (visible only when focused) --- */
+/* --- ACCESSIBILITY: skip link (off-screen until it receives keyboard focus) --- */
 .skip-link {
     position: absolute;
     left: 12px; top: -80px;
