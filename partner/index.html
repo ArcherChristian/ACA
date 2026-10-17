@@ -18,12 +18,12 @@
        one-time form; anything else means monthly. The inactive form stays laid out at full
        width (visibility: hidden, clipped to 0px) rather than display: none, so Little Green
        Light's resizer measures it correctly and it is the right height the moment it shows. */
-    /* Giving layout: the site's full-width page header, then two columns (context 38% / form 62%),
+    /* Giving layout: the site's full-width page header, then two equal columns (context left, form right),
        then the Cornerstone Fund across the full width. On phones: header → form → context → Cornerstone. */
     .give { background: var(--paper); padding: 56px 0 72px; }
     .give-layout {
         display: grid;
-        grid-template-columns: minmax(0, 38fr) minmax(0, 62fr);
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         grid-template-areas: "context form";
         column-gap: 48px;
         align-items: start;
