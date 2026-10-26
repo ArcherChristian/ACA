@@ -215,8 +215,17 @@ a.default-link:hover { color: var(--dark-blue) !important; }
     letter-spacing: 0.04em;
     font-weight: 500;
 }
-.top-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.top-bar a { color: inherit; text-decoration: underline; text-underline-offset: 3px; white-space: nowrap; }
 .top-bar a:hover { color: var(--archer-yellow); }
+.top-bar a:focus-visible { color: var(--archer-yellow); outline: 2px solid var(--archer-yellow); outline-offset: 3px; }
+/* Phones: drop the divider and give the call to action its own line, so
+   "Inquire Today" never wraps with "Today" stranded on a line by itself. */
+@media (max-width: 600px) {
+    .top-bar { padding: 8px 16px 9px; line-height: 1.5; }
+    .top-bar-sep { display: none; }
+    .top-bar-text { display: block; }
+    .top-bar-cta { display: inline-block; padding: 3px 10px; } /* ~25px tall tap target */
+}
 
 /* --- HEADER & NAV --- */
 header {

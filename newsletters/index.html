@@ -46,8 +46,16 @@
     .h1 { font-size: 34px !important; line-height: 1.12 !important; }
     .num { font-size: 60px !important; }
     .topbar { font-size: 11px !important; letter-spacing: 0.03em !important; }
+    .topbar a { white-space: nowrap; }
     .outer { padding: 0 !important; }
     .card { border-radius: 0 !important; box-shadow: none !important; }
+  }
+  /* Phones: divider off, call to action on its own line (mirrors styles.css) */
+  @media only screen and (max-width: 600px) {
+    .topbar { line-height: 1.5 !important; }
+    .topbar-sep { display: none !important; }
+    .topbar-text { display: block !important; }
+    .topbar-cta { display: inline-block !important; padding: 3px 10px !important; }
   }
 </style>
 </head>
@@ -62,7 +70,7 @@
   <!-- ===== TOP BAR (mirrors the site's top bar) ===== -->
   <tr>
     <td class="topbar" align="center" style="background-color: #002058; padding: 10px 16px; font-family: 'Poppins', 'Work Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 500; letter-spacing: 0.04em; color: rgba(255,255,255,0.92); border-bottom: 1px solid #0d3372;">
-      Launching Fall 2027 &mdash; Grades K&ndash;2 &nbsp;|&nbsp; <a href="https://archerchristian.org/contact/" style="color: #ffffff; text-decoration: underline; text-underline-offset: 3px;">Inquire Today</a>
+      <span class="topbar-text">Launching Fall 2027&nbsp;&mdash; Grades K&ndash;2</span><span class="topbar-sep" aria-hidden="true"> &nbsp;|&nbsp; </span><a class="topbar-cta" href="https://archerchristian.org/contact/" style="color: #ffffff; text-decoration: underline; text-underline-offset: 3px;">Inquire Today</a>
     </td>
   </tr>
 
