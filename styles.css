@@ -1608,10 +1608,13 @@ details p { padding: 18px 24px; border-top: 1px solid #f0ede5; margin: 0; color:
     margin: 0 -10px;
     min-height: 320px; /* placeholder space while the script loads */
 }
+.lgl-embed { overflow: hidden; } /* clips the blank chrome LGL builds into every form page (30px above the first field, ~110-140px below the last) */
 .lgl-embed iframe {
     display: block;
     width: 100% !important;
     border: none;
+    margin-top: -24px;
+    margin-bottom: -100px;
 }
 
 /* --- LETTER PAGE --- */
