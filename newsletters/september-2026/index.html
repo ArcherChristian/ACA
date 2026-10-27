@@ -272,12 +272,21 @@
 </td></tr>
 </table>
 <script>
-  // Live countdown: first day of school is Monday, August 23, 2027 at 8:00 a.m. Central.
+  // Live countdown: whole calendar days until the first day of school, Monday, August 23, 2027,
+  // counted on Chicago's calendar (so it changes at midnight Central, not at 8 a.m.).
   (function () {
     var el = document.getElementById('days-to-go');
     if (!el) return;
-    var firstDay = new Date('2027-08-23T08:00:00-05:00');
-    var days = Math.ceil((firstDay - new Date()) / 86400000);
+    var now = new Date(), y, m, d;
+    try {
+      var g = {};
+      new Intl.DateTimeFormat('en-US', { timeZone: 'America/Chicago', year: 'numeric', month: 'numeric', day: 'numeric' })
+        .formatToParts(now).forEach(function (p) { g[p.type] = p.value; });
+      y = +g.year; m = +g.month; d = +g.day;
+    } catch (e) {
+      y = now.getFullYear(); m = now.getMonth() + 1; d = now.getDate();
+    }
+    var days = Math.round((Date.UTC(2027, 7, 23) - Date.UTC(y, m - 1, d)) / 86400000);
     el.textContent = String(Math.max(days, 0));
   })();
 </script>

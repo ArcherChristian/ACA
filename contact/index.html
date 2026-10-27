@@ -12,6 +12,13 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles.css">
+    <style>
+      /* Page-only rules for the Little Green Light contact form (shared .form-box/.lgl-embed/.lgl-fallback live in styles.css) */
+      #cqzlVwQSvubhVNXVEXFWKw-top { scroll-margin-top: 100px; } /* LGL scrolls this anchor into view on validation errors; stay below the 76px sticky header */
+      @media (max-width: 600px) {
+        .form-box.message-box { padding: 28px 16px 24px; } /* give the embedded form more room on phones */
+      }
+    </style>
     <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="../images/favicon-64.png" type="image/png" sizes="64x64">
@@ -155,50 +162,13 @@
                         </div>
                 </div>
 
-                <div class="form-box reveal-right">
+                <!-- ======= SEND A MESSAGE: Little Green Light form cqzlVwQSvubhVNXVEXFWKw (Contact Form) ======= -->
+                <div class="form-box message-box reveal-right" id="message">
                     <h3>Send a Message</h3>
-                    <iframe name="contact-hidden-frame" style="display:none;" title="hidden"></iframe>
-                    <form action="#" data-action="860614698559062/timbus/moc.mroftoj.timbus//:sptth" method="post" id="contact-form" target="contact-hidden-frame" accept-charset="utf-8" autocomplete="on">
-                        <input type="hidden" name="formID" value="260955896416068">
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
-                            <div class="form-group">
-                                <label for="cf-fname">First Name <span style="color:#c00;">*</span></label>
-                                <input type="text" id="cf-fname" name="q2_firstName" required placeholder="First Name">
-                            </div>
-                            <div class="form-group">
-                                <label for="cf-lname">Last Name <span style="color:#c00;">*</span></label>
-                                <input type="text" id="cf-lname" name="q3_lastName" required placeholder="Last Name">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="cf-email">Email <span style="color:#c00;">*</span></label>
-                            <input type="email" id="cf-email" name="q4_emailAddress" required placeholder="name@example.com">
-                        </div>
-                        <div class="form-group">
-                            <label for="cf-phone">Phone</label>
-                            <input type="tel" id="cf-phone" name="q5_phoneNumber[full]" placeholder="(312) 000-0000">
-                        </div>
-                        <div class="form-group">
-                            <label for="cf-note">Note</label>
-                            <textarea id="cf-note" name="q6_note" rows="4" placeholder="How can we help you? Tell us about your interest in Archer Christian Academy."></textarea>
-                        </div>
-                        <div class="form-group" style="margin-top: 5px;">
-                            <label style="display: flex; align-items: center; gap: 8px; font-size: 0.9rem; cursor: pointer; text-transform: none; letter-spacing: 0;">
-                                <input type="checkbox" name="q7_newsletter" value="Yes" checked style="width: auto; accent-color: var(--archer-blue);">
-                                Sign me up for the ACA newsletter
-                            </label>
-                        </div>
-                        <!-- Honeypot anti-spam -->
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <label for="hp-website">Website</label><input type="text" id="hp-website" name="website" tabindex="-1" autocomplete="off" value="">
-                        </div>
-                        <button type="submit" class="btn btn-blue" style="width: 100%; margin-top: 10px;">Send Message</button>
-                    </form>
-                    <div class="form-success">
-                        <div class="success-mark">&#10003;</div>
-                        <h4>Message sent</h4>
-                        <p>Thank you&mdash;we will get back to you shortly.</p>
+                    <div class="lgl-embed">
+                        <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/cqzlVwQSvubhVNXVEXFWKw.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/cqzlVwQSvubhVNXVEXFWKw">Send us a message</a><br/></noscript>
                     </div>
+                    <p class="lgl-fallback">Processed securely by Little Green Light. Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/cqzlVwQSvubhVNXVEXFWKw" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
                 </div>
 
             </div>
@@ -264,17 +234,6 @@
     const navToggle = document.querySelector('.nav-toggle');
     navToggle.addEventListener('click', () => document.body.classList.toggle('nav-open'));
     document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
-    </script>
-
-    <script>
-    document.getElementById('contact-form').addEventListener('submit', function() {
-        var box = this.closest('.form-box');
-        setTimeout(function() {
-            box.querySelector('form').style.display = 'none';
-            box.querySelector('h3').style.display = 'none';
-            box.querySelector('.form-success').style.display = 'block';
-        }, 400);
-    });
     </script>
 
     <script src="../site.js" defer></script>
