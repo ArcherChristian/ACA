@@ -3,176 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Archer Christian Academy | Classical Christian School in Englewood, Chicago</title>
-    <meta name="description" content="A classical Christian school opening Fall 2027 in Englewood on Chicago’s South Side. Enrolling K–2, growing to K–12. Every child known, stretched, and loved.">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <title>Thank You | Archer Christian Academy</title>
+    <meta name="description" content="Thank you for your gift to Archer Christian Academy. Your partnership helps bring a Christ-centered, classical education to Englewood.">
+    <meta name="robots" content="noindex, follow">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="styles.css">
-    <link rel="icon" href="images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
-    <link rel="icon" href="images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
-    <link rel="icon" href="images/favicon-64.png" type="image/png" sizes="64x64">
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="stylesheet" href="../styles.css">
+    <script>
+      /* Read the gift type before first paint: /thank-you/?gift=monthly (or #monthly) shows the recurring-gift notes. */
+      (function(){var q=new URLSearchParams(location.search).get('gift')||location.hash.replace('#','');if(/^(monthly|recurring)$/i.test(q)){document.documentElement.setAttribute('data-gift','monthly');}})();
+    </script>
+    <style>
+      /* Page-only rules for the post-gift thank-you page */
+      .only-monthly { display: none; }
+      html[data-gift="monthly"] .only-monthly { display: block; }
+      html[data-gift="monthly"] .only-once { display: none; }
+      html[data-gift="monthly"] .btn.only-monthly { display: inline-block; }
+      .thanks-monthly { margin-top: 30px; padding: 20px 24px; border-left: 4px solid var(--archer-blue); background: var(--paper, #f7f5f0); font-size: 0.95rem; }
+      .thanks-monthly p { margin: 0 0 8px; }
+      .thanks-monthly p:last-child { margin: 0; }
+      .thanks-wrap { max-width: 760px; margin: 0 auto; }
+      .thanks-wrap h2 { margin-top: 36px; }
+      .thanks-steps { list-style: none; padding: 0; margin: 28px 0 0; display: grid; gap: 18px; }
+      .thanks-steps li { background: var(--paper, #f7f5f0); border: 1px solid var(--line, #e3dfd6); border-radius: var(--radius, 8px); padding: 22px 26px; }
+      .thanks-steps h3 { color: var(--archer-blue); font-size: 1.1rem; margin: 0 0 8px; }
+      .thanks-steps p { margin: 0; }
+      .thanks-receipt { margin-top: 30px; padding: 20px 24px; border-left: 4px solid var(--archer-yellow); background: var(--paper, #f7f5f0); font-size: 0.95rem; }
+      .thanks-receipt p { margin: 0 0 8px; }
+      .thanks-receipt p:last-child { margin: 0; }
+    </style>
+    <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
+    <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
+    <link rel="icon" href="../images/favicon-64.png" type="image/png" sizes="64x64">
+    <link rel="apple-touch-icon" href="../images/apple-touch-icon.png">
     <meta name="theme-color" content="#002058">
-    <link rel="canonical" href="https://archerchristian.org/">
+    <link rel="canonical" href="https://archerchristian.org/thank-you/">
     <!-- Social sharing -->
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="Archer Christian Academy">
-    <meta property="og:title" content="Archer Christian Academy | Classical Christian School in Englewood, Chicago">
-    <meta property="og:description" content="A classical Christian school opening Fall 2027 in Englewood on Chicago’s South Side. Enrolling K–2, growing to K–12. Every child known, stretched, and loved.">
-    <meta property="og:url" content="https://archerchristian.org/">
+    <meta property="og:title" content="Thank You | Archer Christian Academy">
+    <meta property="og:description" content="Thank you for your gift to Archer Christian Academy. Your partnership helps bring a Christ-centered, classical education to Englewood.">
+    <meta property="og:url" content="https://archerchristian.org/thank-you/">
     <meta property="og:image" content="https://archerchristian.org/images/social-card.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Archer Christian Academy — a Christ-centered, classical school in Englewood, Chicago, launching Fall 2027">
     <meta name="twitter:card" content="summary_large_image">
-    <link rel="preload" as="image" href="images/classroom-raised-hands.jpg">
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": [
-        "School",
-        "EducationalOrganization"
-      ],
-      "@id": "https://archerchristian.org/#organization",
-      "name": "Archer Christian Academy",
-      "alternateName": [
-        "Archer",
-        "ACA"
-      ],
-      "slogan": "Launched true, for God and community.",
-      "description": "Archer Christian Academy is a Christ-centered, classical Christian school opening Fall 2027 in the Englewood neighborhood of Chicago. It launches with kindergarten through 2nd grade, adds one grade each year through 12th, and keeps classes to 14 students. Curriculum follows the classical Trivium (Grammar, Logic, Rhetoric) with Latin, Scripture, music, art, and applied arts including archery and woodworking.",
-      "url": "https://archerchristian.org/",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://archerchristian.org/images/ACA%20Archer%20Badge%20RGB%20Positive.png"
-      },
-      "image": "https://archerchristian.org/images/social-card.jpg",
-      "email": "daniel@archerchristian.org",
-      "telephone": "+1-312-539-0644",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "672 West Marquette Road",
-        "addressLocality": "Chicago",
-        "addressRegion": "IL",
-        "postalCode": "60621",
-        "addressCountry": "US"
-      },
-      "areaServed": [
-        {
-          "@type": "Place",
-          "name": "Englewood, Chicago, Illinois"
-        },
-        {
-          "@type": "Place",
-          "name": "South Side, Chicago, Illinois"
-        }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/ArcherEnglewood/",
-        "https://www.linkedin.com/company/archerchristian",
-        "https://www.instagram.com/archerchristianacademy/"
-      ],
-      "parentOrganization": {
-        "@type": "NGO",
-        "name": "Urban Youth Outreach",
-        "alternateName": "Englewood Family Outreach",
-        "url": "https://englewoodfamily.org/",
-        "foundingDate": "1986",
-        "taxID": "36-3382527",
-        "nonprofitStatus": "https://schema.org/Nonprofit501c3"
-      },
-      "nonprofitStatus": "https://schema.org/Nonprofit501c3",
-      "foundingLocation": {
-        "@type": "Place",
-        "name": "Englewood, Chicago, IL"
-      },
-      "educationalLevel": [
-        "Kindergarten",
-        "Grade 1",
-        "Grade 2"
-      ],
-      "availableLanguage": "English",
-      "keywords": "classical Christian school, Englewood, South Side Chicago, Chicago private school, Christian school Chicago, kindergarten, elementary school, Trivium, K-12, Christ-centered education, school choice Chicago",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Programs",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "EducationalOccupationalProgram",
-              "name": "Grammar School (K–5)",
-              "description": "Founding grades K–2 enroll for Fall 2027. Phonics-based reading, classic literature, chronological history, mastery mathematics, observational science, Latin, Scripture, music, art, archery and woodworking.",
-              "educationalProgramMode": "onsite",
-              "programType": "Elementary",
-              "url": "https://archerchristian.org/academics/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "EducationalOccupationalProgram",
-              "name": "Logic School (6–8)",
-              "description": "Planned as grades are added; integrated history, literature, Latin, formal logic, mathematics and sciences through Socratic discussion.",
-              "url": "https://archerchristian.org/academics/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "EducationalOccupationalProgram",
-              "name": "Rhetoric School (9–12)",
-              "description": "Planned as grades are added; the full K–12 vision.",
-              "url": "https://archerchristian.org/academics/"
-            }
-          }
-        ]
-      },
-      "contactPoint": [
-        {
-          "@type": "ContactPoint",
-          "contactType": "admissions",
-              "email": "daniel@archerchristian.org",
-          "telephone": "+1-312-539-0644",
-          "availableLanguage": "English",
-          "url": "https://archerchristian.org/contact/"
-        }
-      ],
-      "potentialAction": [
-        {
-          "@type": "ApplyAction",
-          "name": "Apply for K–2",
-          "target": "https://archerchristian.org/apply/"
-        },
-        {
-          "@type": "DonateAction",
-          "name": "Give to Archer Christian Academy",
-          "target": "https://archerchristian.org/partner/"
-        }
-      ]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://archerchristian.org/#website",
-      "url": "https://archerchristian.org/",
-      "name": "Archer Christian Academy",
-      "publisher": {
-        "@id": "https://archerchristian.org/#organization"
-      },
-      "inLanguage": "en-US"
-    },
-    {
       "@type": "WebPage",
-      "@id": "https://archerchristian.org/#webpage",
-      "url": "https://archerchristian.org/",
-      "name": "Archer Christian Academy | Classical Christian School in Englewood, Chicago",
-      "description": "A classical Christian school opening Fall 2027 in Englewood on Chicago’s South Side. Enrolling K–2, growing to K–12. Every child known, stretched, and loved.",
+      "@id": "https://archerchristian.org/thank-you/#webpage",
+      "url": "https://archerchristian.org/thank-you/",
+      "name": "Thank You | Archer Christian Academy",
+      "description": "Thank you for your gift to Archer Christian Academy. Your partnership helps bring a Christ-centered, classical education to Englewood.",
       "isPartOf": {
         "@id": "https://archerchristian.org/#website"
       },
@@ -181,81 +70,24 @@
       },
       "inLanguage": "en-US",
       "breadcrumb": {
-        "@id": "https://archerchristian.org/#breadcrumb"
-      },
-      "primaryImageOfPage": "https://archerchristian.org/images/social-card.jpg"
+        "@id": "https://archerchristian.org/thank-you/#breadcrumb"
+      }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://archerchristian.org/#breadcrumb",
+      "@id": "https://archerchristian.org/thank-you/#breadcrumb",
       "itemListElement": [
         {
           "@type": "ListItem",
           "position": 1,
           "name": "Home",
           "item": "https://archerchristian.org/"
-        }
-      ]
-    },
-    {
-      "@type": "FAQPage",
-      "@id": "https://archerchristian.org/#faq",
-      "mainEntity": [
-        {
-          "@type": "Question",
-          "name": "What is Archer Christian Academy?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Archer Christian Academy is a private, Christ-centered classical Christian school opening in Englewood, on Chicago’s South Side, with its first day of school on August 23, 2027. It is a ministry of Urban Youth Outreach, a 501(c)(3) nonprofit that has served Englewood families since 1986. Archer opens with kindergarten through 2nd grade, adds one grade each year to become a full K–12 school, and keeps every class to 14 students."
-          }
         },
         {
-          "@type": "Question",
-          "name": "Is there a classical Christian school on the South Side of Chicago?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "There is no classical Christian school in Englewood and only a handful anywhere on the South Side. Archer will be the first in the neighborhood—a school families can walk to, in a community where 43% of households do not own a car. Our Why Englewood page lays out the need in numbers."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "What is classical Christian education?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "A classical education follows the Trivium, matching instruction to each child’s stage: the Grammar School (K–5) fills eager minds with facts, language, and wonder; the Logic School (6–8) trains students to reason, question, and argue well; and the Rhetoric School (9–12) forms graduates who speak and write with wisdom and eloquence. At Archer every subject—Latin, literature, history, mathematics, science, music, art, Scripture, and applied arts such as archery and woodworking—is taught through a biblical lens, so students learn to think clearly, love rightly, and serve faithfully."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How much does Archer cost?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "The true cost of an Archer education is about $12,000 per student each year, but tuition is not a posted price. Every family contributes monthly, an amount set individually and confidentially by what the family is able to give—typically about ten percent of the cost—and ministry partners cover the rest. No mission-aligned family is turned away for financial reasons."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Who can apply, and when?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Families of children entering kindergarten, 1st grade, or 2nd grade in Fall 2027 can apply now. You do not need a church background or a profession of faith to apply. Admissions follows four steps: a conversation and tour, an application and family story, a partnership interview, and an enrollment decision."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "How can I support education in Englewood through Archer?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Partners make the school possible. Give monthly or one-time at archerchristian.org/partner: a Student Sponsor gift of $10,800 ($900 a month) funds one child’s year, three Fletching Partners at $3,600 each fund one student together, and gifts toward the estimated $400,000 in launch costs open the doors. Gifts are tax-deductible through Urban Youth Outreach (EIN 36-3382527), and donor-advised fund, check, stock, and IRA gifts are welcome. Founding teachers are also wanted."
-          }
-        },
-        {
-          "@type": "Question",
-          "name": "Where is Archer located?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Archer is based at 672 West Marquette Road in Englewood (Chicago, IL 60621), the home of Urban Youth Outreach near 67th and Union, and will open in the neighborhood it serves—a school families can walk to. Archer is modeled on Hope Academy in Minneapolis, coached through its launch by the Spreading Hope Network, and guided by Clapham School in Wheaton, its local sister school."
-          }
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Thank You",
+          "item": "https://archerchristian.org/thank-you/"
         }
       ]
     }
@@ -267,26 +99,26 @@
     <a class="skip-link" href="#main">Skip to content</a>
 
     <div class="top-bar">
-        <span class="top-bar-text">Launching Fall 2027&nbsp;&mdash; Grades K&ndash;2</span><span class="top-bar-sep" aria-hidden="true"> &nbsp;|&nbsp; </span><a class="top-bar-cta" href="contact/">Inquire Today</a>
+        <span class="top-bar-text">Launching Fall 2027&nbsp;&mdash; Grades K&ndash;2</span><span class="top-bar-sep" aria-hidden="true"> &nbsp;|&nbsp; </span><a class="top-bar-cta" href="../contact/">Inquire Today</a>
     </div>
 
     <header>
         <div class="nav-container">
-            <a href="./" class="logo-lockup">
-                <img src="images/ACA Archer Badge RGB Positive.png" alt="Archer Christian Academy badge" class="logo-badge" width="3142" height="3457">
-                <img src="images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type" width="2787" height="854">
+            <a href=".././" class="logo-lockup">
+                <img src="../images/ACA Archer Badge RGB Positive.png" alt="Archer Christian Academy badge" class="logo-badge" width="3142" height="3457">
+                <img src="../images/ACA LogoType RGB Positive.png" alt="Archer Christian Academy" class="logo-type" width="2787" height="854">
             </a>
             <nav id="site-nav">
                 <ul>
-                    <li><a href="about/">About</a></li>
-                    <li><a href="academics/">Academics</a></li>
-                    <li><a href="admissions/">Admissions</a></li>
-                    <li><a href="support/">Partners</a></li>
-                    <li><a href="contact/">Contact</a></li>
-                    <li><a href="partner/" class="nav-give">Give</a></li>
+                    <li><a href="../about/">About</a></li>
+                    <li><a href="../academics/">Academics</a></li>
+                    <li><a href="../admissions/">Admissions</a></li>
+                    <li><a href="../support/">Partners</a></li>
+                    <li><a href="../contact/">Contact</a></li>
+                    <li><a href="../partner/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
-            <a href="apply/" class="btn btn-yellow nav-apply">Apply for K&ndash;2</a>
+            <a href="../apply/" class="btn btn-yellow nav-apply">Apply for K&ndash;2</a>
             <button class="nav-toggle" aria-label="Menu" aria-controls="site-nav">
                 <span></span><span></span><span></span>
             </button>
@@ -294,198 +126,53 @@
     </header>
     <main id="main">
 
-    <!-- ======= HERO ======= -->
-    <section class="hero">
-        <div class="hero-photo" style="background-image: url('images/classroom-raised-hands.jpg');" role="img" aria-label="Students eagerly raising their hands in a sunlit classical classroom"></div>
+    <section class="page-header">
         <div class="container">
-            <div class="hero-inner">
-                <span class="hero-badge">Coming to Englewood &bull; Fall 2027</span>
-                <h1>Aiming <em>True</em> for the Renewal of Englewood</h1>
-                <p>A Christ-centered, classical school in Englewood, on Chicago&rsquo;s South Side, where every child is known, stretched, and loved&mdash;and launched with purpose.</p>
-                <div class="hero-buttons">
-                    <a href="admissions/" class="btn btn-yellow">Plan a Visit</a>
-                    <a href="support/" class="btn btn-outline">Support the Vision</a>
+            <span class="kicker">Thank You</span>
+            <h1>Your Gift Has Been Received</h1>
+            <p class="lead-text only-once">You have just invested in a child in Englewood. We are grateful beyond words.</p>
+            <p class="lead-text only-monthly">Month by month, you are helping to hold a seat open for a child in Englewood. We are grateful beyond words.</p>
+        </div>
+    </section>
+
+    <section class="content-section">
+        <div class="container">
+            <div class="thanks-wrap reveal">
+                <h2>What Your Partnership Means</h2>
+                <p>Archer Christian Academy will open its doors in August 2027 to kindergarten through second grade, and every one of those seats will be held open by partners like you. The true cost of educating a student is about $12,000 a year, and families will carry roughly a tenth of that. The rest is carried by people who believe that the children of Englewood deserve an education as rigorous, as beautiful, and as rooted in Christ as any in the city. Today you became one of them.</p>
+                <p>&ldquo;Every good gift and every perfect gift is from above&rdquo; (Jas. 1.17). We receive yours as exactly that, and we will steward it with care.</p>
+
+                <div class="thanks-receipt">
+                    <p><strong>Your receipt is on its way.</strong> A confirmation email with your tax-deductible receipt is being sent to the address you provided. Gifts are made to Urban Youth Outreach, a 501(c)(3) nonprofit (EIN 36-3382527), the parent ministry of Archer Christian Academy, and are designated to the school.</p>
+                    <p>If the email does not arrive within a few minutes, please check your spam folder, then <a href="../contact/" class="default-link">contact us</a> and we will send it again.</p>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- ======= HERO STATS ======= -->
-    <div class="hero-stats">
-        <div class="container">
-            <div class="hero-stats-inner">
-                <div class="hstat"><span class="hstat-number">Fall 2027</span><span class="hstat-label">Doors Open</span></div>
-                <div class="hstat"><span class="hstat-number">K&ndash;2</span><span class="hstat-label">Founding Grades</span></div>
-                <div class="hstat"><span class="hstat-number">14</span><span class="hstat-label">Students Per Class</span></div>
-                <div class="hstat"><span class="hstat-number">K&ndash;12</span><span class="hstat-label">The Full Vision</span></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ======= MISSION ======= -->
-    <section class="mission reveal">
-        <div class="container">
-            <span class="kicker">Our Mantra</span>
-            <h2><q>Launched true, for God and community.</q></h2>
-            <p>
-                For over four decades, our ministry has served Englewood&rsquo;s families with compassion and faith.
-                <strong>Archer Christian Academy</strong> is the next chapter&mdash;shaping the next generation from the
-                very start, so every child is launched strong in character and true in aim.
-            </p>
-            <div class="link-row" style="justify-content: center;">
-                <a href="about/" class="read-more-link">Read Our Story &rarr;</a>
-                <a href="prospectus.pdf" class="read-more-link" target="_blank" rel="noopener">Read the Prospectus (PDF) &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= THREE PATHS ======= -->
-    <section class="section" style="padding-top: 0;">
-        <div class="container">
-            <div class="section-head reveal" style="margin-bottom: 44px;">
-                <span class="kicker">Three Ways In</span>
-                <h2>Find Your Place at Archer</h2>
-            </div>
-            <div class="hedgehog-grid stagger">
-                <div class="hedgehog-card reveal">
-                    <div class="card-icon">&#8962;</div>
-                    <h3>For Families</h3>
-                    <span class="card-lead">Enrolling K&ndash;2 for Fall 2027</span>
-                    <p>A seat for your child at a school where they will be known, stretched, and loved.</p>
-                    <a href="admissions/" class="read-more-link">Explore Admissions &rarr;</a>
+                <div class="thanks-monthly only-monthly">
+                    <p><strong>About your monthly gift.</strong> Your card will be charged on this date each month, and you will receive a receipt by email each time. A year-end summary of all your gifts will follow in January.</p>
+                    <p>To edit, pause, or change your donation at any time, <a href="../partner/update/" class="default-link">use our update form</a> or email <a href="#contact" data-u="leinad" data-d="gro.naitsirhcrehcra" data-show class="default-link">&#100;&#97;&#110;&#105;&#101;&#108;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a>. No form is required if you simply let us know what you would like changed.</p>
                 </div>
-                <div class="hedgehog-card reveal">
-                    <div class="card-icon">&#9829;</div>
-                    <h3>For Partners</h3>
-                    <span class="card-lead">Build the foundation</span>
-                    <p>Founding partners make an Archer education possible for every family, regardless of income.</p>
-                    <a href="support/" class="read-more-link">Support the Vision &rarr;</a>
+
+                <h2>Three Ways to Stay Close</h2>
+                <ul class="thanks-steps">
+                    <li>
+                        <h3>Follow the Story</h3>
+                        <p>Our newsletter carries the news from Englewood as the school takes shape&mdash;hires, milestones, and the families we are meeting along the way. <a href="../newsletters/" class="default-link">Read past issues and subscribe</a>.</p>
+                    </li>
+                    <li>
+                        <h3>Pray With Us</h3>
+                        <p>Money builds a school; prayer builds its soul. <a href="../prayer.pdf" target="_blank" rel="noopener" class="default-link">Download the Archer Prayer Card (PDF)</a>, five requests for the road to launch.</p>
+                    </li>
+                    <li>
+                        <h3>Tell Someone</h3>
+                        <p>The surest way a school like this grows is one conversation at a time. Share <a href="../support/" class="default-link">archerchristian.org/support</a> with a friend who would want to know, or follow along on <a href="https://www.facebook.com/ArcherEnglewood/" rel="noopener" target="_blank" class="default-link">Facebook</a> and <a href="https://www.instagram.com/archerchristianacademy/" rel="noopener" target="_blank" class="default-link">Instagram</a>.</p>
+                    </li>
+                </ul>
+
+                <div class="cta-buttons" style="margin-top: 40px;">
+                    <a href=".././" class="btn btn-blue">Return Home</a>
+                    <a href="../partner/" class="btn btn-outline-blue only-once">Give Monthly Instead</a>
+                    <a href="../partner/update/" class="btn btn-outline-blue only-monthly">Update Your Monthly Gift</a>
                 </div>
-                <div class="hedgehog-card reveal">
-                    <div class="card-icon">&#9998;</div>
-                    <h3>For Educators</h3>
-                    <span class="card-lead">Founding teachers wanted</span>
-                    <p>Launch more than a school&mdash;shape the classrooms Englewood&rsquo;s children deserve.</p>
-                    <a href="careers/" class="read-more-link">Teach at Archer &rarr;</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= ACADEMICS PREVIEW ======= -->
-    <section class="section">
-        <div class="container">
-            <div class="two-col">
-                <div class="arch-frame reveal-left">
-                    <div class="arch-img"><img src="images/student-writing-window.jpg" loading="lazy" decoding="async" alt="A young student practicing penmanship by a sunlit window" style="object-position: 42% 50%;" width="1600" height="1067"></div>
-                </div>
-                <div class="academic-text reveal-right">
-                    <span class="kicker">Academics</span>
-                    <h2>A Classical Foundation</h2>
-                    <p>We do not launch arrows by chance, but by purpose. An Archer education is:</p>
-                    <ul>
-                        <li>Unapologetically Christian <span>A biblical lens for all learning&mdash;faith woven through every subject.</span></li>
-                        <li>Intentionally Classical <span>The Trivium forges ordered, articulate, and discerning minds.</span></li>
-                        <li>Culturally Conservative <span>We steward and transmit a rich, stabilizing heritage.</span></li>
-                    </ul>
-                    <p style="margin-bottom: 28px;"><strong>Opening with K&ndash;2 in Fall 2027</strong>&mdash;then adding one grade every year, all the way to 12th.</p>
-                    <a href="academics/" class="btn btn-blue">Explore Academics</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= COMMUNITY PHOTO BAND ======= -->
-    <section class="photo-band" style="background-image: url('images/students-outdoors.jpg');">
-        <div class="container">
-            <blockquote class="reveal">
-                <p>Small by design&mdash;every student <strong>known</strong>, every family a partner, every graduate launched with care.</p>
-            </blockquote>
-        </div>
-    </section>
-
-    <!-- ======= TUITION / ACCESS ======= -->
-    <section class="access-cta on-dark">
-        <div class="container reveal">
-            <span class="kicker">Tuition</span>
-            <h2>An Education Within Reach</h2>
-            <p class="access-lead">
-                The true cost of an Archer education&mdash;about $12,000 per student each year&mdash;is covered almost entirely by ministry partners who believe in this mission.
-                Every family contributes monthly&mdash;an amount set together, shaped by what your family is able to do.
-                Cost will never decide whether a child belongs here.
-            </p>
-            <div class="access-guarantee">
-                &ldquo;No mission-aligned family will be prevented from joining our community for financial reasons.&rdquo;
-            </div>
-            <a href="admissions/" class="btn btn-yellow">Begin the Conversation</a>
-            <p class="access-note">Family tuition is determined individually and confidentially during enrollment.</p>
-        </div>
-    </section>
-
-    <!-- ======= PARTNER LOGOS ======= -->
-    <section class="partner-logos-section reveal">
-        <p class="section-label">In Partnership With</p>
-        <div class="partner-logos-grid">
-            <a href="https://www.spreadinghopenetwork.org/" target="_blank" rel="noopener" class="partner-logo-link">
-                <div class="partner-card"><span class="partner-name">Spreading Hope Network</span><span class="partner-role">Launch Partner</span></div>
-            </a>
-            <a href="https://www.claphamschool.org/" target="_blank" rel="noopener" class="partner-logo-link">
-                <div class="partner-card"><span class="partner-name">Clapham School</span><span class="partner-role">Curriculum Partner</span></div>
-            </a>
-            <a href="https://englewoodfamily.org/" target="_blank" rel="noopener" class="partner-logo-link">
-                <div class="partner-card"><span class="partner-name">Urban Youth Outreach</span><span class="partner-role">Parent Ministry</span></div>
-            </a>
-        </div>
-    </section>
-
-    <!-- ======= QUESTIONS PEOPLE ASK ======= -->
-    <section class="content-section" id="faq" style="background: var(--paper); padding-top: 72px; padding-bottom: 72px;">
-        <div class="container">
-            <div class="section-head reveal">
-                <span class="kicker">Questions People Ask</span>
-                <h2>Archer, Answered</h2>
-            </div>
-            <div class="faq reveal">
-                <details>
-                    <summary>What is Archer Christian Academy?</summary>
-                    <div class="faq-a"><p>Archer Christian Academy is a private, Christ-centered classical Christian school opening in Englewood, on Chicago’s South Side, with its first day of school on August 23, 2027. It is a ministry of Urban Youth Outreach, a 501(c)(3) nonprofit that has served Englewood families since 1986. Archer opens with kindergarten through 2nd grade, adds one grade each year to become a full K–12 school, and keeps every class to 14 students.</p></div>
-                </details>
-                <details>
-                    <summary>Is there a classical Christian school on the South Side of Chicago?</summary>
-                    <div class="faq-a"><p>There is no classical Christian school in Englewood and only a handful anywhere on the South Side. Archer will be the first in the neighborhood—a school families can walk to, in a community where 43% of households do not own a car. Our <a href="why-englewood/" class="default-link">Why Englewood page</a> lays out the need in numbers.</p></div>
-                </details>
-                <details>
-                    <summary>What is classical Christian education?</summary>
-                    <div class="faq-a"><p>A classical education follows the Trivium, matching instruction to each child’s stage: the Grammar School (K–5) fills eager minds with facts, language, and wonder; the Logic School (6–8) trains students to reason, question, and argue well; and the Rhetoric School (9–12) forms graduates who speak and write with wisdom and eloquence. At Archer every subject—Latin, literature, history, mathematics, science, music, art, Scripture, and applied arts such as archery and woodworking—is taught through a biblical lens, so students learn to think clearly, love rightly, and serve faithfully.</p></div>
-                </details>
-                <details>
-                    <summary>How much does Archer cost?</summary>
-                    <div class="faq-a"><p>The true cost of an Archer education is about $12,000 per student each year, but tuition is not a posted price. Every family contributes monthly, an amount set individually and confidentially by what the family is able to give—typically about ten percent of the cost—and ministry partners cover the rest. No mission-aligned family is turned away for financial reasons.</p></div>
-                </details>
-                <details>
-                    <summary>Who can apply, and when?</summary>
-                    <div class="faq-a"><p>Families of children entering kindergarten, 1st grade, or 2nd grade in Fall 2027 can <a href="apply/" class="default-link">apply now</a>. You do not need a church background or a profession of faith to apply. Admissions follows four steps: a conversation and tour, an application and family story, a partnership interview, and an enrollment decision.</p></div>
-                </details>
-                <details>
-                    <summary>How can I support education in Englewood through Archer?</summary>
-                    <div class="faq-a"><p>Partners make the school possible. Give monthly or one-time at <a href="partner/" class="default-link">archerchristian.org/partner</a>: a Student Sponsor gift of $10,800 ($900 a month) funds one child’s year, three Fletching Partners at $3,600 each fund one student together, and gifts toward the estimated $400,000 in launch costs open the doors. Gifts are tax-deductible through Urban Youth Outreach (EIN 36-3382527), and donor-advised fund, check, stock, and IRA gifts are welcome. <a href="careers/" class="default-link">Founding teachers</a> are also wanted.</p></div>
-                </details>
-                <details>
-                    <summary>Where is Archer located?</summary>
-                    <div class="faq-a"><p>Archer is based at 672 West Marquette Road in Englewood (Chicago, IL 60621), the home of Urban Youth Outreach near 67th and Union, and will open in the neighborhood it serves—a school families can walk to. Archer is modeled on Hope Academy in Minneapolis, coached through its launch by the Spreading Hope Network, and guided by Clapham School in Wheaton, its local sister school.</p></div>
-                </details>
-            </div>
-        </div>
-    </section>
-
-    <!-- ======= FOUNDING CTA ======= -->
-    <section class="founding-cta reveal">
-        <div class="container">
-            <h2>Aim for a Truer Future</h2>
-            <p>Every child in Englewood carries the image of God and the potential for greatness. What they are missing is not ability&mdash;it is aim. Partner with Archer, and help launch a generation.</p>
-            <div class="cta-buttons">
-                <a href="admissions/" class="btn btn-blue">Schedule a Tour</a>
-                <a href="support/" class="btn btn-outline-blue">Become a Founding Partner</a>
             </div>
         </div>
     </section>
@@ -497,45 +184,45 @@
             <div class="footer-grid">
                 <div class="footer-col">
                     <div style="margin-bottom: 15px;">
-                        <img src="images/ACA Archer Badge RGB Negative.png" alt="Archer Christian Academy" style="height: 50px; width: auto; opacity: 0.85;" width="3142" height="3457" loading="lazy" decoding="async">
+                        <img src="../images/ACA Archer Badge RGB Negative.png" alt="Archer Christian Academy" style="height: 50px; width: auto; opacity: 0.85;" width="3142" height="3457" loading="lazy" decoding="async">
                     </div>
                     <p>672 West Marquette Road<br>Chicago, Illinois 60621</p>
                     <p style="margin-top: 10px;"><a href="#contact" data-u="leinad" data-d="gro.naitsirhcrehcra" data-show>&#100;&#97;&#110;&#105;&#101;&#108;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a></p>
                     <p><a href="#contact" data-n="4460935213" data-show>&#51;&#49;&#50;<!-- -->&#45;&#53;&#51;&#57;<!-- -->&#45;&#48;&#54;&#52;&#52;</a></p>
                     <p class="footer-social" style="margin-top: 12px;"><a href="https://www.facebook.com/ArcherEnglewood/" rel="me noopener" target="_blank">Facebook</a> &middot; <a href="https://www.instagram.com/archerchristianacademy/" rel="me noopener" target="_blank">Instagram</a> &middot; <a href="https://www.linkedin.com/company/archerchristian" rel="me noopener" target="_blank">LinkedIn</a></p>
-                    <img src="images/ACA Motto RGB White.svg" alt="sagitta vera" class="motto-img" title="True Arrow" width="1297" height="466" loading="lazy" decoding="async">
+                    <img src="../images/ACA Motto RGB White.svg" alt="sagitta vera" class="motto-img" title="True Arrow" width="1297" height="466" loading="lazy" decoding="async">
                 </div>
                 <div class="footer-col">
                     <h4>Our School</h4>
                     <ul>
-                        <li><a href="about/">About</a></li>
-                        <li><a href="about/letter/">A Letter from the Founder</a></li>
-
-                        <li><a href="careers/">Teach at Archer</a></li>
-                        <li><a href="contact/">Contact Us</a></li>
-                        <li><a href="newsletters/">Newsletter</a></li>
-                        <li><a href="prospectus.pdf">Prospectus (PDF)</a></li>
+                        <li><a href="../about/">About</a></li>
+                        <li><a href="../about/letter/">A Letter from the Founder</a></li>
+                        <li><a href="../our-words/">Our Nine Words</a></li>
+                        <li><a href="../careers/">Teach at Archer</a></li>
+                        <li><a href="../contact/">Contact Us</a></li>
+                        <li><a href="../newsletters/">Newsletter</a></li>
+                        <li><a href="../prospectus.pdf">Prospectus (PDF)</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <h4>For Families</h4>
                     <ul>
-                        <li><a href="academics/">Academics</a></li>
-                        <li><a href="admissions/">Admissions</a></li>
-                        <li><a href="apply/">Apply for K&ndash;2</a></li>
-                        <li><a href="why-englewood/">Why Englewood</a></li>
+                        <li><a href="../academics/">Academics</a></li>
+                        <li><a href="../admissions/">Admissions</a></li>
+                        <li><a href="../apply/">Apply for K&ndash;2</a></li>
+                        <li><a href="../why-englewood/">Why Englewood</a></li>
                     </ul>
                 </div>
                 <div class="footer-col">
                     <div class="footer-cta">
                         <h4>Support the Mission</h4>
                         <p>Help us make an elite classical Christian education accessible to Englewood.</p>
-                        <a href="partner/" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
+                        <a href="../partner/" class="btn btn-yellow" style="padding: 12px 24px;">Give</a>
                     </div>
                 </div>
             </div>
             <div class="footer-copyright">
-                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="policy/">Non-Discriminatory Policy</a>
+                &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/">Non-Discriminatory Policy</a>
             </div>
         </div>
     </footer>
@@ -551,6 +238,6 @@
     document.querySelectorAll('#site-nav a').forEach(a => a.addEventListener('click', () => document.body.classList.remove('nav-open')));
     </script>
 
-    <script src="site.js" defer></script>
+    <script src="../site.js" defer></script>
 </body>
 </html>
