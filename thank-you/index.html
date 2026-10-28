@@ -21,6 +21,7 @@
       .only-monthly { display: none; }
       html[data-gift="monthly"] .only-monthly { display: block; }
       html[data-gift="monthly"] .only-once { display: none; }
+      html[data-gift="monthly"] .btn.only-monthly { display: inline-block; }
       .thanks-monthly { margin-top: 30px; padding: 20px 24px; border-left: 4px solid var(--archer-blue); background: var(--paper, #f7f5f0); font-size: 0.95rem; }
       .thanks-monthly p { margin: 0 0 8px; }
       .thanks-monthly p:last-child { margin: 0; }
@@ -169,8 +170,8 @@
 
                 <div class="cta-buttons" style="margin-top: 40px;">
                     <a href=".././" class="btn btn-blue">Return Home</a>
-                    <a href="../partner/" class="btn btn-outline-blue only-once" style="display:inline-flex;">Give Monthly Instead</a>
-                    <a href="../partner/update/" class="btn btn-outline-blue only-monthly" style="display:none;">Update Your Monthly Gift</a>
+                    <a href="../partner/" class="btn btn-outline-blue only-once">Give Monthly Instead</a>
+                    <a href="../partner/update/" class="btn btn-outline-blue only-monthly">Update Your Monthly Gift</a>
                 </div>
             </div>
         </div>
