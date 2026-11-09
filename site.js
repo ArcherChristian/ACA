@@ -1,9 +1,6 @@
 /* Archer Christian Academy — site.js
-   1) Rebuilds email and phone links that are stored obfuscated in the HTML,
-      so address-harvesting bots reading the raw source get nothing usable.
-   2) Hardens the Jotform-backed forms: enforces the honeypot, blocks
-      instant (bot-speed) submissions, and only reveals the real form
-      action at submit time. */
+   Rebuilds email and phone links that are stored obfuscated in the HTML,
+   so address-harvesting bots reading the raw source get nothing usable. */
 (function () {
   'use strict';
   var rev = function (s) { return s.split('').reverse().join(''); };
@@ -23,17 +20,4 @@
     a.removeAttribute('data-n'); a.removeAttribute('data-show');
   });
 
-  /* ---- forms ---- */
-  var loaded = Date.now();
-  document.querySelectorAll('form[data-action]').forEach(function (form) {
-    form.addEventListener('submit', function (e) {
-      var hp = form.querySelector('input[name="website"]');
-      var tooFast = (Date.now() - loaded) < 3000;
-      if ((hp && hp.value) || tooFast) {
-        e.preventDefault(); e.stopImmediatePropagation();
-        return false;
-      }
-      form.action = rev(form.getAttribute('data-action'));
-    }, true);
-  });
 })();
