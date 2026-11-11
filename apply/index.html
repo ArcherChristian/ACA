@@ -18,6 +18,12 @@
       @media (max-width: 600px) {
         .form-box.apply-box { padding: 28px 16px 24px; } /* give the embedded form more room on phones */
       }
+      /* On phones and tablets the form sits below "The Process"; a button near the top jumps to it. */
+      #application { scroll-margin-top: 96px; } /* land with the form's heading clear of the sticky header */
+      .apply-jump { display: none; }
+      @media (max-width: 900px) {
+        .apply-jump { display: block; margin-top: 20px; }
+      }
     </style>
     <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
@@ -105,6 +111,7 @@
                     <li><a href="../admissions/">Admissions</a></li>
                     <li><a href="../support/">Partners</a></li>
                     <li><a href="../contact/">Contact</a></li>
+                    <li class="nav-apply-item"><a href="../apply/" class="nav-apply-link active" aria-current="page">Apply for K&ndash;2</a></li>
                     <li><a href="../partner/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
@@ -131,14 +138,17 @@
                 <div class="reveal-left">
                     <h2>Application for Fall 2027</h2>
                     <p>We are currently accepting pre-enrollment applications for children entering <strong>Kindergarten, 1st Grade, or 2nd Grade</strong> in the Fall of 2027.</p>
+                    <p>The form is short. It asks for your name, phone number, email, address, and the ages of your children.</p>
+                    <p>Prefer to talk, or do not use email? Call Michelle Kelley, our Director of Operations, at <a href="#contact" data-n="9806542377" data-show class="default-link" style="white-space: nowrap;">&#55;&#55;&#51;<!-- -->&#45;&#50;&#52;&#53;<!-- -->&#45;&#54;&#48;&#56;&#57;</a>.</p>
+                    <p class="apply-jump"><a href="#application" class="btn btn-yellow">Go to the Form &darr;</a></p>
                     <p style="margin-top: 14px;"><a href="../prospectus.pdf" class="read-more-link" target="_blank" rel="noopener">Read the Archer Prospectus (PDF, 3 MB) &rarr;</a></p>
 
                     <div class="highlight-box" style="margin-top: 30px; margin-bottom: 30px;">
                         <h4 style="color: var(--dark-blue); margin-bottom: 10px;">The Process</h4>
                         <ol style="margin-left: 20px; line-height: 1.8;">
                             <li><strong>Submit this Form:</strong> Tell us about your family and students.</li>
-                            <li><strong>Family Interview:</strong> We will contact you to schedule a partnership meeting.</li>
-                            <li><strong>Assessment:</strong> A brief readiness assessment for your student.</li>
+                            <li><strong>Partnership Interview:</strong> We will contact you to schedule a partnership meeting.</li>
+                            <li><strong>Readiness Assessment:</strong> A brief readiness assessment for your student.</li>
                             <li><strong>Enrollment:</strong> Sign the family partnership covenant and confirm your tuition plan.</li>
                         </ol>
                     </div>
@@ -153,7 +163,7 @@
                         <script type="text/javascript" src="https://secure.lglforms.com/form_engine/s/Q0Pnkei1MW1-9iUeXZPSJg.js"></script><noscript><a href="https://secure.lglforms.com/form_engine/s/Q0Pnkei1MW1-9iUeXZPSJg">Open the pre-enrollment application</a><br/></noscript>
                     </div>
                     <p class="lgl-fallback">Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/Q0Pnkei1MW1-9iUeXZPSJg" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
-                    <p class="lgl-fallback">Alternatively, email Michelle Kelley, Director of Operations, at <a href="#contact" data-u="ellehcim" data-d="gro.naitsirhcrehcra" data-s="Enrollment%20at%20Archer" data-show class="default-link">&#109;&#105;&#99;&#104;&#101;&#108;&#108;&#101;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a> for more information.</p>
+                    <p class="lgl-fallback">Alternatively, email Michelle Kelley, Director of Operations, at <a href="#contact" data-u="ellehcim" data-d="gro.naitsirhcrehcra" data-s="Enrollment%20at%20Archer" data-show class="default-link">&#109;&#105;&#99;&#104;&#101;&#108;&#108;&#101;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a>, or call <a href="#contact" data-n="9806542377" data-show class="default-link" style="white-space: nowrap;">&#55;&#55;&#51;<!-- -->&#45;&#50;&#52;&#53;<!-- -->&#45;&#54;&#48;&#56;&#57;</a>, for more information.</p>
                 </div>
 
             </div>

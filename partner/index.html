@@ -43,6 +43,9 @@
         .give-layout { grid-template-columns: 1fr; grid-template-areas: "form" "context"; row-gap: 48px; }
         .give-cornerstone { margin-top: 44px; }
         .cornerstone-grid { grid-template-columns: 1fr; }
+        /* "More Ways to Give" shows its tabs two across here; with an odd number of ways,
+           the last tab spans both columns so no cell is left empty. */
+        .quiver-tab:last-child:nth-child(odd) { grid-column: 1 / -1; }
     }
     .gift-switch { text-align: center; margin-bottom: 14px; }
     .gift-toggle {
@@ -203,10 +206,10 @@
         },
         {
           "@type": "Question",
-          "name": "Can I give through a donor-advised fund, by check, with stock, or from an IRA?",
+          "name": "Can I give by Zelle, by check, through a donor-advised fund, with stock, or from an IRA?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Donor-advised fund grants (including National Christian Foundation), checks, IRA qualified charitable distributions, stock gifts, multi-year pledges, and employer matching gifts are all welcome. Checks are payable to Archer Christian Academy and mailed to 1507 E 53rd St, Box 691, Chicago, IL 60615; donor-advised fund grants, IRA distributions, and matching gifts are directed to Urban Youth Outreach (EIN 36-3382527), designated \"Archer Christian Academy.\""
+            "text": "Yes. Zelle transfers, checks, donor-advised fund grants (including National Christian Foundation), IRA qualified charitable distributions, stock gifts, multi-year pledges, and employer matching gifts are all welcome. The Zelle tag is archerchristian, received by Urban Youth Outreach. Checks are payable to Archer Christian Academy and mailed to 1507 E 53rd St, Box 691, Chicago, IL 60615; donor-advised fund grants, IRA distributions, and matching gifts are directed to Urban Youth Outreach (EIN 36-3382527), designated \"Archer Christian Academy.\""
           }
         },
         {
@@ -293,6 +296,7 @@
                     <li><a href="../admissions/">Admissions</a></li>
                     <li><a href="../support/">Partners</a></li>
                     <li><a href="../contact/">Contact</a></li>
+                    <li class="nav-apply-item"><a href="../apply/" class="nav-apply-link">Apply for K&ndash;2</a></li>
                     <li><a href="../partner/" class="nav-give active" aria-current="page">Give</a></li>
                 </ul>
             </nav>
@@ -346,8 +350,8 @@
                     </div>
                     </div>
                     <p class="give-note reveal">
-                        All gifts are tax-deductible. Archer Christian Academy is a ministry of <a href="https://englewoodfamily.org" target="_blank" rel="noopener" class="default-link">Urban Youth Outreach</a>, a registered 501(c)(3) nonprofit organization.
-                        <br> <a href="#ways" class="default-link">Prefer a donor-advised fund, check, stock, or IRA gift? More ways to give &darr;</a>
+                        Gifts are tax-deductible to the extent allowed by law. Archer Christian Academy is a ministry of Urban Youth Outreach, a registered 501(c)(3) nonprofit organization.
+                        <br> <a href="#ways" class="default-link">Prefer Zelle, a check, a donor-advised fund, stock, or an IRA gift? More ways to give &darr;</a>
                         <br> <a href="update/" class="default-link">Already a monthly partner? Update your gift &rarr;</a>
                     </p>
                 </div>
@@ -409,6 +413,11 @@
                         <span class="quiver-text"><span class="quiver-title">Check by Mail</span><span class="quiver-teaser">The classic way, still welcome</span></span>
                         <span class="quiver-fletch" aria-hidden="true"></span>
                     </button>
+                    <button class="quiver-tab" role="tab" id="tab-zelle" aria-controls="way-zelle" aria-selected="false" tabindex="-1">
+                        <span class="quiver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2.5" width="10" height="19" rx="2"/><path d="M11 18h2"/></svg></span>
+                        <span class="quiver-text"><span class="quiver-title">Zelle&reg;</span><span class="quiver-teaser">Straight from your bank app</span></span>
+                        <span class="quiver-fletch" aria-hidden="true"></span>
+                    </button>
                     <button class="quiver-tab" role="tab" id="tab-daf" aria-controls="way-daf" aria-selected="false" tabindex="-1">
                         <span class="quiver-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 10h18M5 10v8M9 10v8M15 10v8M19 10v8M3 18h18M12 3 3 8h18l-9-5z"/></svg></span>
                         <span class="quiver-text"><span class="quiver-title">Donor-Advised Fund</span><span class="quiver-teaser">NCF, Fidelity, Schwab &amp; others</span></span>
@@ -441,28 +450,33 @@
                         <h3>Check by Mail</h3>
                         <p>Make your check payable to Archer Christian Academy and mail it to the address below.</p><dl class="way-facts"><div><dt>Payable to</dt><dd>Archer Christian Academy</dd></div><div><dt>Mail to</dt><dd>1507 E 53rd St, Box 691<br>Chicago, IL 60615</dd></div></dl><p class="way-tip">Checks payable to Urban Youth Outreach, our parent ministry, with &ldquo;Archer Christian Academy&rdquo; in the memo line are welcome too.</p>
                     </div>
-                    <div class="quiver-pane" role="tabpanel" id="way-daf" aria-labelledby="tab-daf" hidden>
+                    <div class="quiver-pane" role="tabpanel" id="way-zelle" aria-labelledby="tab-zelle" hidden>
                         <span class="quiver-num" aria-hidden="true">02</span>
+                        <h3>Zelle&reg;</h3>
+                        <p>Open Zelle in your bank&rsquo;s app, choose Send, and enter our Zelle tag as the recipient. The tag belongs to Urban Youth Outreach, our parent ministry, so that is the name your bank should show before you send. Banks set their own limits on Zelle transfers, so a larger gift may be easier to send by check or through a donor-advised fund.</p><dl class="way-facts"><div><dt>Recipient</dt><dd>Urban Youth Outreach</dd></div><div><dt>Zelle tag</dt><dd>archerchristian</dd></div></dl><p class="way-tip">Zelle gifts often reach us with only a name attached. Put your email address in the memo line, or send us a quick note, so that we can thank you and send your receipt.</p>
+                    </div>
+                    <div class="quiver-pane" role="tabpanel" id="way-daf" aria-labelledby="tab-daf" hidden>
+                        <span class="quiver-num" aria-hidden="true">03</span>
                         <h3>Donor-Advised Fund</h3>
                         <p>Log in to your <a href="https://www.ncfgiving.com/" target="_blank" rel="noopener" class="default-link">National Christian Foundation</a> Giving Fund&mdash;or Fidelity Charitable, Schwab Charitable, or any other sponsor&mdash;and search for Urban Youth Outreach.</p><dl class="way-facts"><div><dt>Recipient</dt><dd>Urban Youth Outreach</dd></div><div><dt>Tax ID / EIN</dt><dd>36-3382527</dd></div><div><dt>Designation</dt><dd>&ldquo;Archer Christian Academy&rdquo;</dd></div></dl><p class="way-tip">DAF grants often arrive without your name attached. A quick email lets us watch for your gift and thank you properly.</p>
                     </div>
                     <div class="quiver-pane" role="tabpanel" id="way-ira" aria-labelledby="tab-ira" hidden>
-                        <span class="quiver-num" aria-hidden="true">03</span>
+                        <span class="quiver-num" aria-hidden="true">04</span>
                         <h3>Gifts from an IRA</h3>
                         <p>If you are 70&frac12; or older, you can give directly from your IRA through a Qualified Charitable Distribution. It counts toward your required minimum distribution and is excluded from your taxable income. Ask your custodian to send the distribution to:</p><dl class="way-facts"><div><dt>Recipient</dt><dd>Urban Youth Outreach</dd></div><div><dt>Tax ID / EIN</dt><dd>36-3382527</dd></div><div><dt>Mail to</dt><dd>1507 E 53rd St, Box 691<br>Chicago, IL 60615</dd></div><div><dt>Designation</dt><dd>&ldquo;Archer Christian Academy&rdquo;</dd></div></dl>
                     </div>
                     <div class="quiver-pane" role="tabpanel" id="way-stock" aria-labelledby="tab-stock" hidden>
-                        <span class="quiver-num" aria-hidden="true">04</span>
+                        <span class="quiver-num" aria-hidden="true">05</span>
                         <h3>Stock &amp; Securities</h3>
                         <p>Giving stock you have held for more than a year lets you avoid capital gains tax and deduct the full fair market value.</p><p><a href="#contact" data-u="leinad" data-d="gro.naitsirhcrehcra" data-s="Stock%20gift%20to%20Archer" class="default-link">Contact Daniel</a> to arrange a transfer, and let us know the security and share count so we can identify your gift when it arrives.</p><!-- TODO: once UYO has a brokerage account (or a stock-gift processor), add DTC number, account number, and account name here. -->
                     </div>
                     <div class="quiver-pane" role="tabpanel" id="way-pledge" aria-labelledby="tab-pledge" hidden>
-                        <span class="quiver-num" aria-hidden="true">05</span>
+                        <span class="quiver-num" aria-hidden="true">06</span>
                         <h3>Multi-Year Pledge</h3>
                         <p>Founding partners often fulfill an Archer Partner or Student Sponsor gift over two or three years. A pledge lets you commit now and give on a schedule that works for you.</p><p><a href="#contact" data-u="leinad" data-d="gro.naitsirhcrehcra" data-s="Founding%20partner%20pledge" class="default-link">Talk with Daniel</a> about a pledge.</p>
                     </div>
                     <div class="quiver-pane" role="tabpanel" id="way-match" aria-labelledby="tab-match" hidden>
-                        <span class="quiver-num" aria-hidden="true">06</span>
+                        <span class="quiver-num" aria-hidden="true">07</span>
                         <h3>Employer Matching</h3>
                         <p>Many employers match charitable gifts. Ask your HR department whether your company has a matching program and submit:</p><dl class="way-facts"><div><dt>Recipient</dt><dd>Urban Youth Outreach</dd></div><div><dt>Tax ID / EIN</dt><dd>36-3382527</dd></div><div><dt>Designation</dt><dd>&ldquo;Archer Christian Academy&rdquo;</dd></div></dl>
                     </div>
@@ -505,8 +519,8 @@
                     <div class="faq-a"><p>Yes. Choose <strong>Monthly</strong> on the form above and give $900, $450, $300, $100, $50, or any amount each month. You can change the amount, the payment method, or the charge date&mdash;or pause the gift&mdash;on the <a href="update/" class="default-link">update page</a>.</p></div>
                 </details>
                 <details>
-                    <summary>Can I give through a donor-advised fund, by check, with stock, or from an IRA?</summary>
-                    <div class="faq-a"><p>Yes. Donor-advised fund grants (including National Christian Foundation), checks, IRA qualified charitable distributions, stock gifts, multi-year pledges, and employer matching gifts are all welcome&mdash;see <a href="#ways" class="default-link">More Ways to Give</a>. Checks are payable to Archer Christian Academy and mailed to 1507 E 53rd St, Box 691, Chicago, IL 60615; donor-advised fund grants, IRA distributions, and matching gifts are directed to Urban Youth Outreach (EIN 36-3382527), designated &ldquo;Archer Christian Academy.&rdquo;</p></div>
+                    <summary>Can I give by Zelle, by check, through a donor-advised fund, with stock, or from an IRA?</summary>
+                    <div class="faq-a"><p>Yes. Zelle transfers, checks, donor-advised fund grants (including National Christian Foundation), IRA qualified charitable distributions, stock gifts, multi-year pledges, and employer matching gifts are all welcome&mdash;see <a href="#ways" class="default-link">More Ways to Give</a>. Our Zelle tag is archerchristian, received by Urban Youth Outreach. Checks are payable to Archer Christian Academy and mailed to 1507 E 53rd St, Box 691, Chicago, IL 60615; donor-advised fund grants, IRA distributions, and matching gifts are directed to Urban Youth Outreach (EIN 36-3382527), designated &ldquo;Archer Christian Academy.&rdquo;</p></div>
                 </details>
                 <details>
                     <summary>What do gifts toward launch costs pay for?</summary>

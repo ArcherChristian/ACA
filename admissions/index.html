@@ -12,6 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../styles.css">
+    <style>
+      /* Page-only rules for "The Short Version" (plain facts for families; the shared .highlight-box lives in styles.css) */
+      .short-version { margin-top: 26px; padding: 26px 28px; }
+      .short-version h3 { font-size: 1.05rem; margin-bottom: 14px; }
+      .short-version dl { display: grid; gap: 10px; margin: 0; }
+      .short-version dl div { display: grid; grid-template-columns: 6.5rem 1fr; column-gap: 12px; align-items: baseline; }
+      .short-version dt { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.78rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--archer-blue); }
+      .short-version dd { margin: 0; font-size: 1rem; line-height: 1.55; color: var(--ink); }
+      @media (max-width: 600px) {
+        .short-version { padding: 22px 20px; }
+        .short-version dl { gap: 12px; }
+        .short-version dl div { grid-template-columns: 1fr; } /* label above its line on phones */
+      }
+    </style>
     <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
     <link rel="icon" href="../images/favicon-64.png" type="image/png" sizes="64x64">
@@ -92,6 +106,7 @@
                     <li><a href="../admissions/" class="active" aria-current="page">Admissions</a></li>
                     <li><a href="../support/">Partners</a></li>
                     <li><a href="../contact/">Contact</a></li>
+                    <li class="nav-apply-item"><a href="../apply/" class="nav-apply-link">Apply for K&ndash;2</a></li>
                     <li><a href="../partner/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
@@ -120,10 +135,22 @@
                     <h2>More Than a Checklist</h2>
                     <p>We partner with families who desire a Christ-centered, classical education that shapes children to renew Englewood and glorify God. Admissions is a shared journey of discernment&mdash;making sure our mission and your hopes for your child align.</p>
                     <p>You do not need a church background or a profession of faith to apply. Every family willing to walk this path with us is welcome to begin the conversation.</p>
+                    <div class="highlight-box short-version">
+                        <h3>The Short Version</h3>
+                        <dl>
+                            <div><dt>Who</dt><dd>Children starting Kindergarten, 1st grade, or 2nd grade in Fall 2027.</dd></div>
+                            <div><dt>Where</dt><dd>In Englewood. We are based at 672 West Marquette Road, near 67th and Union.</dd></div>
+                            <div><dt>When</dt><dd>The first day of school is August 23, 2027.</dd></div>
+                            <div><dt>Cost</dt><dd>Every family pays something each month. We set the amount with you, in private, by what your family is able to give.</dd></div>
+                            <div><dt>Faith</dt><dd>Archer is a Christian school. Each day begins with prayer and Scripture. You do not need to belong to a church to apply.</dd></div>
+                            <div><dt>First step</dt><dd>Fill out the short form, or call us.</dd></div>
+                        </dl>
+                    </div>
                     <div style="margin-top: 28px;">
                         <a href="../apply/" class="btn btn-yellow" style="margin-right: 10px;">Start an Application</a>
                         <a href="../contact/" class="btn btn-outline-blue">Ask a Question</a>
                     </div>
+                    <p style="margin-top: 18px;">Prefer to talk? Call Michelle Kelley, our Director of Operations, at <a href="#contact" data-n="9806542377" data-show class="default-link" style="white-space: nowrap;">&#55;&#55;&#51;<!-- -->&#45;&#50;&#52;&#53;<!-- -->&#45;&#54;&#48;&#56;&#57;</a>.</p>
                     <p style="margin-top: 22px;"><a href="../prospectus.pdf" class="read-more-link" target="_blank" rel="noopener">Read the Archer Prospectus (PDF, 3 MB) &rarr;</a></p>
                 </div>
                 <div class="arch-frame reveal-right">
@@ -145,18 +172,18 @@
             <div class="process-grid stagger">
                 <div class="process-card reveal">
                     <div class="step-number">1</div>
-                    <h3>Conversation &amp; Tour</h3>
-                    <p>Every partnership begins with a conversation. Visit, see the vision up close, and share your hopes for your children.</p>
+                    <h3>Application</h3>
+                    <p>Every partnership begins with a conversation. The short family form opens it: tell us about your family and your students.</p>
                 </div>
                 <div class="process-card reveal">
                     <div class="step-number">2</div>
-                    <h3>Application &amp; Family Story</h3>
-                    <p>More than forms&mdash;an opportunity to tell your story, your journey, and your educational values.</p>
+                    <h3>Partnership Interview</h3>
+                    <p>Meet our leadership team to tell your story, share your hopes for your children, and talk mission, faith, and philosophy&mdash;and prayerfully discern the fit together.</p>
                 </div>
                 <div class="process-card reveal">
                     <div class="step-number">3</div>
-                    <h3>Partnership Interview</h3>
-                    <p>Meet our leadership team to talk mission, faith, and philosophy&mdash;and prayerfully discern the fit together.</p>
+                    <h3>Readiness Assessment</h3>
+                    <p>A brief readiness assessment for your student.</p>
                 </div>
                 <div class="process-card reveal">
                     <div class="step-number">4</div>
@@ -166,7 +193,7 @@
             </div>
 
             <div style="text-align: center; margin-top: 46px;" class="reveal">
-                <a href="../contact/" class="btn btn-blue">Schedule a Visit</a>
+                <a href="../apply/" class="btn btn-blue">Start an Application</a>
             </div>
         </div>
     </section>
@@ -249,6 +276,7 @@
             </div>
             <div class="footer-copyright">
                 &copy; 2026 Archer Christian Academy. All Rights Reserved. | <a href="../policy/">Non-Discriminatory Policy</a>
+                <br>Photographs are illustrative. Archer&rsquo;s first students arrive in Fall 2027.
             </div>
         </div>
     </footer>

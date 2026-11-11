@@ -18,6 +18,18 @@
       @media (max-width: 600px) {
         .form-box.apply-box { padding: 28px 16px 24px; } /* give the embedded form more room on phones */
       }
+      /* Page-only rules for the position summary (from the teacher profile) */
+      .position-facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px 28px; margin: 4px 0 0; padding: 22px 26px; background: var(--cream); border-radius: 8px; }
+      .position-facts div { min-width: 0; }
+      .position-facts dt { font-family: 'Poppins', sans-serif; font-weight: 600; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--archer-blue); margin-bottom: 3px; }
+      .position-facts dd { margin: 0; font-size: 0.97rem; line-height: 1.5; color: var(--ink); }
+      .position-sub { font-size: 1.05rem; margin: 28px 0 10px; }
+      .position-list { margin-left: 20px; list-style: disc; }
+      .position-list li + li { margin-top: 8px; }
+      .eoe-note { font-size: 0.85rem; line-height: 1.6; color: var(--muted); text-align: center; margin-top: 18px; }
+      @media (max-width: 600px) {
+        .position-facts { grid-template-columns: 1fr; padding: 20px; }
+      }
     </style>
     <link rel="icon" href="../images/archiconbk.svg" type="image/svg+xml" media="(prefers-color-scheme: light)">
     <link rel="icon" href="../images/archiconwt.svg" type="image/svg+xml" media="(prefers-color-scheme: dark)">
@@ -99,6 +111,7 @@
                     <li><a href="../admissions/">Admissions</a></li>
                     <li><a href="../support/">Partners</a></li>
                     <li><a href="../contact/">Contact</a></li>
+                    <li class="nav-apply-item"><a href="../apply/" class="nav-apply-link">Apply for K&ndash;2</a></li>
                     <li><a href="../partner/" class="nav-give">Give</a></li>
                 </ul>
             </nav>
@@ -115,16 +128,6 @@
             <span class="kicker">Join the Mission</span>
             <h1>Teach at Archer</h1>
             <p class="lead-text">Help launch a school&mdash;and shape the classrooms Englewood&rsquo;s children deserve.</p>
-        </div>
-    </section>
-
-    <!-- ======= THE OPPORTUNITY ======= -->
-    <section class="content-section">
-        <div class="container-narrow reveal">
-            <span class="kicker">Founding Teachers &bull; Fall 2027</span>
-            <h2 style="margin-bottom: 16px;">Do What Few Educators Ever Get To Do</h2>
-            <p>Archer opens in Fall 2027 with three Grammar classrooms&mdash;Kindergarten, 1st, and 2nd grade&mdash;and adds a grade every year through 12th. Founding teachers won&rsquo;t inherit a culture; they will set it. The traditions you start, the standards you hold, and the children you love in year one will shape this school for a generation.</p>
-            <p style="margin-top: 14px;">We are building relationships with prospective teachers now, well ahead of launch. If the vision below sounds like you, we would love to start the conversation early.</p>
         </div>
     </section>
 
@@ -148,19 +151,44 @@
         </div>
     </section>
 
-    <!-- ======= WHO WE'RE LOOKING FOR ======= -->
+    <!-- ======= WHO WE ARE LOOKING FOR ======= -->
     <section class="content-section">
         <div class="container-narrow">
-            <div class="reveal">
-                <h2 style="margin-bottom: 20px;">Who We&rsquo;re Looking For</h2>
+            <!-- ======= THE POSITION (from the teacher profile; salary range left out at Daniel's direction) ======= -->
+            <div class="reveal" id="position">
+                <span class="kicker">The Position</span>
+                <h2 style="margin-bottom: 16px;">Elementary Teacher, Full Time</h2>
+                <dl class="position-facts">
+                    <div><dt>Open positions</dt><dd>Kindergarten, First Grade, Second Grade</dd></div>
+                    <div><dt>School year</dt><dd>2027&ndash;2028</dd></div>
+                    <div><dt>Location</dt><dd>Englewood, Chicago, IL 60621</dd></div>
+                    <div><dt>Compensation</dt><dd>Salary is based on education and classroom teaching experience, with benefits including health care.</dd></div>
+                </dl>
+                <h3 class="position-sub">Position Details</h3>
+                <ul class="position-list">
+                    <li>Responsible for instruction of students, including planning, preparation, instructional delivery, and assessments, using curriculum provided by Archer Christian Academy.</li>
+                    <li>Communicate positively and effectively with students, parents, classroom aides, school administration, and other faculty.</li>
+                    <li>Shepherd students in spiritual matters, cultivating healthy spiritual formation.</li>
+                    <li>Participate in professional development, school activities, and programs as noted on the staff calendar.</li>
+                </ul>
+            </div>
+            <div class="reveal" style="margin-top: 56px;">
+                <h2 style="margin-bottom: 20px;">Who We Are Looking For</h2>
                 <div class="highlight-box">
                     <ul style="margin-left: 20px; line-height: 2; list-style: disc;">
-                        <li>Teachers who <strong>love Christ and love children</strong>, and embrace our <a href="../about/" class="default-link">Statement of Faith</a></li>
+                        <li>Teachers who <strong>love Christ and love children</strong>, and embrace our <a href="../about/#statement-of-faith" class="default-link">Statement of Faith</a></li>
                         <li>Educators <strong>hungry to master their craft</strong> in the classical tradition&mdash;we train, you grow</li>
                         <li>People who believe <strong>Englewood&rsquo;s children deserve the best education in the city</strong></li>
                         <li>Builders&mdash;founding teachers help shape a school, not just fill a role</li>
                     </ul>
                 </div>
+                <h3 class="position-sub">General Qualifications</h3>
+                <ul class="position-list">
+                    <li>Applicant must have an active relationship with God, be regularly engaging with his Word, actively engaged in a local church, and be growing in his or her faith.</li>
+                    <li>A love for the children of Chicago and a desire to equip them with an academically rigorous, comprehensive, classical Christian education.</li>
+                    <li>Willing to be flexible and be a team player in the midst of a start-up environment.</li>
+                    <li>Bachelor&rsquo;s degree in education and previous teaching experience preferred.</li>
+                </ul>
             </div>
             <!-- ======= PRE-APPLICATION: Little Green Light form 3ehTD27itnxdSDkKMF3_Kg (Teach at Archer; not linked to the LGL database) ======= -->
             <div class="reveal" id="pre-application" style="margin-top: 56px;">
@@ -174,7 +202,8 @@
                     </div>
                     <p class="lgl-fallback">Trouble seeing the form? <a href="https://secure.lglforms.com/form_engine/s/3ehTD27itnxdSDkKMF3_Kg" target="_blank" rel="noopener" class="default-link">Open it in a new window</a>.</p>
                 </div>
-                <p style="text-align: center; margin-top: 26px; color: var(--muted);">Alternatively, email Michelle Kelley, Director of Operations, at <a href="#contact" data-u="ellehcim" data-d="gro.naitsirhcrehcra" data-s="Teaching%20at%20Archer" data-show class="default-link">&#109;&#105;&#99;&#104;&#101;&#108;&#108;&#101;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a> for more information.</p>
+                <p style="text-align: center; margin-top: 26px; color: var(--muted);">Alternatively, email Michelle Kelley, Director of Operations, at <a href="#contact" data-u="ellehcim" data-d="gro.naitsirhcrehcra" data-s="Teaching%20at%20Archer" data-show class="default-link">&#109;&#105;&#99;&#104;&#101;&#108;&#108;&#101;<!-- -->&#64;<!-- -->&#97;&#114;&#99;&#104;&#101;&#114;&#99;&#104;&#114;&#105;&#115;&#116;&#105;&#97;&#110;&#46;&#111;&#114;&#103;</a>, or call <a href="#contact" data-n="9806542377" data-show class="default-link" style="white-space: nowrap;">&#55;&#55;&#51;<!-- -->&#45;&#50;&#52;&#53;<!-- -->&#45;&#54;&#48;&#56;&#57;</a>, for more information.</p>
+                <p class="eoe-note">Archer Christian Academy is an equal opportunity employer and does not discriminate against any employee or candidate based on their race, color, national origin, sex, physical or mental disability, or age.</p>
             </div>
         </div>
     </section>

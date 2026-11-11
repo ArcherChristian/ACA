@@ -272,20 +272,27 @@ nav a:hover::after, nav a.active::after { width: 100%; }
 nav a:hover { color: var(--archer-blue); }
 nav a.active { font-weight: 600; }
 
-nav a.nav-give {
+nav a.nav-give,
+nav a.nav-apply-link {
     background-color: var(--archer-yellow);
     color: var(--dark-blue);
     padding: 8px 18px;
     border-radius: 6px;
     font-weight: 600;
 }
-nav a.nav-give::after { display: none; }
-nav a.nav-give:hover {
+nav a.nav-give::after,
+nav a.nav-apply-link::after { display: none; }
+nav a.nav-give:hover,
+nav a.nav-apply-link:hover {
     background-color: var(--gold-deep);
+    color: var(--dark-blue); /* keep the label readable on the yellow pill (the phone menu turns other links yellow on tap) */
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(255,221,0,0.4);
 }
 .nav-apply { white-space: nowrap; padding: 12px 22px; }
+/* "Apply for K–2" sits in the header as a button on wide screens. On phones and tablets that
+   button is hidden, so the menu carries the link instead (shown in the media query below). */
+nav li.nav-apply-item { display: none; }
 
 /* Mobile nav */
 .nav-toggle {
@@ -312,6 +319,7 @@ body.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-7.5px) rota
     .logo-type { display: none; }
     .nav-toggle { display: block; }
     .nav-apply { display: none; }
+    nav li.nav-apply-item { display: block; }
     nav {
         position: fixed;
         inset: 0;
@@ -1800,13 +1808,17 @@ q::after { content: close-quote; }
 
 @media (max-width: 600px) {
     .footer-grid { grid-template-columns: 1fr; gap: 30px; }
-    .stats-row { grid-template-columns: 1fr 1fr; }
+    /* Partners page figures: let the two columns shrink to the screen and size the numbers to fit,
+       so "$400K" and "~10%" no longer run off the right edge of a phone. */
+    .stats-row { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+    .stat-item { padding: 20px 10px; }
+    .stat-number { font-size: clamp(1.45rem, 8vw, 2rem); }
     .process-grid { grid-template-columns: 1fr; }
     .hero-buttons .btn { width: 100%; }
     .cta-buttons .btn { width: 100%; }
     .hstat-number { font-size: 1.5rem; }
     .access-guarantee { padding: 20px 22px; font-size: 1.05rem; }
-    .partner-logos-grid { flex-direction: column; align-items: stretch; }
+    .partner-logos-grid { flex-direction: column; align-items: center; } /* center the three partner cards under their label on phones */
 }
 
 /* More Ways to Give (donate page) */
