@@ -1,0 +1,26 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Archer Christian Academy//Giving Tuesday 2026//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:giving-tuesday-2026@archerchristian.org
+DTSTAMP:20261124T200000Z
+SEQUENCE:1
+DTSTART:20261201T060000
+DTEND:20261201T061500
+SUMMARY:Giving Tuesday: the PayPal match for Archer is open
+DESCRIPTION:PayPal's match opened at 2:00 a.m. Central (midnight Pacific)
+  and is first come\, first served: eligible gifts up to $250 are matched
+  until its $1 million runs out. Give here: https://www.paypal.com/fundra
+ iser/128347937940251433/charity/1783145 (the page says Urban Youth Outre
+ ach\, the nonprofit behind Archer Christian Academy). For a larger or mo
+ nthly gift: https://partner.archerchristian.org/
+URL:https://www.paypal.com/fundraiser/128347937940251433/charity/1783145
+BEGIN:VALARM
+ACTION:DISPLAY
+DESCRIPTION:The PayPal match for Archer is open
+TRIGGER:PT0M
+END:VALARM
+END:VEVENT
+END:VCALENDAR
